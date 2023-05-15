@@ -9,7 +9,7 @@ public class Address {
     @Id
     @Column(name = "address_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String addressId;
+    private Long addressId;
 
     @Column(name = "street")
     private String street;
@@ -25,7 +25,7 @@ public class Address {
         this.cityId = cityId;
     }
 
-    public String getAddressId() {
+    public Long getAddressId() {
         return addressId;
     }
 
