@@ -26,4 +26,37 @@ public class Loan {
     @Column(name = "loan_status")
     private String loanStatus;
 
+    // Constructor
+    public Loan() {
+    }
+
+    // Setters and getters
+    public Long getLoanId() {
+        return loanId;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public String getLoanStatus() {
+        return loanStatus;
+    }
+
+    public void setLoanStatus(String loanStatus) {
+        this.loanStatus = loanStatus;
+    }
+
 }
