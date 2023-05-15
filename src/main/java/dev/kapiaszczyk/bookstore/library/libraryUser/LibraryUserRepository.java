@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface LibraryUserRepository extends JpaRepository<LibraryUser, String> {
+public interface LibraryUserRepository extends JpaRepository<LibraryUser, Long> {
     List<LibraryUser> findAll();
 }
