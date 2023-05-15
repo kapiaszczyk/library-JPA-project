@@ -57,4 +57,11 @@ public class LibraryUser {
     public void setAccount(Account account) {
         this.account = account;
     }
+
+    public void removeAccount() {
+        if (account != null) {
+            account.setLibraryUser(null);
+            this.account = null;
+        }
+    }
 }
