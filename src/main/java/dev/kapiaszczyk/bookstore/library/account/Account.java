@@ -2,7 +2,11 @@ package dev.kapiaszczyk.bookstore.library.account;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.kapiaszczyk.bookstore.library.libraryUser.LibraryUser;
+import dev.kapiaszczyk.bookstore.library.loan.Loan;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "account")
@@ -20,6 +24,9 @@ public class Account {
     @JoinColumn(name = "library_user_id", referencedColumnName = "library_user_id")
     @JsonIgnore
     private LibraryUser libraryUser;
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Loan> loans = new ArrayList<>();
 
     public Account() {
     }
@@ -46,5 +53,21 @@ public class Account {
 
     public void setLibraryUser(LibraryUser libraryUser) {
         this.libraryUser = libraryUser;
+    }
+
+    public List<Loan> getLoans() {
+        return loans;
+    }
+
+    public void setLoans(List<Loan> loans) {
+        this.loans = loans;
+    }
+
+    public void addLoan(Loan loan) {
+        this.loans.add(loan);
+    }
+
+    public void removeLoan(Loan loan) {
+        this.loans.remove(loan);
     }
 }
