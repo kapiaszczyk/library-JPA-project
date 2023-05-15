@@ -122,6 +122,13 @@ public class Book {
     }
 
     public void setLoan(Loan loan) {
+        if (loan == null) {
+            if (this.loan != null) {
+                this.loan.setBook(null);
+            }
+        } else {
+            loan.setBook(this);
+        }
         this.loan = loan;
     }
 }
