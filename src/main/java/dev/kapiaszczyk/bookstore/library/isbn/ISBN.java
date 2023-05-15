@@ -8,7 +8,7 @@ public class ISBN {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "isbn_id")
-    private String isbnId;
+    private Long isbnId;
 
     @Column(name = "isbn_number")
     private String isbnNumber;
@@ -16,11 +16,11 @@ public class ISBN {
     public ISBN() {
     }
 
-    public ISBN(String isbnNumber) {
+    public ISBN(Long isbnNumber) {
         this.isbnNumber = isbnNumber;
     }
 
-    public String getIsbnId() {
+    public Long getIsbnId() {
         return isbnId;
     }
 
