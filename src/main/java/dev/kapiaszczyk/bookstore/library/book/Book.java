@@ -131,4 +131,15 @@ public class Book {
         }
         this.loan = loan;
     }
+
+    public void addCredit(Credit credit) {
+        credits.add(credit);
+        credit.setBook(this);
+    }
+
+    public void removeCredit(Credit credit) {
+        credits.remove(credit);
+        credit.setBook(null);
+    }
+
 }
