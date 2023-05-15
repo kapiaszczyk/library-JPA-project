@@ -65,4 +65,11 @@ public class City {
     }
 
 
+    public void removeAccount(String cracow) {
+        this.cityName = cracow;
+    }
+
+    public void getCityName(String cracow) {
+        this.cityName = cracow;
+    }
 }
