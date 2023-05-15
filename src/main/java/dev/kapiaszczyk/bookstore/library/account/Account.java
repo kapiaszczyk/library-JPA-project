@@ -12,6 +12,9 @@ public class Account {
     @Column(name = "account_id", unique = true, nullable = false)
     private Long accountId;
 
+    @Column(name = "account_number", unique = true, nullable = false)
+    private String accountNumber;
+
     @OneToOne
     @MapsId
     @JoinColumn(name = "library_user_id", referencedColumnName = "library_user_id")
@@ -27,6 +30,14 @@ public class Account {
 
     public String getAccountId() {
         return accountId;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
     public LibraryUser getLibraryUser() {
