@@ -12,8 +12,8 @@ public class LibraryUser {
     @Column(name = "library_user_id")
     private Long libraryUserId;
 
-    @Column(name = "library_user_name")
-    private String libraryUserName;
+    @Column(name = "library_user_name", unique = false, nullable = false, length = 100)
+    private String libraryUserFirstName;
 
     @Column(name = "library_user_surname")
     private String libraryUserSurname;
@@ -26,7 +26,7 @@ public class LibraryUser {
     }
 
     public LibraryUser(String libraryUserName, String libraryUserSurname) {
-        this.libraryUserName = libraryUserName;
+        this.libraryUserFirstName = libraryUserName;
         this.libraryUserSurname = libraryUserSurname;
     }
 
@@ -34,12 +34,12 @@ public class LibraryUser {
         return libraryUserId;
     }
 
-    public String getLibraryUserName() {
-        return libraryUserName;
+    public String getLibraryUserFirstName() {
+        return libraryUserFirstName;
     }
 
-    public void setLibraryUserName(String libraryUserName) {
-        this.libraryUserName = libraryUserName;
+    public void setLibraryUserFirstName(String libraryUserFirstName) {
+        this.libraryUserFirstName = libraryUserFirstName;
     }
 
     public String getLibraryUserSurname() {
