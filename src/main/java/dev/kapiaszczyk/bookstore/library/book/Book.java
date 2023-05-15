@@ -76,6 +76,13 @@ public class Book {
     }
 
     public void setCategory(Category category) {
+        if (category == null) {
+            if (this.category != null) {
+                this.category.addBook(null);
+            }
+        } else {
+            category.addBook(this);
+        }
         this.category = category;
     }
 
