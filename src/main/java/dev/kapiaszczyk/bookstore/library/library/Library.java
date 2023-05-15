@@ -1,5 +1,7 @@
 package dev.kapiaszczyk.bookstore.library.library;
 
+import dev.kapiaszczyk.bookstore.library.address.Address;
+import dev.kapiaszczyk.bookstore.library.inventory.Inventory;
 import jakarta.persistence.*;
 
 @Entity
@@ -9,31 +11,27 @@ public class Library {
     @Id
     @Column(name = "library_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String libraryId;
+    private Long libraryId;
 
     @Column(name = "library_name")
     private String libraryName;
 
-    @Column(name = "library_address")
-    private String libraryAddress;
+    @OneToOne(mappedBy = "library", cascade = CascadeType.ALL, orphanRemoval = true)
+    Address address;
 
-    @Column(name = "address_id")
-    String address_id;
-
-    @Column(name = "inventory_id")
-    String inventory_id;
+    @OneToOne(mappedBy = "library", cascade = CascadeType.ALL, orphanRemoval = true)
+    Inventory inventory;
 
     public Library() {
     }
 
-    public Library(String libraryName, String libraryAddress, String address_id, String inventory_id) {
+    public Library(String libraryName, Address address, Inventory inventory) {
         this.libraryName = libraryName;
-        this.libraryAddress = libraryAddress;
-        this.address_id = address_id;
-        this.inventory_id = inventory_id;
+        this.address = address;
+        this.inventory = inventory;
     }
 
-    public String getLibraryId() {
+    public Long getLibraryId() {
         return libraryId;
     }
 
@@ -45,27 +43,19 @@ public class Library {
         this.libraryName = libraryName;
     }
 
-    public String getLibraryAddress() {
-        return libraryAddress;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setLibraryAddress(String libraryAddress) {
-        this.libraryAddress = libraryAddress;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
-    public String getAddress_id() {
-        return address_id;
+    public Inventory getInventory() {
+        return inventory;
     }
 
-    public void setAddress_id(String address_id) {
-        this.address_id = address_id;
-    }
-
-    public String getInventory_id() {
-        return inventory_id;
-    }
-
-    public void setInventory_id(String inventory_id) {
-        this.inventory_id = inventory_id;
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
 }
