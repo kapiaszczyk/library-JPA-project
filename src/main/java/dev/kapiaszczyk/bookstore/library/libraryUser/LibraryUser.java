@@ -10,7 +10,7 @@ public class LibraryUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "library_user_id")
-    private String libraryUserId;
+    private Long libraryUserId;
 
     @Column(name = "library_user_name")
     private String libraryUserName;
@@ -30,7 +30,7 @@ public class LibraryUser {
         this.libraryUserSurname = libraryUserSurname;
     }
 
-    public String getLibraryUserId() {
+    public Long getLibraryUserId() {
         return libraryUserId;
     }
 
