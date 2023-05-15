@@ -149,4 +149,11 @@ public class Book {
         this.isbn = null;
     }
 
+    public void removeLoan() {
+        if (loan != null) {
+            loan.setBook(null);
+        }
+        this.loan = null;
+    }
+
 }
