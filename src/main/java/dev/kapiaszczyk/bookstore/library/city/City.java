@@ -1,5 +1,7 @@
 package dev.kapiaszczyk.bookstore.library.city;
 
+import dev.kapiaszczyk.bookstore.library.address.Address;
+import dev.kapiaszczyk.bookstore.library.cityCode.CityCode;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -20,6 +22,10 @@ public class City {
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Address> addresses = new ArrayList<>();
 
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CityCode> cityCodes = new ArrayList<>();
+
+
     public City() {
     }
 
@@ -35,7 +41,28 @@ public class City {
         return cityName;
     }
 
-    public void setCityName(String cityName) {
+    public City(String cityName, List<CityCode> cityCodes, List<Address> addresses) {
         this.cityName = cityName;
+        this.cityCodes = cityCodes;
+        this.addresses = addresses;
     }
+
+
+    public List<CityCode> getCityCode() {
+        return cityCodes;
+    }
+
+    public void setCityCode(List<CityCode> cityCodes) {
+        this.cityCodes = cityCodes;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
+
+
 }
