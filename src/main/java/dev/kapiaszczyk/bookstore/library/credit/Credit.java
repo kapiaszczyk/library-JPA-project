@@ -1,5 +1,7 @@
 package dev.kapiaszczyk.bookstore.library.credit;
 
+import dev.kapiaszczyk.bookstore.library.author.Author;
+import dev.kapiaszczyk.bookstore.library.book.Book;
 import jakarta.persistence.*;
 
 @Entity
@@ -9,43 +11,41 @@ public class Credit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "credit_id")
-    private String creditId;
+    private Long creditId;
 
     // Relation with book
-    @Column(name = "book_id")
-    private String bookId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Book book;
 
     // Relation with author
-    @Column(name = "author_id")
-    private String authorId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Author author;
 
     public Credit() {
     }
 
-    public Credit(String bookId, String authorId) {
-        this.bookId = bookId;
-        this.authorId = authorId;
+    public Credit(Book book, Author author) {
+        this.book = book;
+        this.author = author;
     }
 
-    public String getCreditId() {
+    public Long getCreditId() {
         return creditId;
     }
 
-    public String getBookId() {
-        return bookId;
+    public Book getBook() {
+        return book;
     }
 
-    public void setBookId(String bookId) {
-        this.bookId = bookId;
+    public void setBook(Book book) {
+        this.book = book;
     }
 
-    public String getAuthorId() {
-        return authorId;
+    public Author getAuthor() {
+        return author;
     }
 
-    public void setAuthorId(String authorId) {
-        this.authorId = authorId;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
-
-
 }
