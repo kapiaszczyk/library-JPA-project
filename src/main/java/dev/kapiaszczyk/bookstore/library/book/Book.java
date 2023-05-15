@@ -23,8 +23,7 @@ public class Book {
     private String bookTitle;
 
     // Association with category
-    @OneToOne
-    @JoinColumn(name = "category_id")
+    @ManyToOne
     private Category category;
 
     // Association with isbn
