@@ -35,7 +35,7 @@ public class Account {
         this.libraryUser = libraryUser;
     }
 
-    public String getAccountId() {
+    public Long getAccountId() {
         return accountId;
     }
 
