@@ -1,5 +1,6 @@
 package dev.kapiaszczyk.bookstore.library.address;
 
+import dev.kapiaszczyk.bookstore.library.city.City
 import jakarta.persistence.*;
 
 @Entity
@@ -14,15 +15,17 @@ public class Address {
     @Column(name = "street")
     private String street;
 
-    // Relation with City
-    String cityId;
+    // Association with City
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private City city;
 
     public Address() {
     }
 
-    public Address(String street, String cityId) {
+    public Address(String street, City city) {
         this.street = street;
-        this.cityId = cityId;
+        this.city = city;
     }
 
     public Long getAddressId() {
@@ -37,11 +40,11 @@ public class Address {
         this.street = street;
     }
 
-    public String getCityId() {
-        return cityId;
+    public City getCity() {
+        return city;
     }
 
-    public void setCityId(String cityId) {
-        this.cityId = cityId;
+    public void setCity(City city) {
+        this.city = city;
     }
 }
