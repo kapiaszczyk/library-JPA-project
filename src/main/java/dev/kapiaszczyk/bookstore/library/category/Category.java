@@ -1,6 +1,10 @@
 package dev.kapiaszczyk.bookstore.library.category;
 
+import dev.kapiaszczyk.bookstore.library.book.Book;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "category")
@@ -13,6 +17,10 @@ public class Category {
 
     @Column(name = "category_name")
     private String categoryName;
+
+    // Association with book
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Book> books = new ArrayList<>();
 
     public Category() {
     }
@@ -31,5 +39,21 @@ public class Category {
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
+    public void addBook(Book book) {
+        this.books.add(book);
+    }
+
+    public void removeBook(Book book) {
+        this.books.remove(book);
     }
 }
