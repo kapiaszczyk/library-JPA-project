@@ -2,6 +2,9 @@ package dev.kapiaszczyk.bookstore.library.city;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "city")
 public class City {
@@ -13,6 +16,9 @@ public class City {
 
     @Column(name = "city_name")
     private String cityName;
+
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Address> addresses = new ArrayList<>();
 
     public City() {
     }
