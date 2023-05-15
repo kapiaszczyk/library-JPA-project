@@ -45,7 +45,7 @@ public class BookTest {
         book.setBookTitle("Test title");
 
         ISBN isbn = new ISBN();
-        isbn.setIsbnNumber(123456789L);
+        isbn.setIsbnNumber("123456789L");
         isbn.setBook(book);
         book.setIsbn(isbn);
 
@@ -71,7 +71,7 @@ public class BookTest {
 
         assertNotNull(book);
         assertEquals("Test title", savedBook.getBookTitle());
-        assertEquals(123456789L, savedBook.getIsbn().getIsbnNumber());
+        assertEquals("123456789L", savedBook.getIsbn().getIsbnNumber());
         assertEquals("Test author", savedBook.getCredits().get(0).getAuthor().getAuthorName());
         assertEquals("Test surname", savedBook.getCredits().get(0).getAuthor().getAuthorSurname());
     }
@@ -82,7 +82,7 @@ public class BookTest {
         book.setBookTitle("Test title");
 
         ISBN isbn = new ISBN();
-        isbn.setIsbnNumber(123456789L);
+        isbn.setIsbnNumber("123456789L");
         isbn.setBook(book);
         book.setIsbn(isbn);
 
@@ -119,7 +119,7 @@ public class BookTest {
         book.setBookTitle("Test title");
 
         ISBN isbn = new ISBN();
-        isbn.setIsbnNumber(123456789L);
+        isbn.setIsbnNumber("123456789L");
         isbn.setBook(book);
         book.setIsbn(isbn);
 

@@ -26,7 +26,7 @@ public class ISBNTest {
     @Test
     public void addISBN() {
         ISBN isbn = new ISBN();
-        isbn.setIsbnNumber(123456789L);
+        isbn.setIsbnNumber("123456789L");
 
         Book book = new Book();
         book.setBookTitle("Book Title");
@@ -38,13 +38,13 @@ public class ISBNTest {
         ISBN savedISBN = isbnRepository.findById(isbn.getIsbnId()).get();
 
         assertNotNull(savedISBN.getIsbnId());
-        assertEquals(123456789L, savedISBN.getIsbnNumber());
+        assertEquals("123456789L", savedISBN.getIsbnNumber());
     }
 
     @Test
     public void updateISBN() {
         ISBN isbn = new ISBN();
-        isbn.setIsbnNumber(123456789L);
+        isbn.setIsbnNumber("123456789L");
 
         Book book = new Book();
         book.setBookTitle("Book Title");
@@ -55,18 +55,18 @@ public class ISBNTest {
 
         ISBN savedISBN = isbnRepository.findById(isbn.getIsbnId()).get();
 
-        savedISBN.setIsbnNumber(987654321L);
+        savedISBN.setIsbnNumber("987654321L");
 
         isbnRepository.save(savedISBN);
 
         ISBN updatedISBN = isbnRepository.findById(savedISBN.getIsbnId()).get();
-        assertEquals(987654321L, updatedISBN.getIsbnNumber());
+        assertEquals("987654321L", updatedISBN.getIsbnNumber());
     }
 
     @Test
     public void deleteISBN() {
         ISBN isbn = new ISBN();
-        isbn.setIsbnNumber(123456789L);
+        isbn.setIsbnNumber("123456789L");
 
         Book book = new Book();
         book.setBookTitle("Book Title");

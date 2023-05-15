@@ -1,5 +1,6 @@
 package dev.kapiaszczyk.bookstore.library.isbn;
 
+import dev.kapiaszczyk.bookstore.library.book.Book;
 import jakarta.persistence.*;
 
 @Entity
@@ -22,7 +23,7 @@ public class ISBN {
     public ISBN() {
     }
 
-    public ISBN(Long isbnNumber) {
+    public ISBN(String isbnNumber) {
         this.isbnNumber = isbnNumber;
     }
 
