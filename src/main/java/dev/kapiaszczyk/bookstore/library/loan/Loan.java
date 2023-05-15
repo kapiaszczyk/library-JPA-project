@@ -9,7 +9,7 @@ public class Loan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "loan_id")
-    private String loanId;
+    private Long loanId;
 
     // Relation with Account
     @Column(name = "account_id")
