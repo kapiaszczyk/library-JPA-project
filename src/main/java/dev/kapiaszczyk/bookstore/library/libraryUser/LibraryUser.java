@@ -15,7 +15,7 @@ public class LibraryUser {
     @Column(name = "library_user_name", unique = false, nullable = false, length = 100)
     private String libraryUserFirstName;
 
-    @Column(name = "library_user_surname")
+    @Column(name = "library_user_surname", unique = false, nullable = false, length = 100)
     private String libraryUserSurname;
 
     @OneToOne(mappedBy = "libraryUser", cascade = CascadeType.ALL, orphanRemoval = true)
