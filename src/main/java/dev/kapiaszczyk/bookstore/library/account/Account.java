@@ -9,8 +9,8 @@ import jakarta.persistence.*;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "account_id")
-    private String accountId;
+    @Column(name = "account_id", unique = true, nullable = false)
+    private Long accountId;
 
     @OneToOne
     @MapsId
