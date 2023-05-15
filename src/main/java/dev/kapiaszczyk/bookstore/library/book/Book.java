@@ -142,4 +142,11 @@ public class Book {
         credit.setBook(null);
     }
 
+    public void removeIsbn() {
+        if (isbn != null) {
+            isbn.setBook(null);
+        }
+        this.isbn = null;
+    }
+
 }
