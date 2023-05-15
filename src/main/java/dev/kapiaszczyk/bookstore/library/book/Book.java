@@ -32,6 +32,7 @@ public class Book {
 
     // Association with inventory
     @ManyToOne
+    @JoinColumn(name = "inventory_id")
     private Inventory inventory;
 
     // Association with credit
