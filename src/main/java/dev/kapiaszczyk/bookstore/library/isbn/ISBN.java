@@ -10,6 +10,12 @@ public class ISBN {
     @Column(name = "isbn_id")
     private Long isbnId;
 
+
+    // Association with book
+    @OneToOne
+    @MapsId
+    private Book book;
+
     @Column(name = "isbn_number")
     private String isbnNumber;
 
@@ -32,4 +38,11 @@ public class ISBN {
         this.isbnNumber = isbnNumber;
     }
 
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
 }
