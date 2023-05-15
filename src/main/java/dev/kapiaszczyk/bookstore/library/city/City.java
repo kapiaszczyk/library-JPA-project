@@ -9,7 +9,7 @@ public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "city_id")
-    private String cityId;
+    private Long cityId;
 
     @Column(name = "city_name")
     private String cityName;
@@ -21,7 +21,7 @@ public class City {
         this.cityName = cityName;
     }
 
-    public String getCityId() {
+    public Long getCityId() {
         return cityId;
     }
 
