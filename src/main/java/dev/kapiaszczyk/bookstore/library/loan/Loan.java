@@ -18,9 +18,10 @@ public class Loan {
     @JoinColumn(name = "account_id")
     private Account account;
 
-    // Relation with Book
-    @Column(name = "book_id")
-    private String bookId;
+    // Association with Book
+    @OneToOne(fetch = FetchType.LAZY)
+    @MapsId
+    private Book book;
 
     @Column(name = "loan_status")
     private String loanStatus;
