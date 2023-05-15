@@ -1,5 +1,7 @@
 package dev.kapiaszczyk.bookstore.library.loan;
 
+import dev.kapiaszczyk.bookstore.library.account.Account;
+import dev.kapiaszczyk.bookstore.library.book.Book;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,9 +13,10 @@ public class Loan {
     @Column(name = "loan_id")
     private Long loanId;
 
-    // Relation with Account
-    @Column(name = "account_id")
-    private String accountId;
+    // Association with Account
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
 
     // Relation with Book
     @Column(name = "book_id")
