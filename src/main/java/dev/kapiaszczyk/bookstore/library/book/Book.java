@@ -91,6 +91,13 @@ public class Book {
     }
 
     public void setIsbn(ISBN isbn) {
+        if (isbn == null) {
+            if (this.isbn != null) {
+                this.isbn.setBook(null);
+            }
+        } else {
+            isbn.setBook(this);
+        }
         this.isbn = isbn;
     }
 
