@@ -69,6 +69,10 @@ public class City {
         this.cityName = cracow;
     }
 
+    public void setCityName(String cracow) {
+        this.cityName = cracow;
+    }
+
     public void getCityName(String cracow) {
         this.cityName = cracow;
     }
