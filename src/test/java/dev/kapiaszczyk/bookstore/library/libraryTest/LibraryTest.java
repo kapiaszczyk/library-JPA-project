@@ -1,9 +1,5 @@
 package dev.kapiaszczyk.bookstore.library.libraryTest;
 
-import dev.kapiaszczyk.bookstore.library.address.Address;
-import dev.kapiaszczyk.bookstore.library.city.City;
-import dev.kapiaszczyk.bookstore.library.city.CityRepository;
-import dev.kapiaszczyk.bookstore.library.cityCode.CityCode;
 import dev.kapiaszczyk.bookstore.library.inventory.Inventory;
 import dev.kapiaszczyk.bookstore.library.library.Library;
 import dev.kapiaszczyk.bookstore.library.library.LibraryRepository;
@@ -14,8 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;

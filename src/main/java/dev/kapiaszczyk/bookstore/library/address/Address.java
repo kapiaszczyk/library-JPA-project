@@ -1,7 +1,6 @@
 package dev.kapiaszczyk.bookstore.library.address;
 
 import dev.kapiaszczyk.bookstore.library.city.City;
-import dev.kapiaszczyk.bookstore.library.library.Library;
 import dev.kapiaszczyk.bookstore.library.libraryUser.LibraryUser;
 import jakarta.persistence.*;
 

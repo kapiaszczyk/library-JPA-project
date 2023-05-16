@@ -1,6 +1,5 @@
 package dev.kapiaszczyk.bookstore.library.library;
 
-import dev.kapiaszczyk.bookstore.library.address.Address;
 import dev.kapiaszczyk.bookstore.library.inventory.Inventory;
 import jakarta.persistence.*;
 
