@@ -1,6 +1,7 @@
 package dev.kapiaszczyk.bookstore.library.libraryUser;
 
 import dev.kapiaszczyk.bookstore.library.account.Account;
+import dev.kapiaszczyk.bookstore.library.address.Address;
 import jakarta.persistence.*;
 
 @Entity
@@ -21,6 +22,10 @@ public class LibraryUser {
     @OneToOne(mappedBy = "libraryUser", cascade = CascadeType.ALL, orphanRemoval = true)
     @PrimaryKeyJoinColumn
     private Account account;
+
+    @OneToOne(mappedBy = "libraryUser", cascade = CascadeType.ALL, orphanRemoval = true)
+    @PrimaryKeyJoinColumn
+    private Address address;
 
     public LibraryUser() {
     }
@@ -62,6 +67,21 @@ public class LibraryUser {
         if (account != null) {
             account.setLibraryUser(null);
             this.account = null;
+        }
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void removeAddress() {
+        if (address != null) {
+            address.setLibraryUser(null);
+            this.address = null;
         }
     }
 }
