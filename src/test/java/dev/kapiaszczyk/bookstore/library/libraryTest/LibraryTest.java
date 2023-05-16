@@ -29,44 +29,23 @@ public class LibraryTest {
     @Autowired
     private LibraryRepository libraryRepository;
 
-    @Autowired
-    private CityRepository cityRepository;
-
     @Test
     public void addLibrary() {
 
         Library library = new Library();
         library.setLibraryName("Warsaw Library");
 
-        City city = new City();
-        city.setCityName("Warsaw");
-
-        CityCode cityCode = new CityCode();
-        cityCode.setCityCode("00-001");
-
-        city.setCityCode(Collections.singletonList(cityCode));
-        cityCode.setCity(city);
-
-        Address address = new Address();
-        address.setCity(city);
-        address.setStreet("Copernicus Street 5");
-        library.setAddress(address);
-        address.setLibrary(library);
 
         Inventory inventory = new Inventory();
         inventory.setLibrary(library);
         library.setInventory(inventory);
 
-        cityRepository.save(city);
         libraryRepository.save(library);
 
         Library savedLibrary = libraryRepository.findById(library.getLibraryId()).get();
 
         assertNotNull(savedLibrary.getLibraryId());
         assertEquals("Warsaw Library", savedLibrary.getLibraryName());
-        assertEquals("Warsaw", savedLibrary.getAddress().getCity().getCityName());
-        assertEquals("00-001", savedLibrary.getAddress().getCity().getCityCode().get(0).getCityCode());
-        assertEquals("Copernicus Street 5", savedLibrary.getAddress().getStreet());
         assertEquals(library.getInventory().getInventoryId(), savedLibrary.getInventory().getInventoryId());
 
     }
@@ -76,26 +55,10 @@ public class LibraryTest {
         Library library = new Library();
         library.setLibraryName("Warsaw Library");
 
-        City city = new City();
-        city.setCityName("Warsaw");
-
-        CityCode cityCode = new CityCode();
-        cityCode.setCityCode("00-001");
-
-        city.setCityCode(Collections.singletonList(cityCode));
-        cityCode.setCity(city);
-
-        Address address = new Address();
-        address.setCity(city);
-        address.setStreet("Copernicus Street 5");
-        library.setAddress(address);
-        address.setLibrary(library);
-
         Inventory inventory = new Inventory();
         inventory.setLibrary(library);
         library.setInventory(inventory);
 
-        cityRepository.save(city);
         libraryRepository.save(library);
 
         Library savedLibrary = libraryRepository.findById(library.getLibraryId()).get();
@@ -114,31 +77,14 @@ public class LibraryTest {
         Library library = new Library();
         library.setLibraryName("Warsaw Library");
 
-        City city = new City();
-        city.setCityName("Warsaw");
-
-        CityCode cityCode = new CityCode();
-        cityCode.setCityCode("00-001");
-
-        city.setCityCode(Collections.singletonList(cityCode));
-        cityCode.setCity(city);
-
-        Address address = new Address();
-        address.setCity(city);
-        address.setStreet("Copernicus Street 5");
-        library.setAddress(address);
-        address.setLibrary(library);
-
         Inventory inventory = new Inventory();
         inventory.setLibrary(library);
         library.setInventory(inventory);
 
-        cityRepository.save(city);
         libraryRepository.save(library);
 
         Library savedLibrary = libraryRepository.findById(library.getLibraryId()).get();
 
-        address.removeLibrary();
         libraryRepository.delete(savedLibrary);
 
         assertEquals(0, libraryRepository.count());
