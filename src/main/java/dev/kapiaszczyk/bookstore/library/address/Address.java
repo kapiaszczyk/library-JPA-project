@@ -2,6 +2,7 @@ package dev.kapiaszczyk.bookstore.library.address;
 
 import dev.kapiaszczyk.bookstore.library.city.City;
 import dev.kapiaszczyk.bookstore.library.library.Library;
+import dev.kapiaszczyk.bookstore.library.libraryUser.LibraryUser;
 import jakarta.persistence.*;
 
 @Entity
@@ -22,16 +23,16 @@ public class Address {
     private City city;
 
     @OneToOne
-    @JoinColumn(name = "library_id")
-    private Library library;
+    @JoinColumn(name = "library_user_id")
+    private LibraryUser libraryUser;
 
     public Address() {
     }
 
-    public Address(String street, City city, Library library) {
+    public Address(String street, City city, LibraryUser libraryUser)  {
         this.street = street;
         this.city = city;
-        this.library = library;
+        this.libraryUser = libraryUser;
     }
 
     public Long getAddressId() {
@@ -54,15 +55,12 @@ public class Address {
         this.city = city;
     }
 
-    public Library getLibrary() {
-        return library;
+    public LibraryUser getLibraryUser() {
+        return libraryUser;
     }
 
-    public void setLibrary(Library library) {
-        this.library = library;
+    public void setLibraryUser(LibraryUser libraryUser) {
+        this.libraryUser = libraryUser;
     }
 
-    public void removeLibrary() {
-        this.library = null;
-    }
 }
