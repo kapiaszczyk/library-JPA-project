@@ -17,17 +17,13 @@ public class Library {
     private String libraryName;
 
     @OneToOne(mappedBy = "library", cascade = CascadeType.ALL, orphanRemoval = true)
-    Address address;
-
-    @OneToOne(mappedBy = "library", cascade = CascadeType.ALL, orphanRemoval = true)
     Inventory inventory;
 
     public Library() {
     }
 
-    public Library(String libraryName, Address address, Inventory inventory) {
+    public Library(String libraryName, Inventory inventory) {
         this.libraryName = libraryName;
-        this.address = address;
         this.inventory = inventory;
     }
 
@@ -43,13 +39,6 @@ public class Library {
         this.libraryName = libraryName;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
 
     public Inventory getInventory() {
         return inventory;
