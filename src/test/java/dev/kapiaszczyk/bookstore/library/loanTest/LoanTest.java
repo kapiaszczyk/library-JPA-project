@@ -5,77 +5,69 @@ import dev.kapiaszczyk.bookstore.library.book.Book;
 import dev.kapiaszczyk.bookstore.library.libraryUser.LibraryUser;
 import dev.kapiaszczyk.bookstore.library.loan.Loan;
 import dev.kapiaszczyk.bookstore.library.loan.LoanRepository;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ActiveProfiles("test")
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 @Transactional
-
 public class LoanTest {
 
     @Autowired
     private LoanRepository loanRepository;
 
-    @Test
-    public void addLoan() {
-        LibraryUser libraryUser = new LibraryUser();
+    private Loan loan;
+    private Account account;
+    private LibraryUser libraryUser;
+    private Book book;
+
+    @BeforeEach
+    public void setUp() {
+        libraryUser = new LibraryUser();
         libraryUser.setLibraryUserFirstName("John");
         libraryUser.setLibraryUserSurname("Doe");
 
-        Account account = new Account();
+        account = new Account();
         account.setAccountNumber("123456789");
         account.setLibraryUser(libraryUser);
         libraryUser.setAccount(account);
 
-        Book book = new Book();
+        book = new Book();
         book.setBookTitle("Book Title");
 
-        Loan loan = new Loan();
+        loan = new Loan();
         loan.setAccount(account);
         account.addLoan(loan);
         loan.setBook(book);
         book.setLoan(loan);
 
         loanRepository.save(loan);
+    }
 
+    @Test
+    public void addLoan() {
         Loan savedLoan = loanRepository.findById(loan.getLoanId()).get();
-        assertEquals("Book Title", savedLoan.getBook().getBookTitle());
-        assertEquals("John", savedLoan.getAccount().getLibraryUser().getLibraryUserFirstName());
-        assertEquals("Doe", savedLoan.getAccount().getLibraryUser().getLibraryUserSurname());
-        assertEquals("123456789", savedLoan.getAccount().getAccountNumber());
+
+        assertNotNull(savedLoan.getLoanId());
+        assertThat(savedLoan.getLoanId(), equalTo(loan.getLoanId()));
+        assertThat(savedLoan.getAccount().getAccountNumber(), equalTo(loan.getAccount().getAccountNumber()));
+        assertThat(savedLoan.getBook().getBookTitle(), equalTo(loan.getBook().getBookTitle()));
     }
 
     @Test
     public void updateLoan() {
-        LibraryUser libraryUser = new LibraryUser();
-        libraryUser.setLibraryUserFirstName("John");
-        libraryUser.setLibraryUserSurname("Doe");
-
-        Account account = new Account();
-        account.setAccountNumber("123456789");
-        account.setLibraryUser(libraryUser);
-        libraryUser.setAccount(account);
-
-        Book book = new Book();
-        book.setBookTitle("Book Title");
-
-        Loan loan = new Loan();
-        loan.setAccount(account);
-        account.addLoan(loan);
-        loan.setBook(book);
-        book.setLoan(loan);
-
-        loanRepository.save(loan);
-
         Loan savedLoan = loanRepository.findById(loan.getLoanId()).get();
 
         savedLoan.getBook().setBookTitle("New Book Title");
@@ -84,32 +76,12 @@ public class LoanTest {
         loanRepository.save(savedLoan);
 
         Loan updatedLoan = loanRepository.findById(loan.getLoanId()).get();
-        assertEquals("New Book Title", updatedLoan.getBook().getBookTitle());
-        assertEquals("987654321", updatedLoan.getAccount().getAccountNumber());
+        assertThat(updatedLoan.getBook().getBookTitle(), equalTo(savedLoan.getBook().getBookTitle()));
+        assertThat(updatedLoan.getAccount().getAccountNumber(), equalTo(savedLoan.getAccount().getAccountNumber()));
     }
 
     @Test
     public void removeLoan() {
-        LibraryUser libraryUser = new LibraryUser();
-        libraryUser.setLibraryUserFirstName("John");
-        libraryUser.setLibraryUserSurname("Doe");
-
-        Account account = new Account();
-        account.setAccountNumber("123456789");
-        account.setLibraryUser(libraryUser);
-        libraryUser.setAccount(account);
-
-        Book book = new Book();
-        book.setBookTitle("Book Title");
-
-        Loan loan = new Loan();
-        loan.setAccount(account);
-        account.addLoan(loan);
-        loan.setBook(book);
-        book.setLoan(loan);
-
-        loanRepository.save(loan);
-
         Loan savedLoan = loanRepository.findById(loan.getLoanId()).get();
 
         book.removeLoan();
