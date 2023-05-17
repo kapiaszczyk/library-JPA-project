@@ -3,19 +3,22 @@ package dev.kapiaszczyk.bookstore.library.creditTest;
 import dev.kapiaszczyk.bookstore.library.author.Author;
 import dev.kapiaszczyk.bookstore.library.credit.Credit;
 import dev.kapiaszczyk.bookstore.library.credit.CreditRepository;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ActiveProfiles("test")
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 @Transactional
 public class CreditTest {
@@ -23,38 +26,34 @@ public class CreditTest {
     @Autowired
     CreditRepository creditRepository;
 
-    @Test
-    public void addCredit() {
-        Author author = new Author();
+    private Credit credit;
+    private Author author;
+
+    @BeforeEach
+    public void setUp() {
+        author = new Author();
         author.setAuthorName("John");
         author.setAuthorSurname("Doe");
 
-        Credit credit = new Credit();
+        credit = new Credit();
         credit.setAuthor(author);
         author.addCredit(credit);
 
         creditRepository.save(credit);
+    }
 
+    @Test
+    public void creditCanBeAdded() {
         Credit savedCredit = creditRepository.save(credit);
 
         assertNotNull(savedCredit.getCreditId());
-        assertEquals("John", savedCredit.getAuthor().getAuthorName());
-        assertEquals("Doe", savedCredit.getAuthor().getAuthorSurname());
+        assertThat(savedCredit.getAuthor().getAuthorName(), equalTo("John"));
+        assertThat(savedCredit.getAuthor().getAuthorSurname(), equalTo("Doe"));
 
     }
 
     @Test
-    public void updateCredit() {
-        Author author = new Author();
-        author.setAuthorName("John");
-        author.setAuthorSurname("Doe");
-
-        Credit credit = new Credit();
-        credit.setAuthor(author);
-        author.addCredit(credit);
-
-        creditRepository.save(credit);
-
+    public void creditCanBeUpdated() {
         Credit savedCredit = creditRepository.save(credit);
 
         savedCredit.getAuthor().setAuthorName("Jane");
@@ -63,22 +62,12 @@ public class CreditTest {
 
         Credit updatedCredit = creditRepository.findById(savedCredit.getCreditId()).get();
 
-        assertEquals("Jane", updatedCredit.getAuthor().getAuthorName());
-        assertEquals("Smith", updatedCredit.getAuthor().getAuthorSurname());
+        assertThat(updatedCredit.getAuthor().getAuthorName(), equalTo("Jane"));
+        assertThat(updatedCredit.getAuthor().getAuthorSurname(), equalTo("Smith"));
     }
 
     @Test
-    public void deleteCredit() {
-        Author author = new Author();
-        author.setAuthorName("John");
-        author.setAuthorSurname("Doe");
-
-        Credit credit = new Credit();
-        credit.setAuthor(author);
-        author.addCredit(credit);
-
-        creditRepository.save(credit);
-
+    public void creditCanBeDeleted() {
         Credit savedCredit = creditRepository.save(credit);
 
         author.removeCredit(credit);
