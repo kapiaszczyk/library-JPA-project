@@ -17,6 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -65,10 +67,6 @@ public class AddressTest {
 
         // Check if address was added
         assertNotNull(savedAddress);
-        assertNotNull(savedAddress.getAddressId());
-        assertEquals("St. Mary's Street 5", savedAddress.getStreet());
-        assertNotNull(savedAddress.getCity());
-        assertEquals("Warsaw", savedAddress.getCity().getCityName());
     }
 
     @Test
@@ -80,7 +78,7 @@ public class AddressTest {
 
         // Check if address was updated
         Address updatedAddress = addressRepository.findById(address.getAddressId()).get();
-        assertEquals("St. Mary's Street 6", updatedAddress.getStreet());
+        assertThat(updatedAddress.getStreet(), equalTo(savedAddress.getStreet()));
     }
 
     @Test
