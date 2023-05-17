@@ -45,7 +45,7 @@ public class ISBNTest {
     }
 
     @Test
-    public void addISBN() {
+    public void isbnCanBeAdded() {
         ISBN savedISBN = isbnRepository.findById(isbn.getIsbnId()).get();
 
         assertNotNull(savedISBN.getIsbnId());
@@ -53,7 +53,7 @@ public class ISBNTest {
     }
 
     @Test
-    public void updateISBN() {
+    public void isbnCanBeUpdated() {
         ISBN savedISBN = isbnRepository.findById(isbn.getIsbnId()).get();
 
         savedISBN.setIsbnNumber("987654321L");
@@ -65,7 +65,7 @@ public class ISBNTest {
     }
 
     @Test
-    public void deleteISBN() {
+    public void isbnCanBeDeleted() {
         ISBN savedISBN = isbnRepository.findById(isbn.getIsbnId()).get();
 
         book.removeIsbn();
