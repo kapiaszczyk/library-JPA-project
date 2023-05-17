@@ -3,19 +3,22 @@ package dev.kapiaszczyk.bookstore.library.ISBNTest;
 import dev.kapiaszczyk.bookstore.library.book.Book;
 import dev.kapiaszczyk.bookstore.library.isbn.ISBN;
 import dev.kapiaszczyk.bookstore.library.isbn.ISBNRepository;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ActiveProfiles("test")
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 @Transactional
 public class ISBNTest {
@@ -23,58 +26,46 @@ public class ISBNTest {
     @Autowired
     private ISBNRepository isbnRepository;
 
-    @Test
-    public void addISBN() {
-        ISBN isbn = new ISBN();
+    private ISBN isbn;
+    private Book book;
+
+    @BeforeEach
+    public void setUp() {
+        isbn = new ISBN();
         isbn.setIsbnNumber("123456789L");
 
-        Book book = new Book();
+        book = new Book();
         book.setBookTitle("Book Title");
-        book.setIsbn(isbn);
+
         isbn.setBook(book);
+        book.setIsbn(isbn);
 
         isbnRepository.save(isbn);
 
+    }
+
+    @Test
+    public void addISBN() {
         ISBN savedISBN = isbnRepository.findById(isbn.getIsbnId()).get();
 
         assertNotNull(savedISBN.getIsbnId());
-        assertEquals("123456789L", savedISBN.getIsbnNumber());
+        assertThat(savedISBN.getIsbnNumber(), equalTo(isbn.getIsbnNumber()));
     }
 
     @Test
     public void updateISBN() {
-        ISBN isbn = new ISBN();
-        isbn.setIsbnNumber("123456789L");
-
-        Book book = new Book();
-        book.setBookTitle("Book Title");
-        book.setIsbn(isbn);
-        isbn.setBook(book);
-
-        isbnRepository.save(isbn);
-
         ISBN savedISBN = isbnRepository.findById(isbn.getIsbnId()).get();
 
         savedISBN.setIsbnNumber("987654321L");
-
         isbnRepository.save(savedISBN);
 
         ISBN updatedISBN = isbnRepository.findById(savedISBN.getIsbnId()).get();
-        assertEquals("987654321L", updatedISBN.getIsbnNumber());
+
+        assertThat(updatedISBN.getIsbnNumber(), equalTo(savedISBN.getIsbnNumber()));
     }
 
     @Test
     public void deleteISBN() {
-        ISBN isbn = new ISBN();
-        isbn.setIsbnNumber("123456789L");
-
-        Book book = new Book();
-        book.setBookTitle("Book Title");
-        book.setIsbn(isbn);
-        isbn.setBook(book);
-
-        isbnRepository.save(isbn);
-
         ISBN savedISBN = isbnRepository.findById(isbn.getIsbnId()).get();
 
         book.removeIsbn();
