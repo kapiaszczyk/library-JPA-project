@@ -6,7 +6,7 @@ Simple library project using Spring Data JPA.
 <!-- ABOUT -->
 ## About 
 
-This project is a continuation of a database project I did for my university course - I used Spring Data JPA to map the database to Java objects. I also used Spring Boot to create a REST API that allows basic CRUD operations. I used H2 database for testing purposes.
+This project is a continuation of a database project I did for my university course - I used Spring Data JPA to map the database to Java objects.
 
 <!-- STACK -->
 ## Built With
