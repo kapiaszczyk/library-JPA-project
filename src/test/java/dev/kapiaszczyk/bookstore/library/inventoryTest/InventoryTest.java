@@ -3,19 +3,22 @@ package dev.kapiaszczyk.bookstore.library.inventoryTest;
 import dev.kapiaszczyk.bookstore.library.inventory.Inventory;
 import dev.kapiaszczyk.bookstore.library.inventory.InventoryRepository;
 import dev.kapiaszczyk.bookstore.library.library.Library;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ActiveProfiles("test")
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 @Transactional
 public class InventoryTest {
@@ -23,20 +26,23 @@ public class InventoryTest {
     @Autowired
     InventoryRepository inventoryRepository;
 
-    @Test
-    public void addInventory() {
-        Inventory inventory = new Inventory();
+    private Inventory inventory;
 
+    @BeforeEach
+    public void setUp() {
+        inventory = new Inventory();
         inventoryRepository.save(inventory);
-
-        Inventory savedInventory = inventoryRepository.findById(inventory.getInventoryId()).get();
-
-        assertNotNull(savedInventory.getInventoryId());
-
     }
 
     @Test
-    public void addInventoryWithLibrary() {
+    public void inventoryCanBeAdded() {
+        Inventory savedInventory = inventoryRepository.findById(inventory.getInventoryId()).get();
+
+        assertNotNull(savedInventory.getInventoryId());
+    }
+
+    @Test
+    public void inventoryCanBeAddedWithLibrary() {
         Inventory inventory = new Inventory();
 
         Library library = new Library();
@@ -50,17 +56,12 @@ public class InventoryTest {
         Inventory savedInventory = inventoryRepository.findById(inventory.getInventoryId()).get();
 
         assertNotNull(savedInventory.getInventoryId());
-        assertEquals("Library", savedInventory.getLibrary().getLibraryName());
+        assertThat(savedInventory.getLibrary().getLibraryName(), equalTo(library.getLibraryName()));
     }
 
     @Test
-    public void deleteInventory() {
-        Inventory inventory = new Inventory();
-
-        inventoryRepository.save(inventory);
-
+    public void inventoryCanBeDeleted() {
         Inventory savedInventory = inventoryRepository.findById(inventory.getInventoryId()).orElse(null);
-
         inventoryRepository.delete(savedInventory);
 
         assertEquals(0, inventoryRepository.count());
