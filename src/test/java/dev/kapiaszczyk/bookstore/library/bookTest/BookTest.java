@@ -43,7 +43,7 @@ public class BookTest {
     private Book book;
 
     @BeforeEach
-    private void setUp() {
+    public void setUp() {
         book = new Book();
         book.setBookTitle("Test title");
 
