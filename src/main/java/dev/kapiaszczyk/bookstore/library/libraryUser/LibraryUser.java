@@ -84,4 +84,14 @@ public class LibraryUser {
             this.address = null;
         }
     }
+
+    @Override
+    public String toString() {
+        return "LibraryUser{" +
+                "libraryUserId=" + libraryUserId +
+                ", libraryUserFirstName='" + libraryUserFirstName + '\'' +
+                ", libraryUserSurname='" + libraryUserSurname + '\'' +
+                ", accountId=" + account.getAccountId() +
+                '}';
+    }
 }

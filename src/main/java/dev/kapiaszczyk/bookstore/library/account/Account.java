@@ -70,4 +70,14 @@ public class Account {
     public void removeLoan(Loan loan) {
         this.loans.remove(loan);
     }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "accountId=" + accountId +
+                ", accountNumber='" + accountNumber + '\'' +
+                ", libraryUserId=" + libraryUser.getLibraryUserId() +
+                ", loans=" + loans +
+                '}';
+    }
 }
