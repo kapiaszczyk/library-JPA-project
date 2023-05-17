@@ -1,21 +1,25 @@
 package dev.kapiaszczyk.bookstore.library.categoryTest;
 
 import dev.kapiaszczyk.bookstore.library.book.Book;
+import dev.kapiaszczyk.bookstore.library.book.BookRepository;
 import dev.kapiaszczyk.bookstore.library.category.Category;
 import dev.kapiaszczyk.bookstore.library.category.CategoryRepository;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ActiveProfiles("test")
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 @Transactional
 public class CategoryTest {
@@ -23,67 +27,59 @@ public class CategoryTest {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    @Test
-    public void addCategory() {
-        Category category = new Category();
+    @Autowired
+    private BookRepository bookRepository;
+
+    private Category category;
+
+    @BeforeEach
+    public void setUp() {
+        category = new Category();
         category.setCategoryName("Fantasy");
-
         categoryRepository.save(category);
-
-        assertNotNull(category.getCategoryId());
-        assertEquals("Fantasy", category.getCategoryName());
     }
 
     @Test
-    public void addCategoryWithBook() {
-        Book book = new Book();
-        book.setBookTitle("Harry Potter");
-
-        Category category = new Category();
-        category.setCategoryName("Fantasy");
-
-        category.addBook(book);
-        book.setCategory(category);
-
-        categoryRepository.save(category);
-
+    public void categoryCanBeAdded() {
         Category savedCategory = categoryRepository.findById(category.getCategoryId()).get();
 
         assertNotNull(savedCategory.getCategoryId());
-        assertEquals("Fantasy", savedCategory.getCategoryName());
-        assertEquals("Harry Potter", savedCategory.getBooks().get(0).getBookTitle());
+        assertThat(savedCategory.getCategoryName(), equalTo(category.getCategoryName()));
     }
 
     @Test
-    public void updateCategory() {
-        Category category = new Category();
-        category.setCategoryName("Fantasy");
-
-        categoryRepository.save(category);
-
+    public void categoryCanBeUpdated() {
         Category savedCategory = categoryRepository.findById(category.getCategoryId()).get();
-
-        savedCategory.setCategoryName("Fantasy updated");
-
+        savedCategory.setCategoryName("Romance");
         categoryRepository.save(savedCategory);
 
         Category updatedCategory = categoryRepository.findById(savedCategory.getCategoryId()).get();
 
-        assertEquals("Fantasy updated", updatedCategory.getCategoryName());
+        assertThat(updatedCategory.getCategoryName(), equalTo(savedCategory.getCategoryName()));
     }
 
     @Test
-    public void deleteCategory() {
-        Category category = new Category();
-        category.setCategoryName("Fantasy");
-
-        categoryRepository.save(category);
-
+    public void categoryCanBeDeleted() {
         Category savedCategory = categoryRepository.findById(category.getCategoryId()).get();
 
         categoryRepository.delete(savedCategory);
 
         assertEquals(0, categoryRepository.count());
+    }
+
+    @Test
+    public void categoryDeletedWhenAssociatedWithBook() {
+        Book book = new Book();
+        book.setBookTitle("Test title");
+        book.setCategory(category);
+
+        bookRepository.save(book);
+
+        Category savedCategory = categoryRepository.findById(category.getCategoryId()).get();
+
+        categoryRepository.delete(savedCategory);
+        assertEquals(0, categoryRepository.count());
+
     }
 
 
