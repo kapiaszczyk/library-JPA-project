@@ -5,18 +5,21 @@ import dev.kapiaszczyk.bookstore.library.account.AccountRepository;
 import dev.kapiaszczyk.bookstore.library.libraryUser.LibraryUser;
 import dev.kapiaszczyk.bookstore.library.libraryUser.LibraryUserRepository;
 import jakarta.transaction.Transactional;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ActiveProfiles("test")
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 @Transactional // Rollback after each test
 public class AccountTest {
@@ -30,46 +33,43 @@ public class AccountTest {
     private Account account;
     private LibraryUser libraryUser;
 
-    @Test
-    public void createAccount() {
-        // Create account
+    @BeforeEach
+    public void setUp() {
         account = new Account();
-        libraryUser = new LibraryUser();
         account.setAccountNumber("123456789");
 
+        libraryUser = new LibraryUser();
         libraryUser.setLibraryUserFirstName("John");
         libraryUser.setLibraryUserSurname("Doe");
 
-        libraryUser.setAccount(account);
         account.setLibraryUser(libraryUser);
+        libraryUser.setAccount(account);
 
         libraryUserRepository.save(libraryUser);
         accountRepository.save(account);
-
-        Account savedAccount = accountRepository.findById(account.getAccountId()).get();
-
-        assertNotNull(savedAccount.getAccountId());
-        assertEquals("123456789", savedAccount.getAccountNumber());
-        assertEquals("John", savedAccount.getLibraryUser().getLibraryUserFirstName());
-        assertEquals("Doe", savedAccount.getLibraryUser().getLibraryUserSurname());
 
     }
 
     @Test
-    public void updateAccount() {
-        // Create account
-        account = new Account();
-        libraryUser = new LibraryUser();
-        account.setAccountNumber("123456789");
-        libraryUser.setLibraryUserFirstName("John");
-        libraryUser.setLibraryUserSurname("Doe");
-        libraryUser.setAccount(account);
-        account.setLibraryUser(libraryUser);
+    public void accountCanBeAdded() {
 
-        libraryUserRepository.save(libraryUser);
-        accountRepository.save(account);
+        // Retrieve account
+        Account savedAccount = accountRepository.findById(account.getAccountId()).get();
+
+        // Check if account was added
+        assertNotNull(savedAccount.getAccountId());
+        assertThat(savedAccount.getAccountId(), equalTo(account.getAccountId()));
+        assertThat(savedAccount.getAccountNumber(), equalTo(account.getAccountNumber()));
+        assertThat(savedAccount.getLibraryUser().getLibraryUserFirstName(), equalTo("John"));
+        assertThat(savedAccount.getLibraryUser().getLibraryUserSurname(), equalTo("Doe"));
+
+    }
+
+    @Test
+    public void accountCanBeUpdated() {
 
         // Update account
+        System.out.println(account.getAccountId());
         Account savedAccount = accountRepository.findById(account.getAccountId()).get();
         savedAccount.setAccountNumber("987654321");
 
@@ -83,29 +83,16 @@ public class AccountTest {
 
         // Check if account was updated
         Account updatedAccount = accountRepository.findById(savedAccount.getAccountId()).get();
-        assertEquals("987654321", updatedAccount.getAccountNumber());
-        assertEquals("Jane", updatedAccount.getLibraryUser().getLibraryUserFirstName());
-        assertEquals("Smith", updatedAccount.getLibraryUser().getLibraryUserSurname());
+        assertThat(updatedAccount.getAccountId(), equalTo(savedAccount.getAccountId()));
+        assertThat(updatedAccount.getAccountNumber(), equalTo(savedAccount.getAccountNumber()));
+        assertThat(updatedAccount.getLibraryUser().getLibraryUserFirstName(), equalTo("Jane"));
+        assertThat(updatedAccount.getLibraryUser().getLibraryUserSurname(), equalTo("Smith"));
 
     }
 
     @Test
-    public void deleteAccount() {
-        // Create account
-        account = new Account();
-        libraryUser = new LibraryUser();
+    public void accountCanBeDeleted() {
 
-        account.setAccountNumber("123456789");
-        libraryUser.setLibraryUserFirstName("John");
-        libraryUser.setLibraryUserSurname("Doe");
-        libraryUser.setAccount(account);
-        account.setLibraryUser(libraryUser);
-
-        // Save account
-        libraryUserRepository.save(libraryUser);
-        accountRepository.save(account);
-
-        // Delete account
         libraryUser.removeAccount();
         accountRepository.deleteById(account.getAccountId());
 
