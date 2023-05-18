@@ -17,7 +17,7 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id")
-    private Long bookId;
+    private Long id;
 
     @Column(name = "book_title")
     private String bookTitle;
@@ -59,8 +59,8 @@ public class Book {
 
     // Getters and setters
 
-    public Long getBookId() {
-        return bookId;
+    public Long getId() {
+        return id;
     }
 
     public String getBookTitle() {

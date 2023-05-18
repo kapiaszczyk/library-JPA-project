@@ -73,10 +73,10 @@ public class BookTest {
 
     @Test
     public void saveBook() {
-        Book savedBook = bookRepository.findById(book.getBookId()).get();
+        Book savedBook = bookRepository.findById(book.getId()).get();
 
         assertNotNull(book);
-        assertThat(savedBook.getBookId(), equalTo(book.getBookId()));
+        assertThat(savedBook.getId(), equalTo(book.getId()));
         assertThat(savedBook.getBookTitle(), equalTo(book.getBookTitle()));
         assertThat(savedBook.getIsbn().getIsbnNumber(), equalTo(book.getIsbn().getIsbnNumber()));
         assertThat(savedBook.getCredits().get(0).getAuthor().getFirstName(), equalTo(book.getCredits().get(0).getAuthor().getFirstName()));
@@ -85,17 +85,17 @@ public class BookTest {
 
     @Test
     public void updateBook() {
-        Book savedBook = bookRepository.findById(book.getBookId()).get();
+        Book savedBook = bookRepository.findById(book.getId()).get();
         savedBook.setBookTitle("Updated title");
         bookRepository.save(savedBook);
 
-        Book updatedBook = bookRepository.findById(book.getBookId()).get();
+        Book updatedBook = bookRepository.findById(book.getId()).get();
         assertThat(updatedBook.getBookTitle(), equalTo(savedBook.getBookTitle()));
     }
 
     @Test
     public void deleteBook() {
-        Book savedBook = bookRepository.findById(book.getBookId()).get();
+        Book savedBook = bookRepository.findById(book.getId()).get();
         isbnRepository.delete(savedBook.getIsbn());
         authorRepository.delete(savedBook.getCredits().get(0).getAuthor());
         creditRepository.delete(savedBook.getCredits().get(0));
