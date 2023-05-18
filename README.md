@@ -8,7 +8,7 @@ Simple application for managing a library database.
 
 This project is a continuation of a database project I did for my university course. My goal was to learn how to use Spring Data JPA and Hibernate. It is not finished yet, as I am in the process of implementing the REST API. 
 
-So far, the database is fully mapped and I have created multiple queries. All the queries are tested using JUnit5.
+So far, the database is fully mapped and I have created multiple queries. All the queries are tested using JUnit5. I have used Spring profiles to separate the test and development environments. 
 
 ### The database
 The original database was designed using Oracle Data Modeler and was supposed to manage multiple libraries, that have a shared account and loan system, but separate book inventories. Below you can find the database schema. The database project is quite simple and might not be the best example of a database design, but nonetheless it was a good learning experience.
