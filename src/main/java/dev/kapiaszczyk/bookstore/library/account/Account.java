@@ -31,10 +31,6 @@ public class Account {
     public Account() {
     }
 
-    public Account(LibraryUser libraryUser) {
-        this.libraryUser = libraryUser;
-    }
-
     public Long getId() {
         return id;
     }
@@ -76,7 +72,7 @@ public class Account {
         return "Account{" +
                 "id=" + id +
                 ", number='" + number + '\'' +
-                ", libraryUserId=" + libraryUser.getId() +
+                ", libraryUser.id=" + libraryUser.getId() +
                 ", loans=" + loans +
                 '}';
     }
