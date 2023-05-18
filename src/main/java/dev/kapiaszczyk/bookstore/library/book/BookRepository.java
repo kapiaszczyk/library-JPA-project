@@ -15,5 +15,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     Optional<List<Book>> findByCreditsAuthorAuthorName(String authorName);
     Optional<List<Book>> findByCreditsAuthorAuthorSurname(String authorSurname);
     Optional<List<Book>> findByCreditsAuthorAuthorNameAndCreditsAuthorAuthorSurname(String authorName, String authorSurname);
+    List<Book> findAllByCategoryCategoryNameLike(String categoryName);
 
 }

@@ -4,6 +4,8 @@ import dev.kapiaszczyk.bookstore.library.author.Author;
 import dev.kapiaszczyk.bookstore.library.author.AuthorRepository;
 import dev.kapiaszczyk.bookstore.library.book.Book;
 import dev.kapiaszczyk.bookstore.library.book.BookRepository;
+import dev.kapiaszczyk.bookstore.library.category.Category;
+import dev.kapiaszczyk.bookstore.library.category.CategoryRepository;
 import dev.kapiaszczyk.bookstore.library.credit.Credit;
 import dev.kapiaszczyk.bookstore.library.credit.CreditRepository;
 import dev.kapiaszczyk.bookstore.library.isbn.ISBN;
@@ -41,6 +43,9 @@ public class BookRepositoryTest {
 
     @Autowired
     private ISBNRepository isbnRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     private Book book;
     private ISBN isbn;
@@ -151,6 +156,21 @@ public class BookRepositoryTest {
         assertTrue(foundBooks.isPresent());
 
         List<Book> books = foundBooks.get();
+
+        assertThat(books.size(), equalTo(1));
+        assertThat(books.get(0).getBookTitle(), equalTo(book.getBookTitle()));
+    }
+
+    @Test
+    public void shouldFindAllBooksWithCategoryNameLike() {
+        Category category = new Category();
+        category.setCategoryName("Fantasy");
+        book.setCategory(category);
+
+        categoryRepository.save(category);
+        bookRepository.save(book);
+
+        List<Book> books = bookRepository.findAllByCategoryCategoryNameLike("Fantasy");
 
         assertThat(books.size(), equalTo(1));
         assertThat(books.get(0).getBookTitle(), equalTo(book.getBookTitle()));
