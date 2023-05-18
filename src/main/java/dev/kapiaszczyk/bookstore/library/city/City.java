@@ -47,7 +47,6 @@ public class City {
         this.addresses = addresses;
     }
 
-
     public List<CityCode> getCityCode() {
         return codes;
     }
@@ -85,5 +84,15 @@ public class City {
     public void removeCityCode(CityCode cityCode) {
         codes.remove(cityCode);
         cityCode.setCity(null);
+    }
+
+    public void addAddress(Address address) {
+        addresses.add(address);
+        address.setCity(this);
+    }
+
+    public void removeAddress(Address address) {
+        addresses.remove(address);
+        address.setCity(null);
     }
 }
