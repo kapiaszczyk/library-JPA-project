@@ -32,7 +32,7 @@ public class LibraryTest {
     @BeforeEach
     public void setUp() {
         library = new Library();
-        library.setLibraryName("Warsaw Library");
+        library.setName("Warsaw Library");
 
         inventory = new Inventory();
         inventory.setLibrary(library);
@@ -46,7 +46,7 @@ public class LibraryTest {
         Library savedLibrary = libraryRepository.findById(library.getId()).get();
 
         assertNotNull(savedLibrary.getId());
-        assertThat(savedLibrary.getLibraryName(), equalTo(library.getLibraryName()));
+        assertThat(savedLibrary.getName(), equalTo(library.getName()));
         assertThat(savedLibrary.getInventory().getId(), equalTo(inventory.getId()));
 
     }
@@ -55,11 +55,11 @@ public class LibraryTest {
     public void libraryCanBeUpdated() {
         Library savedLibrary = libraryRepository.findById(library.getId()).get();
 
-        savedLibrary.setLibraryName("Cracow Library");
+        savedLibrary.setName("Cracow Library");
         libraryRepository.save(savedLibrary);
 
         Library updatedLibrary = libraryRepository.findById(library.getId()).get();
-        assertThat(updatedLibrary.getLibraryName(), equalTo(savedLibrary.getLibraryName()));
+        assertThat(updatedLibrary.getName(), equalTo(savedLibrary.getName()));
 
     }
 

@@ -46,7 +46,7 @@ public class InventoryTest {
         Inventory inventory = new Inventory();
 
         Library library = new Library();
-        library.setLibraryName("Library");
+        library.setName("Library");
 
         inventory.setLibrary(library);
         library.setInventory(inventory);
@@ -56,7 +56,7 @@ public class InventoryTest {
         Inventory savedInventory = inventoryRepository.findById(inventory.getId()).get();
 
         assertNotNull(savedInventory.getId());
-        assertThat(savedInventory.getLibrary().getLibraryName(), equalTo(library.getLibraryName()));
+        assertThat(savedInventory.getLibrary().getName(), equalTo(library.getName()));
     }
 
     @Test

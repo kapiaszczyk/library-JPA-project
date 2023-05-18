@@ -13,7 +13,7 @@ public class Library {
     private Long id;
 
     @Column(name = "library_name")
-    private String libraryName;
+    private String name;
 
     @OneToOne(mappedBy = "library", cascade = CascadeType.ALL, orphanRemoval = true)
     Inventory inventory;
@@ -21,8 +21,8 @@ public class Library {
     public Library() {
     }
 
-    public Library(String libraryName, Inventory inventory) {
-        this.libraryName = libraryName;
+    public Library(String name, Inventory inventory) {
+        this.name = name;
         this.inventory = inventory;
     }
 
@@ -30,12 +30,12 @@ public class Library {
         return id;
     }
 
-    public String getLibraryName() {
-        return libraryName;
+    public String getName() {
+        return name;
     }
 
-    public void setLibraryName(String libraryName) {
-        this.libraryName = libraryName;
+    public void setName(String name) {
+        this.name = name;
     }
 
 

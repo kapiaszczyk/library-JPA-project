@@ -35,7 +35,7 @@ public class InventoryRepositoryTest {
     @BeforeEach
     public void setUp() {
         library = new Library();
-        library.setLibraryName("London Library");
+        library.setName("London Library");
 
         inventory = new Inventory();
         inventory.setLibrary(library);
@@ -46,10 +46,10 @@ public class InventoryRepositoryTest {
 
     @Test
     public void shouldFindByLibraryName() {
-        Inventory savedInventory = inventoryRepository.findByLibraryLibraryName(library.getLibraryName());
+        Inventory savedInventory = inventoryRepository.findByLibraryName(library.getName());
 
         assertNotNull(savedInventory.getId());
-        assertThat(savedInventory.getLibrary().getLibraryName(), equalTo(library.getLibraryName()));
+        assertThat(savedInventory.getLibrary().getName(), equalTo(library.getName()));
     }
 
 }
