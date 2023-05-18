@@ -55,7 +55,7 @@ public class AccountRepositoryTest {
         Account savedAccount = accountRepository.findByLibraryUserLibraryUserId(libraryUser.getLibraryUserId());
 
         // Check if account can be found by libraryUserId
-        assertNotNull(savedAccount.getAccountId());
+        assertNotNull(savedAccount.getId());
         assertThat(savedAccount.getAccountNumber(), equalTo(account.getAccountNumber()));
         assertThat(savedAccount.getLibraryUser().getLibraryUserId(), equalTo(libraryUser.getLibraryUserId()));
     }

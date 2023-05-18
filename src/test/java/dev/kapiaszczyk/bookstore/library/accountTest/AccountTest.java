@@ -54,11 +54,11 @@ public class AccountTest {
     public void accountCanBeAdded() {
 
         // Retrieve account
-        Account savedAccount = accountRepository.findById(account.getAccountId()).get();
+        Account savedAccount = accountRepository.findById(account.getId()).get();
 
         // Check if account was added
-        assertNotNull(savedAccount.getAccountId());
-        assertThat(savedAccount.getAccountId(), equalTo(account.getAccountId()));
+        assertNotNull(savedAccount.getId());
+        assertThat(savedAccount.getId(), equalTo(account.getId()));
         assertThat(savedAccount.getAccountNumber(), equalTo(account.getAccountNumber()));
         assertThat(savedAccount.getLibraryUser().getLibraryUserFirstName(), equalTo("John"));
         assertThat(savedAccount.getLibraryUser().getLibraryUserSurname(), equalTo("Doe"));
@@ -69,8 +69,8 @@ public class AccountTest {
     public void accountCanBeUpdated() {
 
         // Update account
-        System.out.println(account.getAccountId());
-        Account savedAccount = accountRepository.findById(account.getAccountId()).get();
+        System.out.println(account.getId());
+        Account savedAccount = accountRepository.findById(account.getId()).get();
         savedAccount.setAccountNumber("987654321");
 
         LibraryUser savedLibraryUser = savedAccount.getLibraryUser();
@@ -82,8 +82,8 @@ public class AccountTest {
         accountRepository.save(savedAccount);
 
         // Check if account was updated
-        Account updatedAccount = accountRepository.findById(savedAccount.getAccountId()).get();
-        assertThat(updatedAccount.getAccountId(), equalTo(savedAccount.getAccountId()));
+        Account updatedAccount = accountRepository.findById(savedAccount.getId()).get();
+        assertThat(updatedAccount.getId(), equalTo(savedAccount.getId()));
         assertThat(updatedAccount.getAccountNumber(), equalTo(savedAccount.getAccountNumber()));
         assertThat(updatedAccount.getLibraryUser().getLibraryUserFirstName(), equalTo("Jane"));
         assertThat(updatedAccount.getLibraryUser().getLibraryUserSurname(), equalTo("Smith"));
@@ -94,7 +94,7 @@ public class AccountTest {
     public void accountCanBeDeleted() {
 
         libraryUser.removeAccount();
-        accountRepository.deleteById(account.getAccountId());
+        accountRepository.deleteById(account.getId());
 
         assertEquals(0, accountRepository.count());
     }

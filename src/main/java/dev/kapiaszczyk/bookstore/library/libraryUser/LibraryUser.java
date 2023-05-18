@@ -91,7 +91,7 @@ public class LibraryUser {
                 "libraryUserId=" + libraryUserId +
                 ", libraryUserFirstName='" + libraryUserFirstName + '\'' +
                 ", libraryUserSurname='" + libraryUserSurname + '\'' +
-                ", accountId=" + account.getAccountId() +
+                ", accountId=" + account.getId() +
                 '}';
     }
 }

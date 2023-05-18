@@ -14,7 +14,7 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "account_id", unique = true, nullable = false)
-    private Long accountId;
+    private Long id;
 
     @Column(name = "account_number", unique = true, nullable = false)
     private String accountNumber;
@@ -35,8 +35,8 @@ public class Account {
         this.libraryUser = libraryUser;
     }
 
-    public Long getAccountId() {
-        return accountId;
+    public Long getId() {
+        return id;
     }
 
     public String getAccountNumber() {
@@ -74,7 +74,7 @@ public class Account {
     @Override
     public String toString() {
         return "Account{" +
-                "accountId=" + accountId +
+                "id=" + id +
                 ", accountNumber='" + accountNumber + '\'' +
                 ", libraryUserId=" + libraryUser.getLibraryUserId() +
                 ", loans=" + loans +
