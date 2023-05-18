@@ -5,7 +5,6 @@ import dev.kapiaszczyk.bookstore.library.address.AddressRepository;
 import dev.kapiaszczyk.bookstore.library.city.City;
 import dev.kapiaszczyk.bookstore.library.city.CityRepository;
 import dev.kapiaszczyk.bookstore.library.cityCode.CityCode;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

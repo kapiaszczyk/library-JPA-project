@@ -1,15 +1,10 @@
 package dev.kapiaszczyk.bookstore.library.inventoryTest;
 
-import dev.kapiaszczyk.bookstore.library.city.City;
-import dev.kapiaszczyk.bookstore.library.city.CityRepository;
-import dev.kapiaszczyk.bookstore.library.cityCode.CityCode;
-import dev.kapiaszczyk.bookstore.library.cityCode.CityCodeRepository;
 import dev.kapiaszczyk.bookstore.library.inventory.Inventory;
 import dev.kapiaszczyk.bookstore.library.inventory.InventoryRepository;
 import dev.kapiaszczyk.bookstore.library.library.Library;
 import dev.kapiaszczyk.bookstore.library.library.LibraryRepository;
 import jakarta.transaction.Transactional;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,9 +13,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ActiveProfiles("test")
 @ExtendWith(SpringExtension.class)
