@@ -21,8 +21,6 @@ public class Account {
 
     @OneToOne
     @MapsId
-    @JoinColumn(name = "library_user_id", referencedColumnName = "library_user_id")
-    @JsonIgnore
     private LibraryUser libraryUser;
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
