@@ -52,12 +52,12 @@ public class AccountRepositoryTest {
     @Test
     public void shouldFindAccountByLibraryUserLibraryUserId() {
         // Retrieve account
-        Account savedAccount = accountRepository.findByLibraryUserLibraryUserId(libraryUser.getLibraryUserId());
+        Account savedAccount = accountRepository.findByLibraryUserId(libraryUser.getId());
 
         // Check if account can be found by libraryUserId
         assertNotNull(savedAccount.getId());
         assertThat(savedAccount.getNumber(), equalTo(account.getNumber()));
-        assertThat(savedAccount.getLibraryUser().getLibraryUserId(), equalTo(libraryUser.getLibraryUserId()));
+        assertThat(savedAccount.getLibraryUser().getId(), equalTo(libraryUser.getId()));
     }
 
 }

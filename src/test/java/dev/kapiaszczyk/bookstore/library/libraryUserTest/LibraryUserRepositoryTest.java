@@ -55,7 +55,7 @@ public class LibraryUserRepositoryTest {
 
         List<LibraryUser> foundLibraryUsers = libraryUserRepository.findByLibraryUserSurname(libraryUser.getLibraryUserSurname());
 
-        assertNotNull(foundLibraryUsers.get(0).getLibraryUserId());
+        assertNotNull(foundLibraryUsers.get(0).getId());
         assertThat(foundLibraryUsers.get(0).getLibraryUserSurname(), equalTo(libraryUser.getLibraryUserSurname()));
     }
 

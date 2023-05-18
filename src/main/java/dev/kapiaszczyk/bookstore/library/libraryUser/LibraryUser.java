@@ -11,7 +11,7 @@ public class LibraryUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "library_user_id")
-    private Long libraryUserId;
+    private Long id;
 
     @Column(name = "library_user_name", unique = false, nullable = false, length = 100)
     private String libraryUserFirstName;
@@ -35,8 +35,8 @@ public class LibraryUser {
         this.libraryUserSurname = libraryUserSurname;
     }
 
-    public Long getLibraryUserId() {
-        return libraryUserId;
+    public Long getId() {
+        return id;
     }
 
     public String getLibraryUserFirstName() {
@@ -88,7 +88,7 @@ public class LibraryUser {
     @Override
     public String toString() {
         return "LibraryUser{" +
-                "libraryUserId=" + libraryUserId +
+                "id=" + id +
                 ", libraryUserFirstName='" + libraryUserFirstName + '\'' +
                 ", libraryUserSurname='" + libraryUserSurname + '\'' +
                 ", accountId=" + account.getId() +

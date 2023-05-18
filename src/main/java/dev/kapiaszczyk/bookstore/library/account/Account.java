@@ -76,7 +76,7 @@ public class Account {
         return "Account{" +
                 "id=" + id +
                 ", number='" + number + '\'' +
-                ", libraryUserId=" + libraryUser.getLibraryUserId() +
+                ", libraryUserId=" + libraryUser.getId() +
                 ", loans=" + loans +
                 '}';
     }

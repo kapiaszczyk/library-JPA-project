@@ -45,9 +45,9 @@ public class LibraryUserTest {
 
     @Test
     public void libraryUserCanBeAdded() {
-        LibraryUser savedLibraryUser = libraryUserRepository.findById(libraryUser.getLibraryUserId()).get();
+        LibraryUser savedLibraryUser = libraryUserRepository.findById(libraryUser.getId()).get();
 
-        assertNotNull(savedLibraryUser.getLibraryUserId());
+        assertNotNull(savedLibraryUser.getId());
         assertThat(savedLibraryUser.getLibraryUserFirstName(), equalTo(libraryUser.getLibraryUserFirstName()));
         assertThat(savedLibraryUser.getLibraryUserSurname(), equalTo(libraryUser.getLibraryUserSurname()));
         assertThat(savedLibraryUser.getAccount().getNumber(), equalTo(libraryUser.getAccount().getNumber()));
@@ -56,14 +56,14 @@ public class LibraryUserTest {
 
     @Test
     public void libraryUserCanBeUpdated() {
-        LibraryUser savedLibraryUser = libraryUserRepository.findById(libraryUser.getLibraryUserId()).get();
+        LibraryUser savedLibraryUser = libraryUserRepository.findById(libraryUser.getId()).get();
 
         savedLibraryUser.setLibraryUserFirstName("Jane");
         savedLibraryUser.setLibraryUserSurname("Smith");
 
         libraryUserRepository.save(savedLibraryUser);
 
-        LibraryUser updatedLibraryUser = libraryUserRepository.findById(savedLibraryUser.getLibraryUserId()).get();
+        LibraryUser updatedLibraryUser = libraryUserRepository.findById(savedLibraryUser.getId()).get();
 
         assertThat(updatedLibraryUser.getLibraryUserFirstName(), equalTo(savedLibraryUser.getLibraryUserFirstName()));
         assertThat(updatedLibraryUser.getLibraryUserSurname(), equalTo(savedLibraryUser.getLibraryUserSurname()));
@@ -71,7 +71,7 @@ public class LibraryUserTest {
 
     @Test
     public void libraryUserCanBeDeleted() {
-        LibraryUser savedLibraryUser = libraryUserRepository.findById(libraryUser.getLibraryUserId()).get();
+        LibraryUser savedLibraryUser = libraryUserRepository.findById(libraryUser.getId()).get();
         libraryUserRepository.delete(savedLibraryUser);
         assertEquals(0, libraryUserRepository.count());
     }
