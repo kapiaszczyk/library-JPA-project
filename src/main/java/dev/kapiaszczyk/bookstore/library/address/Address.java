@@ -11,7 +11,7 @@ public class Address {
     @Id
     @Column(name = "address_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long addressId;
+    private Long id;
 
     @Column(name = "street")
     private String street;
@@ -34,8 +34,8 @@ public class Address {
         this.libraryUser = libraryUser;
     }
 
-    public Long getAddressId() {
-        return addressId;
+    public Long getId() {
+        return id;
     }
 
     public String getStreet() {

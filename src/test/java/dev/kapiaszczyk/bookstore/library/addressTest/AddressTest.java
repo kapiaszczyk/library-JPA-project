@@ -62,7 +62,7 @@ public class AddressTest {
     @Test
     public void addressCanBeAdded() {
         // Retrieve address
-        Address savedAddress = addressRepository.findById(address.getAddressId()).get();
+        Address savedAddress = addressRepository.findById(address.getId()).get();
 
         // Check if address was added
         assertNotNull(savedAddress);
@@ -71,12 +71,12 @@ public class AddressTest {
     @Test
     public void addressCanBeUpdated() {
         // Update address
-        Address savedAddress = addressRepository.findById(address.getAddressId()).get();
+        Address savedAddress = addressRepository.findById(address.getId()).get();
         savedAddress.setStreet("St. Mary's Street 6");
         addressRepository.save(savedAddress);
 
         // Check if address was updated
-        Address updatedAddress = addressRepository.findById(address.getAddressId()).get();
+        Address updatedAddress = addressRepository.findById(address.getId()).get();
         assertThat(updatedAddress.getStreet(), equalTo(savedAddress.getStreet()));
     }
 
