@@ -102,4 +102,17 @@ public class BookRepositoryTest {
         assertThat(books.get(0).getBookTitle(), equalTo(book.getBookTitle()));
     }
 
+    @Test
+    public void shouldFindBookByIsbnNumber() {
+        String isbnNumber = "123456789L";
+        Optional<List<Book>> optionalBooks = bookRepository.findByIsbnIsbnNumber(isbnNumber);
+
+        assertTrue(optionalBooks.isPresent());
+
+        List<Book> books = optionalBooks.get();
+
+        assertThat(books.size(), equalTo(1));
+        assertThat(books.get(0).getBookTitle(), equalTo(book.getBookTitle()));
+    }
+
 }
