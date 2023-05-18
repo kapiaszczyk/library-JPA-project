@@ -39,23 +39,8 @@ public class AddressTest {
 
     @BeforeEach
     public void setUp() {
-
-        city = new City("Warsaw");
-        cityCode = new CityCode("00-000");
-
-        cityCode.setCity(city);
-        city.setCityCode(Collections.singletonList(cityCode));
-
-
         address = new Address();
         address.setStreet("St. Mary's Street 5");
-
-        cityRepository.save(city);
-
-        address = new Address();
-        address.setStreet("St. Mary's Street 5");
-        address.setCity(city);
-
         addressRepository.save(address);
     }
 
