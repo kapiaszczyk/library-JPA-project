@@ -7,5 +7,6 @@ import java.util.List;
 
 @Repository
 public interface LibraryUserRepository extends JpaRepository<LibraryUser, Long> {
-    List<LibraryUser> findAll();
+
+    List<LibraryUser> findByLibraryUserSurname(String libraryUserSurname);
 }
