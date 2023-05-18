@@ -70,7 +70,7 @@ public class AuthorRepositoryTest {
 
     // TODO - refactor (shorten) this test
     @Test
-    public void authorCanBeFoundByCreditsBookBookTitle() {
+    public void shouldFindAuthorByCreditsBookBookTitle() {
         Book book = new Book();
         book.setBookTitle("Hamlet");
 

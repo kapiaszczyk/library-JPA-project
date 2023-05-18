@@ -50,7 +50,7 @@ public class AccountRepositoryTest {
     }
 
     @Test
-    public void findAccountByLibraryUserLibraryUserId() {
+    public void shouldFindAccountByLibraryUserLibraryUserId() {
         // Retrieve account
         Account savedAccount = accountRepository.findByLibraryUserLibraryUserId(libraryUser.getLibraryUserId());
 
