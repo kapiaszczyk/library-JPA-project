@@ -1,7 +1,5 @@
 package dev.kapiaszczyk.bookstore.library.cityTest;
 
-import dev.kapiaszczyk.bookstore.library.category.Category;
-import dev.kapiaszczyk.bookstore.library.category.CategoryRepository;
 import dev.kapiaszczyk.bookstore.library.city.City;
 import dev.kapiaszczyk.bookstore.library.city.CityRepository;
 import dev.kapiaszczyk.bookstore.library.cityCode.CityCode;
