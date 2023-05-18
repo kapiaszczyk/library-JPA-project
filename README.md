@@ -15,7 +15,7 @@ The original database was designed using Oracle Data Modeler and was supposed to
 
 <!-- DB SCHEMA -->
 #### Database Schema
-![alt text](https://github.com/kapiaszczyk/library-JPA-project/blob/main/readme_files/Relational_1.png?raw=true)
+Can be found in the repo [here](https://github.com/kapiaszczyk/library-JPA-project/blob/main/readme_files/Relational_1.png).
 
 
 #### Some more interesting queries
