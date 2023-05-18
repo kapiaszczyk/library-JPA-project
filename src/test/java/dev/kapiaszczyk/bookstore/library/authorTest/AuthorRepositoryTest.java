@@ -50,7 +50,7 @@ public class AuthorRepositoryTest {
     }
 
     @Test
-    public void authorCanBeFoundByName() {
+    public void shouldFindAuthorByAuthorName() {
         List<Author> authors = authorRepository.findByAuthorName(author.getAuthorName()).get();
         assertThat(authors.size(), equalTo(1));
     }
