@@ -16,9 +16,9 @@ public class Inventory {
     @Column(name = "inventory_id")
     private Long inventoryId;
 
-    // Association with book
+    // Association with books
     @OneToMany(mappedBy = "inventory", cascade = CascadeType.ALL, orphanRemoval = true)
-    List<Book> book = new ArrayList<>();
+    List<Book> books = new ArrayList<>();
 
     // Association with library
     @OneToOne
@@ -27,8 +27,8 @@ public class Inventory {
     public Inventory() {
     }
 
-    public Inventory(List<Book> book, Library library) {
-        this.book = book;
+    public Inventory(List<Book> books, Library library) {
+        this.books = books;
         this.library = library;
     }
 
@@ -36,12 +36,12 @@ public class Inventory {
         return inventoryId;
     }
 
-    public List<Book> getBook() {
-        return book;
+    public List<Book> getBooks() {
+        return books;
     }
 
-    public void setBook(List<Book> book) {
-        this.book = book;
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
     public Library getLibrary() {
