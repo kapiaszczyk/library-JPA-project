@@ -67,5 +67,32 @@ public class AuthorRepositoryTest {
         assertThat(authors.size(), equalTo(1));
     }
 
+    // TODO - refactor (shorten) this test
+    @Test
+    public void authorCanBeFoundByCreditsBookBookTitle() {
+        Book book = new Book();
+        book.setBookTitle("Hamlet");
+
+        ISBN isbn = new ISBN();
+        isbn.setIsbnNumber("123456789L");
+        isbn.setBook(book);
+        book.setIsbn(isbn);
+
+        Credit credit = new Credit();
+        book.addCredit(credit);
+        credit.setBook(book);
+
+        credit.setAuthor(author);
+        author.addCredit(credit);
+
+        isbnRepository.save(isbn);
+        authorRepository.save(author);
+        creditRepository.save(credit);
+        bookRepository.save(book);
+
+        List<Author> authors = authorRepository.findByCreditsBookBookTitle(book.getBookTitle()).get();
+        assertThat(authors.size(), equalTo(1));
+    }
+
 
 }
