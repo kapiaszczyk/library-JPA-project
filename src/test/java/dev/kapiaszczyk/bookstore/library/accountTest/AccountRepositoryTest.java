@@ -39,7 +39,7 @@ public class AccountRepositoryTest {
 
         libraryUser = new LibraryUser();
         libraryUser.setFirstName("John");
-        libraryUser.setLibraryUserSurname("Doe");
+        libraryUser.setLastName("Doe");
 
         account.setLibraryUser(libraryUser);
         libraryUser.setAccount(account);

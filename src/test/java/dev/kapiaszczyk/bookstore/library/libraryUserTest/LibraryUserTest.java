@@ -33,7 +33,7 @@ public class LibraryUserTest {
     public void setUp() {
         libraryUser = new LibraryUser();
         libraryUser.setFirstName("John");
-        libraryUser.setLibraryUserSurname("Doe");
+        libraryUser.setLastName("Doe");
 
         account = new Account();
         account.setNumber("123456789");
@@ -49,7 +49,7 @@ public class LibraryUserTest {
 
         assertNotNull(savedLibraryUser.getId());
         assertThat(savedLibraryUser.getFirstName(), equalTo(libraryUser.getFirstName()));
-        assertThat(savedLibraryUser.getLibraryUserSurname(), equalTo(libraryUser.getLibraryUserSurname()));
+        assertThat(savedLibraryUser.getLastName(), equalTo(libraryUser.getLastName()));
         assertThat(savedLibraryUser.getAccount().getNumber(), equalTo(libraryUser.getAccount().getNumber()));
 
     }
@@ -59,14 +59,14 @@ public class LibraryUserTest {
         LibraryUser savedLibraryUser = libraryUserRepository.findById(libraryUser.getId()).get();
 
         savedLibraryUser.setFirstName("Jane");
-        savedLibraryUser.setLibraryUserSurname("Smith");
+        savedLibraryUser.setLastName("Smith");
 
         libraryUserRepository.save(savedLibraryUser);
 
         LibraryUser updatedLibraryUser = libraryUserRepository.findById(savedLibraryUser.getId()).get();
 
         assertThat(updatedLibraryUser.getFirstName(), equalTo(savedLibraryUser.getFirstName()));
-        assertThat(updatedLibraryUser.getLibraryUserSurname(), equalTo(savedLibraryUser.getLibraryUserSurname()));
+        assertThat(updatedLibraryUser.getLastName(), equalTo(savedLibraryUser.getLastName()));
     }
 
     @Test

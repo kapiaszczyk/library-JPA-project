@@ -37,7 +37,7 @@ public class LoanTest {
     public void setUp() {
         libraryUser = new LibraryUser();
         libraryUser.setFirstName("John");
-        libraryUser.setLibraryUserSurname("Doe");
+        libraryUser.setLastName("Doe");
 
         account = new Account();
         account.setNumber("123456789");

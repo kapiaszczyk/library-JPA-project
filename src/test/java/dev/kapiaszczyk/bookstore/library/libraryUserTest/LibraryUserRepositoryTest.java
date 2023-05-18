@@ -38,7 +38,7 @@ public class LibraryUserRepositoryTest {
     public void setUp() {
         libraryUser = new LibraryUser();
         libraryUser.setFirstName("John");
-        libraryUser.setLibraryUserSurname("Smith");
+        libraryUser.setLastName("Smith");
 
         account = new Account();
         account.setNumber("1234567890");
@@ -51,12 +51,12 @@ public class LibraryUserRepositoryTest {
     }
 
     @Test
-    public void shouldFindByLibraryUserSurname() {
+    public void shouldFindBylastName() {
 
-        List<LibraryUser> foundLibraryUsers = libraryUserRepository.findByLibraryUserSurname(libraryUser.getLibraryUserSurname());
+        List<LibraryUser> foundLibraryUsers = libraryUserRepository.findBylastName(libraryUser.getLastName());
 
         assertNotNull(foundLibraryUsers.get(0).getId());
-        assertThat(foundLibraryUsers.get(0).getLibraryUserSurname(), equalTo(libraryUser.getLibraryUserSurname()));
+        assertThat(foundLibraryUsers.get(0).getLastName(), equalTo(libraryUser.getLastName()));
     }
 
 

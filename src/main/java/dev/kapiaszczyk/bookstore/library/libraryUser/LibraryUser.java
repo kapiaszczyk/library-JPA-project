@@ -17,7 +17,7 @@ public class LibraryUser {
     private String firstName;
 
     @Column(name = "library_user_surname", unique = false, nullable = false, length = 100)
-    private String libraryUserSurname;
+    private String lastName;
 
     @OneToOne(mappedBy = "libraryUser", cascade = CascadeType.ALL, orphanRemoval = true)
     @PrimaryKeyJoinColumn
@@ -30,9 +30,9 @@ public class LibraryUser {
     public LibraryUser() {
     }
 
-    public LibraryUser(String firstName, String libraryUserSurname) {
+    public LibraryUser(String firstName, String lastName) {
         this.firstName = firstName;
-        this.libraryUserSurname = libraryUserSurname;
+        this.lastName = lastName;
     }
 
     public Long getId() {
@@ -47,12 +47,12 @@ public class LibraryUser {
         this.firstName = firstName;
     }
 
-    public String getLibraryUserSurname() {
-        return libraryUserSurname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLibraryUserSurname(String libraryUserSurname) {
-        this.libraryUserSurname = libraryUserSurname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public Account getAccount() {
@@ -90,7 +90,7 @@ public class LibraryUser {
         return "LibraryUser{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
-                ", libraryUserSurname='" + libraryUserSurname + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", accountId=" + account.getId() +
                 '}';
     }
