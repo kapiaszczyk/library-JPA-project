@@ -56,7 +56,7 @@ public class LoanRepositoryTest {
         accountRepository.save(account);
 
         book = new Book();
-        book.setBookTitle("Book Title");
+        book.setTitle("Book Title");
 
         loan = new Loan();
         loan.setLoanStatus("active");
@@ -75,7 +75,7 @@ public class LoanRepositoryTest {
 
         assertNotNull(foundLoans);
         assertThat(foundLoans.size(), equalTo(1));
-        assertThat(foundLoans.get(0).getBook().getBookTitle(), equalTo(book.getBookTitle()));
+        assertThat(foundLoans.get(0).getBook().getTitle(), equalTo(book.getTitle()));
     }
 
     @Test
@@ -84,7 +84,7 @@ public class LoanRepositoryTest {
 
         assertNotNull(foundLoans);
         assertThat(foundLoans.size(), equalTo(1));
-        assertThat(foundLoans.get(0).getBook().getBookTitle(), equalTo(book.getBookTitle()));
+        assertThat(foundLoans.get(0).getBook().getTitle(), equalTo(book.getTitle()));
     }
 
 }

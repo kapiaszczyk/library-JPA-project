@@ -45,7 +45,7 @@ public class LoanTest {
         libraryUser.setAccount(account);
 
         book = new Book();
-        book.setBookTitle("Book Title");
+        book.setTitle("Book Title");
 
         loan = new Loan();
         loan.setAccount(account);
@@ -63,20 +63,20 @@ public class LoanTest {
         assertNotNull(savedLoan.getLoanId());
         assertThat(savedLoan.getLoanId(), equalTo(loan.getLoanId()));
         assertThat(savedLoan.getAccount().getNumber(), equalTo(loan.getAccount().getNumber()));
-        assertThat(savedLoan.getBook().getBookTitle(), equalTo(loan.getBook().getBookTitle()));
+        assertThat(savedLoan.getBook().getTitle(), equalTo(loan.getBook().getTitle()));
     }
 
     @Test
     public void updateLoan() {
         Loan savedLoan = loanRepository.findById(loan.getLoanId()).get();
 
-        savedLoan.getBook().setBookTitle("New Book Title");
+        savedLoan.getBook().setTitle("New Book Title");
         savedLoan.getAccount().setNumber("987654321");
 
         loanRepository.save(savedLoan);
 
         Loan updatedLoan = loanRepository.findById(loan.getLoanId()).get();
-        assertThat(updatedLoan.getBook().getBookTitle(), equalTo(savedLoan.getBook().getBookTitle()));
+        assertThat(updatedLoan.getBook().getTitle(), equalTo(savedLoan.getBook().getTitle()));
         assertThat(updatedLoan.getAccount().getNumber(), equalTo(savedLoan.getAccount().getNumber()));
     }
 

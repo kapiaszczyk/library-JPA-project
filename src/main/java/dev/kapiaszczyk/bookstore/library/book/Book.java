@@ -20,7 +20,7 @@ public class Book {
     private Long id;
 
     @Column(name = "book_title")
-    private String bookTitle;
+    private String title;
 
     // Association with category
     @ManyToOne
@@ -48,8 +48,8 @@ public class Book {
     public Book() {
     }
 
-    public Book(String bookTitle, Category category, ISBN isbn, Inventory inventory, List<Credit> credits, Loan loan) {
-        this.bookTitle = bookTitle;
+    public Book(String title, Category category, ISBN isbn, Inventory inventory, List<Credit> credits, Loan loan) {
+        this.title = title;
         this.category = category;
         this.isbn = isbn;
         this.inventory = inventory;
@@ -63,12 +63,12 @@ public class Book {
         return id;
     }
 
-    public String getBookTitle() {
-        return bookTitle;
+    public String getTitle() {
+        return title;
     }
 
-    public void setBookTitle(String bookTitle) {
-        this.bookTitle = bookTitle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Category getCategory() {

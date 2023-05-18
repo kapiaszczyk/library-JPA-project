@@ -45,7 +45,7 @@ public class BookTest {
     @BeforeEach
     public void setUp() {
         book = new Book();
-        book.setBookTitle("Test title");
+        book.setTitle("Test title");
 
         ISBN isbn = new ISBN();
         isbn.setIsbnNumber("123456789L");
@@ -77,7 +77,7 @@ public class BookTest {
 
         assertNotNull(book);
         assertThat(savedBook.getId(), equalTo(book.getId()));
-        assertThat(savedBook.getBookTitle(), equalTo(book.getBookTitle()));
+        assertThat(savedBook.getTitle(), equalTo(book.getTitle()));
         assertThat(savedBook.getIsbn().getIsbnNumber(), equalTo(book.getIsbn().getIsbnNumber()));
         assertThat(savedBook.getCredits().get(0).getAuthor().getFirstName(), equalTo(book.getCredits().get(0).getAuthor().getFirstName()));
         assertThat(savedBook.getCredits().get(0).getAuthor().getLastName(), equalTo(book.getCredits().get(0).getAuthor().getLastName()));
@@ -86,11 +86,11 @@ public class BookTest {
     @Test
     public void updateBook() {
         Book savedBook = bookRepository.findById(book.getId()).get();
-        savedBook.setBookTitle("Updated title");
+        savedBook.setTitle("Updated title");
         bookRepository.save(savedBook);
 
         Book updatedBook = bookRepository.findById(book.getId()).get();
-        assertThat(updatedBook.getBookTitle(), equalTo(savedBook.getBookTitle()));
+        assertThat(updatedBook.getTitle(), equalTo(savedBook.getTitle()));
     }
 
     @Test

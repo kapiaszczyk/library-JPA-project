@@ -55,7 +55,7 @@ public class BookRepositoryTest {
     @BeforeEach
     public void setUp() {
         book = new Book();
-        book.setBookTitle("Hamlet");
+        book.setTitle("Hamlet");
 
         isbn = new ISBN();
         isbn.setIsbnNumber("123456789L");
@@ -84,27 +84,27 @@ public class BookRepositoryTest {
     @Test
     public void shouldFindBookByTitle() {
         String title = "Hamlet";
-        Optional<List<Book>> optionalBooks = bookRepository.findByBookTitle(title);
+        Optional<List<Book>> optionalBooks = bookRepository.findByTitle(title);
 
         assertTrue(optionalBooks.isPresent());
 
         List<Book> books = optionalBooks.get();
 
         assertThat(books.size(), equalTo(1));
-        assertThat(books.get(0).getBookTitle(), equalTo(book.getBookTitle()));
+        assertThat(books.get(0).getTitle(), equalTo(book.getTitle()));
     }
 
     @Test
-    public void shouldFindByBookTitleContaining() {
+    public void shouldFindByTitleContaining() {
         String title = "Ham";
-        Optional<List<Book>> optionalBooks = bookRepository.findByBookTitleContaining(title);
+        Optional<List<Book>> optionalBooks = bookRepository.findByTitleContaining(title);
 
         assertTrue(optionalBooks.isPresent());
 
         List<Book> books = optionalBooks.get();
 
         assertThat(books.size(), equalTo(1));
-        assertThat(books.get(0).getBookTitle(), equalTo(book.getBookTitle()));
+        assertThat(books.get(0).getTitle(), equalTo(book.getTitle()));
     }
 
     @Test
@@ -117,7 +117,7 @@ public class BookRepositoryTest {
         List<Book> books = optionalBooks.get();
 
         assertThat(books.size(), equalTo(1));
-        assertThat(books.get(0).getBookTitle(), equalTo(book.getBookTitle()));
+        assertThat(books.get(0).getTitle(), equalTo(book.getTitle()));
     }
 
     @Test
@@ -130,7 +130,7 @@ public class BookRepositoryTest {
         List<Book> books = foundBooks.get();
 
         assertThat(books.size(), equalTo(1));
-        assertThat(books.get(0).getBookTitle(), equalTo(book.getBookTitle()));
+        assertThat(books.get(0).getTitle(), equalTo(book.getTitle()));
 
     }
 
@@ -144,7 +144,7 @@ public class BookRepositoryTest {
         List<Book> books = foundBooks.get();
 
         assertThat(books.size(), equalTo(1));
-        assertThat(books.get(0).getBookTitle(), equalTo(book.getBookTitle()));
+        assertThat(books.get(0).getTitle(), equalTo(book.getTitle()));
     }
 
     @Test
@@ -158,7 +158,7 @@ public class BookRepositoryTest {
         List<Book> books = foundBooks.get();
 
         assertThat(books.size(), equalTo(1));
-        assertThat(books.get(0).getBookTitle(), equalTo(book.getBookTitle()));
+        assertThat(books.get(0).getTitle(), equalTo(book.getTitle()));
     }
 
     @Test
@@ -173,7 +173,7 @@ public class BookRepositoryTest {
         List<Book> books = bookRepository.findAllByCategoryCategoryNameLike("Fantasy");
 
         assertThat(books.size(), equalTo(1));
-        assertThat(books.get(0).getBookTitle(), equalTo(book.getBookTitle()));
+        assertThat(books.get(0).getTitle(), equalTo(book.getTitle()));
     }
 
 

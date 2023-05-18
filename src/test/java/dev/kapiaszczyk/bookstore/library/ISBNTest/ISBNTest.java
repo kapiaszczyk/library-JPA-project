@@ -35,7 +35,7 @@ public class ISBNTest {
         isbn.setIsbnNumber("123456789L");
 
         book = new Book();
-        book.setBookTitle("Book Title");
+        book.setTitle("Book Title");
 
         isbn.setBook(book);
         book.setIsbn(isbn);

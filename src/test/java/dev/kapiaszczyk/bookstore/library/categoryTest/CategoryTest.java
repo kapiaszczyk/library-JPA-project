@@ -70,7 +70,7 @@ public class CategoryTest {
     @Test
     public void categoryDeletedWhenAssociatedWithBook() {
         Book book = new Book();
-        book.setBookTitle("Test title");
+        book.setTitle("Test title");
         book.setCategory(category);
 
         bookRepository.save(book);

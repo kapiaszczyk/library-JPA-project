@@ -70,9 +70,9 @@ public class AuthorRepositoryTest {
 
     // TODO - refactor (shorten) this test
     @Test
-    public void shouldFindAuthorByCreditsBookBookTitle() {
+    public void shouldFindAuthorByCreditsBookTitle() {
         Book book = new Book();
-        book.setBookTitle("Hamlet");
+        book.setTitle("Hamlet");
 
         ISBN isbn = new ISBN();
         isbn.setIsbnNumber("123456789L");
@@ -91,7 +91,7 @@ public class AuthorRepositoryTest {
         creditRepository.save(credit);
         bookRepository.save(book);
 
-        List<Author> authors = authorRepository.findByCreditsBookBookTitle(book.getBookTitle()).get();
+        List<Author> authors = authorRepository.findByCreditsBookTitle(book.getTitle()).get();
         assertThat(authors.size(), equalTo(1));
     }
 
