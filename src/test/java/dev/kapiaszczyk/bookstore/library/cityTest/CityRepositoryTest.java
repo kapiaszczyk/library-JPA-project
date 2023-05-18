@@ -31,7 +31,7 @@ public class CityRepositoryTest {
     @BeforeEach
     public void setUp() {
         city = new City();
-        city.setCityName("Test city");
+        city.setName("Test city");
         cityRepository.save(city);
 
         cityCode = new CityCode();
@@ -43,11 +43,11 @@ public class CityRepositoryTest {
     }
 
     @Test
-    public void shouldFindCityByCityName() {
-        City foundCity = cityRepository.findByCityName(city.getCityName());
+    public void shouldFindCityByName() {
+        City foundCity = cityRepository.findByName(city.getName());
 
         assertNotNull(foundCity);
-        assertThat(foundCity.getCityName(), equalTo(city.getCityName()));
+        assertThat(foundCity.getName(), equalTo(city.getName()));
     }
 
 }

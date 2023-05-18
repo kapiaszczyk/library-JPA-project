@@ -17,7 +17,7 @@ public class City {
     private Long id;
 
     @Column(name = "city_name")
-    private String cityName;
+    private String name;
 
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Address> addresses = new ArrayList<>();
@@ -29,20 +29,20 @@ public class City {
     public City() {
     }
 
-    public City(String cityName) {
-        this.cityName = cityName;
+    public City(String name) {
+        this.name = name;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getCityName() {
-        return cityName;
+    public String getName() {
+        return name;
     }
 
-    public City(String cityName, List<CityCode> cityCodes, List<Address> addresses) {
-        this.cityName = cityName;
+    public City(String name, List<CityCode> cityCodes, List<Address> addresses) {
+        this.name = name;
         this.cityCodes = cityCodes;
         this.addresses = addresses;
     }
@@ -66,15 +66,15 @@ public class City {
 
 
     public void removeAccount(String cracow) {
-        this.cityName = cracow;
+        this.name = cracow;
     }
 
-    public void setCityName(String cracow) {
-        this.cityName = cracow;
+    public void setName(String cracow) {
+        this.name = cracow;
     }
 
-    public void getCityName(String cracow) {
-        this.cityName = cracow;
+    public void getName(String cracow) {
+        this.name = cracow;
     }
 
     public void addCityCode(CityCode cityCode) {

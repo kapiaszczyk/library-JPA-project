@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 public interface CityCodeRepository extends JpaRepository<CityCode, Long> {
     CityCode findByCityCode(String cityCode);
 
-    CityCode findByCityCityName(String cityName);
+    CityCode findByCityName(String name);
 }

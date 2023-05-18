@@ -62,13 +62,13 @@ public class CityTest {
     @Test
     public void updateCityTest() {
         City savedCity = cityRepository.findById(city.getId()).get();
-        savedCity.setCityName("Cracow");
+        savedCity.setName("Cracow");
         cityRepository.save(savedCity);
 
         City updatedCity = cityRepository.findById(city.getId()).get();
         assertNotNull(updatedCity);
         assertThat(savedCity.getId(), equalTo(updatedCity.getId()));
-        assertThat(savedCity.getCityName(), equalTo(updatedCity.getCityName()));
+        assertThat(savedCity.getName(), equalTo(updatedCity.getName()));
     }
 
     @Test
