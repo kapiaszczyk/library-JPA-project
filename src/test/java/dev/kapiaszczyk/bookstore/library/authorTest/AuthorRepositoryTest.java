@@ -52,19 +52,19 @@ public class AuthorRepositoryTest {
 
     @Test
     public void shouldFindAuthorByFirstName() {
-        List<Author> authors = authorRepository.findByFirstName(author.getFirstName()).get();
+        List<Author> authors = authorRepository.findByFirstName(author.getFirstName());
         assertThat(authors.size(), equalTo(1));
     }
 
     @Test
     public void shouldFindAuthorByLastName() {
-        List<Author> authors = authorRepository.findByLastName(author.getLastName()).get();
+        List<Author> authors = authorRepository.findByLastName(author.getLastName());
         assertThat(authors.size(), equalTo(1));
     }
 
     @Test
     public void shouldFindAuthorByAFirstNameAndLastName() {
-        List<Author> authors = authorRepository.findByFirstNameAndLastName(author.getFirstName(), author.getLastName()).get();
+        List<Author> authors = authorRepository.findByFirstNameAndLastName(author.getFirstName(), author.getLastName());
         assertThat(authors.size(), equalTo(1));
     }
 
@@ -91,7 +91,7 @@ public class AuthorRepositoryTest {
         creditRepository.save(credit);
         bookRepository.save(book);
 
-        List<Author> authors = authorRepository.findByCreditsBookTitle(book.getTitle()).get();
+        List<Author> authors = authorRepository.findByCreditsBookTitle(book.getTitle());
         assertThat(authors.size(), equalTo(1));
     }
 
