@@ -32,7 +32,7 @@ public class ISBNTest {
     @BeforeEach
     public void setUp() {
         isbn = new ISBN();
-        isbn.setIsbnNumber("123456789L");
+        isbn.setNumber("123456789L");
 
         book = new Book();
         book.setTitle("Book Title");
@@ -49,19 +49,19 @@ public class ISBNTest {
         ISBN savedISBN = isbnRepository.findById(isbn.getId()).get();
 
         assertNotNull(savedISBN.getId());
-        assertThat(savedISBN.getIsbnNumber(), equalTo(isbn.getIsbnNumber()));
+        assertThat(savedISBN.getNumber(), equalTo(isbn.getNumber()));
     }
 
     @Test
     public void isbnCanBeUpdated() {
         ISBN savedISBN = isbnRepository.findById(isbn.getId()).get();
 
-        savedISBN.setIsbnNumber("987654321L");
+        savedISBN.setNumber("987654321L");
         isbnRepository.save(savedISBN);
 
         ISBN updatedISBN = isbnRepository.findById(savedISBN.getId()).get();
 
-        assertThat(updatedISBN.getIsbnNumber(), equalTo(savedISBN.getIsbnNumber()));
+        assertThat(updatedISBN.getNumber(), equalTo(savedISBN.getNumber()));
     }
 
     @Test

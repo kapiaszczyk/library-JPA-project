@@ -58,7 +58,7 @@ public class BookRepositoryTest {
         book.setTitle("Hamlet");
 
         isbn = new ISBN();
-        isbn.setIsbnNumber("123456789L");
+        isbn.setNumber("123456789L");
         isbn.setBook(book);
         book.setIsbn(isbn);
 
@@ -109,8 +109,8 @@ public class BookRepositoryTest {
 
     @Test
     public void shouldFindBookByIsbnNumber() {
-        String isbnNumber = "123456789L";
-        Optional<List<Book>> optionalBooks = bookRepository.findByIsbnIsbnNumber(isbnNumber);
+        String number = "123456789L";
+        Optional<List<Book>> optionalBooks = bookRepository.findByIsbnNumber(number);
 
         assertTrue(optionalBooks.isPresent());
 

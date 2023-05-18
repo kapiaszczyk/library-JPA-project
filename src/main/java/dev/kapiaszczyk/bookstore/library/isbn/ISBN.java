@@ -18,25 +18,25 @@ public class ISBN {
     private Book book;
 
     @Column(name = "isbn_number")
-    private String isbnNumber;
+    private String number;
 
     public ISBN() {
     }
 
-    public ISBN(String isbnNumber) {
-        this.isbnNumber = isbnNumber;
+    public ISBN(String number) {
+        this.number = number;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getIsbnNumber() {
-        return isbnNumber;
+    public String getNumber() {
+        return number;
     }
 
-    public void setIsbnNumber(String isbnNumber) {
-        this.isbnNumber = isbnNumber;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public Book getBook() {

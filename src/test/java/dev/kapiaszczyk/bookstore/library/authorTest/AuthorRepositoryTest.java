@@ -75,7 +75,7 @@ public class AuthorRepositoryTest {
         book.setTitle("Hamlet");
 
         ISBN isbn = new ISBN();
-        isbn.setIsbnNumber("123456789L");
+        isbn.setNumber("123456789L");
         isbn.setBook(book);
         book.setIsbn(isbn);
 
