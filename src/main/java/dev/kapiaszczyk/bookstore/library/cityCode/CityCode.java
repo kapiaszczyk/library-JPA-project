@@ -16,10 +16,7 @@ public class CityCode {
     @Column
     private String cityCode;
 
-
-    @ManyToOne
-    @JoinColumn(name = "city_id")
-    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     private City city;
 
     public CityCode() {
