@@ -100,6 +100,15 @@ public class BookRepositoryTest {
     }
 
     @Test
+    public void shouldFindByTitleContainingIgnoreCase() {
+        String title = "ham";
+        List<Book> books  = bookRepository.findByTitleContainingIgnoreCase(title);
+
+        assertThat(books.size(), equalTo(1));
+        assertThat(books.get(0).getTitle(), equalTo(book.getTitle()));
+    }
+
+    @Test
     public void shouldFindBookByIsbnNumber() {
         String number = "123456789L";
         List<Book> books = bookRepository.findByIsbnNumber(number);
