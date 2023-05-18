@@ -10,7 +10,7 @@ public class Library {
     @Id
     @Column(name = "library_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long libraryId;
+    private Long id;
 
     @Column(name = "library_name")
     private String libraryName;
@@ -26,8 +26,8 @@ public class Library {
         this.inventory = inventory;
     }
 
-    public Long getLibraryId() {
-        return libraryId;
+    public Long getId() {
+        return id;
     }
 
     public String getLibraryName() {

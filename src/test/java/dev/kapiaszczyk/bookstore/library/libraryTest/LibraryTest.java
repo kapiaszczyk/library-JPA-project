@@ -43,9 +43,9 @@ public class LibraryTest {
 
     @Test
     public void libraryCanBeAdded() {
-        Library savedLibrary = libraryRepository.findById(library.getLibraryId()).get();
+        Library savedLibrary = libraryRepository.findById(library.getId()).get();
 
-        assertNotNull(savedLibrary.getLibraryId());
+        assertNotNull(savedLibrary.getId());
         assertThat(savedLibrary.getLibraryName(), equalTo(library.getLibraryName()));
         assertThat(savedLibrary.getInventory().getId(), equalTo(inventory.getId()));
 
@@ -53,19 +53,19 @@ public class LibraryTest {
 
     @Test
     public void libraryCanBeUpdated() {
-        Library savedLibrary = libraryRepository.findById(library.getLibraryId()).get();
+        Library savedLibrary = libraryRepository.findById(library.getId()).get();
 
         savedLibrary.setLibraryName("Cracow Library");
         libraryRepository.save(savedLibrary);
 
-        Library updatedLibrary = libraryRepository.findById(library.getLibraryId()).get();
+        Library updatedLibrary = libraryRepository.findById(library.getId()).get();
         assertThat(updatedLibrary.getLibraryName(), equalTo(savedLibrary.getLibraryName()));
 
     }
 
     @Test
     public void libraryCanBeDeleted() {
-        Library savedLibrary = libraryRepository.findById(library.getLibraryId()).get();
+        Library savedLibrary = libraryRepository.findById(library.getId()).get();
 
         libraryRepository.delete(savedLibrary);
 
