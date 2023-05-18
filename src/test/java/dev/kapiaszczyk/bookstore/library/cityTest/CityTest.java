@@ -42,7 +42,7 @@ public class CityTest {
 
     @Test
     public void saveCityTest() {
-        City savedCity = cityRepository.findById(city.getCityId()).get();
+        City savedCity = cityRepository.findById(city.getId()).get();
         assertNotNull(savedCity);
     }
 
@@ -55,25 +55,25 @@ public class CityTest {
 
         cityRepository.save(city);
 
-        City savedCity = cityRepository.findById(city.getCityId()).get();
+        City savedCity = cityRepository.findById(city.getId()).get();
         assertNotNull(savedCity);
     }
 
     @Test
     public void updateCityTest() {
-        City savedCity = cityRepository.findById(city.getCityId()).get();
+        City savedCity = cityRepository.findById(city.getId()).get();
         savedCity.setCityName("Cracow");
         cityRepository.save(savedCity);
 
-        City updatedCity = cityRepository.findById(city.getCityId()).get();
+        City updatedCity = cityRepository.findById(city.getId()).get();
         assertNotNull(updatedCity);
-        assertThat(savedCity.getCityId(), equalTo(updatedCity.getCityId()));
+        assertThat(savedCity.getId(), equalTo(updatedCity.getId()));
         assertThat(savedCity.getCityName(), equalTo(updatedCity.getCityName()));
     }
 
     @Test
     public void deleteCityTest() {
-        City savedCity = cityRepository.findById(city.getCityId()).get();
+        City savedCity = cityRepository.findById(city.getId()).get();
 
         cityRepository.delete(savedCity);
         assertEquals(0, cityRepository.count());
