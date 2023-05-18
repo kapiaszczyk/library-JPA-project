@@ -54,4 +54,12 @@ public class CityCodeRepositoryTest {
         assertThat(foundCityCode.getCityCode(), equalTo(cityCode.getCityCode()));
     }
 
+    @Test
+    public void shouldFindCityCodeByCityName() {
+        CityCode foundCityCode = cityCodeRepository.findByCityCityName(city.getCityName());
+
+        assertNotNull(foundCityCode);
+        assertThat(foundCityCode.getCityCode(), equalTo(cityCode.getCityCode()));
+    }
+
 }
