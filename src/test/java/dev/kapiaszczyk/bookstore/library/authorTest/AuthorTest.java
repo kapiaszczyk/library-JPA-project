@@ -31,7 +31,7 @@ public class AuthorTest {
     public void setUp() {
         author = new Author();
         author.setFirstName("Test name");
-        author.setAuthorSurname("Test surname");
+        author.setLastName("Test surname");
         authorRepository.save(author);
     }
 
@@ -46,12 +46,12 @@ public class AuthorTest {
         Author savedAuthor = authorRepository.findById(author.getId()).get();
 
         savedAuthor.setFirstName("Updated name");
-        savedAuthor.setAuthorSurname("Updated surname");
+        savedAuthor.setLastName("Updated surname");
         authorRepository.save(savedAuthor);
 
         Author updatedAuthor = authorRepository.findById(savedAuthor.getId()).get();
         assertThat(updatedAuthor.getFirstName(), equalTo(savedAuthor.getFirstName()));
-        assertThat(updatedAuthor.getAuthorSurname(), equalTo(savedAuthor.getAuthorSurname()));
+        assertThat(updatedAuthor.getLastName(), equalTo(savedAuthor.getLastName()));
     }
 
     @Test

@@ -14,11 +14,11 @@ public class Author {
     @Column(name = "author_id")
     private Long id;
 
-    @Column(name = "author_name")
+    @Column(name = "author_first_name")
     private String firstName;
 
-    @Column(name = "author_surname")
-    private String authorSurname;
+    @Column(name = "author_last_name")
+    private String lastName;
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Credit> credits = new ArrayList<>();
@@ -26,9 +26,9 @@ public class Author {
     public Author() {
     }
 
-    public Author(String firstName, String authorSurname) {
+    public Author(String firstName, String lastName) {
         this.firstName = firstName;
-        this.authorSurname = authorSurname;
+        this.lastName = lastName;
     }
 
     public Long getId() {
@@ -43,12 +43,12 @@ public class Author {
         this.firstName = firstName;
     }
 
-    public String getAuthorSurname() {
-        return authorSurname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setAuthorSurname(String authorSurname) {
-        this.authorSurname = authorSurname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public void addCredit(Credit credit) {

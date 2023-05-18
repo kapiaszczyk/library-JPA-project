@@ -46,7 +46,7 @@ public class AuthorRepositoryTest {
     public void setUp() {
         author = new Author();
         author.setFirstName("William");
-        author.setAuthorSurname("Shakespeare");
+        author.setLastName("Shakespeare");
         authorRepository.save(author);
     }
 
@@ -57,14 +57,14 @@ public class AuthorRepositoryTest {
     }
 
     @Test
-    public void shouldFindAuthorByAuthorSurname() {
-        List<Author> authors = authorRepository.findByAuthorSurname(author.getAuthorSurname()).get();
+    public void shouldFindAuthorByLastName() {
+        List<Author> authors = authorRepository.findByLastName(author.getLastName()).get();
         assertThat(authors.size(), equalTo(1));
     }
 
     @Test
-    public void shouldFindAuthorByAFirstNameAndAuthorSurname() {
-        List<Author> authors = authorRepository.findByFirstNameAndAuthorSurname(author.getFirstName(), author.getAuthorSurname()).get();
+    public void shouldFindAuthorByAFirstNameAndLastName() {
+        List<Author> authors = authorRepository.findByFirstNameAndLastName(author.getFirstName(), author.getLastName()).get();
         assertThat(authors.size(), equalTo(1));
     }
 

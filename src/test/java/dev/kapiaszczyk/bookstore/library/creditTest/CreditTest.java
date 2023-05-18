@@ -33,7 +33,7 @@ public class CreditTest {
     public void setUp() {
         author = new Author();
         author.setFirstName("John");
-        author.setAuthorSurname("Doe");
+        author.setLastName("Doe");
 
         credit = new Credit();
         credit.setAuthor(author);
@@ -48,7 +48,7 @@ public class CreditTest {
 
         assertNotNull(savedCredit.getCreditId());
         assertThat(savedCredit.getAuthor().getFirstName(), equalTo("John"));
-        assertThat(savedCredit.getAuthor().getAuthorSurname(), equalTo("Doe"));
+        assertThat(savedCredit.getAuthor().getLastName(), equalTo("Doe"));
 
     }
 
@@ -57,13 +57,13 @@ public class CreditTest {
         Credit savedCredit = creditRepository.save(credit);
 
         savedCredit.getAuthor().setFirstName("Jane");
-        savedCredit.getAuthor().setAuthorSurname("Smith");
+        savedCredit.getAuthor().setLastName("Smith");
         creditRepository.save(savedCredit);
 
         Credit updatedCredit = creditRepository.findById(savedCredit.getCreditId()).get();
 
         assertThat(updatedCredit.getAuthor().getFirstName(), equalTo("Jane"));
-        assertThat(updatedCredit.getAuthor().getAuthorSurname(), equalTo("Smith"));
+        assertThat(updatedCredit.getAuthor().getLastName(), equalTo("Smith"));
     }
 
     @Test

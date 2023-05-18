@@ -57,7 +57,7 @@ public class BookTest {
 
         Author author = new Author();
         author.setFirstName("Test author");
-        author.setAuthorSurname("Test surname");
+        author.setLastName("Test surname");
 
         credit.setAuthor(author);
         author.addCredit(credit);
@@ -80,7 +80,7 @@ public class BookTest {
         assertThat(savedBook.getBookTitle(), equalTo(book.getBookTitle()));
         assertThat(savedBook.getIsbn().getIsbnNumber(), equalTo(book.getIsbn().getIsbnNumber()));
         assertThat(savedBook.getCredits().get(0).getAuthor().getFirstName(), equalTo(book.getCredits().get(0).getAuthor().getFirstName()));
-        assertThat(savedBook.getCredits().get(0).getAuthor().getAuthorSurname(), equalTo(book.getCredits().get(0).getAuthor().getAuthorSurname()));
+        assertThat(savedBook.getCredits().get(0).getAuthor().getLastName(), equalTo(book.getCredits().get(0).getAuthor().getLastName()));
     }
 
     @Test

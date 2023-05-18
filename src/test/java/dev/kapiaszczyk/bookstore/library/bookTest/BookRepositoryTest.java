@@ -67,7 +67,7 @@ public class BookRepositoryTest {
 
         author = new Author();
         author.setFirstName("William");
-        author.setAuthorSurname("Shakespeare");
+        author.setLastName("Shakespeare");
 
         credit.setAuthor(author);
         author.addCredit(credit);
@@ -136,8 +136,8 @@ public class BookRepositoryTest {
 
     @Test
     public void shouldFindBookByAuthorSurname() {
-        String authorSurname = "Shakespeare";
-        Optional<List<Book>> foundBooks = bookRepository.findByCreditsAuthorAuthorSurname(authorSurname);
+        String lastName = "Shakespeare";
+        Optional<List<Book>> foundBooks = bookRepository.findByCreditsAuthorLastName(lastName);
 
         assertTrue(foundBooks.isPresent());
 
@@ -148,10 +148,10 @@ public class BookRepositoryTest {
     }
 
     @Test
-    public void shouldFindBookByAuthorNameAndSurname() {
+    public void shouldFindBookByAuthorFirstNameAndLastName() {
         String firstName = "William";
-        String authorSurname = "Shakespeare";
-        Optional<List<Book>> foundBooks = bookRepository.findByCreditsAuthorFirstNameAndCreditsAuthorAuthorSurname(firstName, authorSurname);
+        String lastName = "Shakespeare";
+        Optional<List<Book>> foundBooks = bookRepository.findByCreditsAuthorFirstNameAndCreditsAuthorLastName(firstName, lastName);
 
         assertTrue(foundBooks.isPresent());
 
