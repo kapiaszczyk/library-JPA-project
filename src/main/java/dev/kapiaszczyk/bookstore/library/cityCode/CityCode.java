@@ -13,7 +13,7 @@ public class CityCode {
     @Column(name = "city_code_id")
     private Long id;
 
-    @Column
+    @Column(name = "city_code_code")
     private String cityCode;
 
     @ManyToOne(fetch = FetchType.LAZY)
