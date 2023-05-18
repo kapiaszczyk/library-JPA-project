@@ -129,4 +129,18 @@ public class BookRepositoryTest {
 
     }
 
+    @Test
+    public void shouldFindBookByAuthorSurname() {
+        String authorSurname = "Shakespeare";
+        Optional<List<Book>> foundBooks = bookRepository.findByCreditsAuthorAuthorSurname(authorSurname);
+
+        assertTrue(foundBooks.isPresent());
+
+        List<Book> books = foundBooks.get();
+
+        assertThat(books.size(), equalTo(1));
+        assertThat(books.get(0).getBookTitle(), equalTo(book.getBookTitle()));
+    }
+
+
 }
