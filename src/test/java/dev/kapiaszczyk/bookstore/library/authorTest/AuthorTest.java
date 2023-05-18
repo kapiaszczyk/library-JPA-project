@@ -37,26 +37,26 @@ public class AuthorTest {
 
     @Test
     public void authorCanBeAdded() {
-        Author savedAuthor = authorRepository.findById(author.getAuthorId()).get();
+        Author savedAuthor = authorRepository.findById(author.getId()).get();
         assertNotNull(savedAuthor);
     }
 
     @Test
     public void authorCanBeUpdated() {
-        Author savedAuthor = authorRepository.findById(author.getAuthorId()).get();
+        Author savedAuthor = authorRepository.findById(author.getId()).get();
 
         savedAuthor.setAuthorName("Updated name");
         savedAuthor.setAuthorSurname("Updated surname");
         authorRepository.save(savedAuthor);
 
-        Author updatedAuthor = authorRepository.findById(savedAuthor.getAuthorId()).get();
+        Author updatedAuthor = authorRepository.findById(savedAuthor.getId()).get();
         assertThat(updatedAuthor.getAuthorName(), equalTo(savedAuthor.getAuthorName()));
         assertThat(updatedAuthor.getAuthorSurname(), equalTo(savedAuthor.getAuthorSurname()));
     }
 
     @Test
     public void authorCanBeDeleted() {
-        Author savedAuthor = authorRepository.findById(author.getAuthorId()).get();
+        Author savedAuthor = authorRepository.findById(author.getId()).get();
         authorRepository.delete(savedAuthor);
 
         assertEquals(0, authorRepository.count());
