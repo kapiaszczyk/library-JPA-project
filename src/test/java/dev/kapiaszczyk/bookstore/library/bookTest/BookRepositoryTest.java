@@ -84,11 +84,7 @@ public class BookRepositoryTest {
     @Test
     public void shouldFindBookByTitle() {
         String title = "Hamlet";
-        Optional<List<Book>> optionalBooks = bookRepository.findByTitle(title);
-
-        assertTrue(optionalBooks.isPresent());
-
-        List<Book> books = optionalBooks.get();
+        List<Book> books = bookRepository.findByTitle(title);
 
         assertThat(books.size(), equalTo(1));
         assertThat(books.get(0).getTitle(), equalTo(book.getTitle()));
@@ -97,11 +93,7 @@ public class BookRepositoryTest {
     @Test
     public void shouldFindByTitleContaining() {
         String title = "Ham";
-        Optional<List<Book>> optionalBooks = bookRepository.findByTitleContaining(title);
-
-        assertTrue(optionalBooks.isPresent());
-
-        List<Book> books = optionalBooks.get();
+        List<Book> books  = bookRepository.findByTitleContaining(title);
 
         assertThat(books.size(), equalTo(1));
         assertThat(books.get(0).getTitle(), equalTo(book.getTitle()));
@@ -110,11 +102,7 @@ public class BookRepositoryTest {
     @Test
     public void shouldFindBookByIsbnNumber() {
         String number = "123456789L";
-        Optional<List<Book>> optionalBooks = bookRepository.findByIsbnNumber(number);
-
-        assertTrue(optionalBooks.isPresent());
-
-        List<Book> books = optionalBooks.get();
+        List<Book> books = bookRepository.findByIsbnNumber(number);
 
         assertThat(books.size(), equalTo(1));
         assertThat(books.get(0).getTitle(), equalTo(book.getTitle()));
@@ -123,11 +111,7 @@ public class BookRepositoryTest {
     @Test
     public void shouldFindBookByAuthorFirstName() {
         String firstName = "William";
-        Optional<List<Book>> foundBooks = bookRepository.findByCreditsAuthorFirstName(firstName);
-
-        assertTrue(foundBooks.isPresent());
-
-        List<Book> books = foundBooks.get();
+        List<Book> books = bookRepository.findByCreditsAuthorFirstName(firstName);
 
         assertThat(books.size(), equalTo(1));
         assertThat(books.get(0).getTitle(), equalTo(book.getTitle()));
@@ -137,11 +121,7 @@ public class BookRepositoryTest {
     @Test
     public void shouldFindBookByAuthorSurname() {
         String lastName = "Shakespeare";
-        Optional<List<Book>> foundBooks = bookRepository.findByCreditsAuthorLastName(lastName);
-
-        assertTrue(foundBooks.isPresent());
-
-        List<Book> books = foundBooks.get();
+        List<Book> books  = bookRepository.findByCreditsAuthorLastName(lastName);
 
         assertThat(books.size(), equalTo(1));
         assertThat(books.get(0).getTitle(), equalTo(book.getTitle()));
@@ -151,11 +131,7 @@ public class BookRepositoryTest {
     public void shouldFindBookByAuthorFirstNameAndLastName() {
         String firstName = "William";
         String lastName = "Shakespeare";
-        Optional<List<Book>> foundBooks = bookRepository.findByCreditsAuthorFirstNameAndCreditsAuthorLastName(firstName, lastName);
-
-        assertTrue(foundBooks.isPresent());
-
-        List<Book> books = foundBooks.get();
+        List<Book> books  = bookRepository.findByCreditsAuthorFirstNameAndCreditsAuthorLastName(firstName, lastName);
 
         assertThat(books.size(), equalTo(1));
         assertThat(books.get(0).getTitle(), equalTo(book.getTitle()));
