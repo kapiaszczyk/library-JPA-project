@@ -76,4 +76,14 @@ public class City {
     public void getCityName(String cracow) {
         this.cityName = cracow;
     }
+
+    public void addCityCode(CityCode cityCode) {
+        cityCodes.add(cityCode);
+        cityCode.setCity(this);
+    }
+
+    public void removeCityCode(CityCode cityCode) {
+        cityCodes.remove(cityCode);
+        cityCode.setCity(null);
+    }
 }
