@@ -51,9 +51,9 @@ public class LibraryUserRepositoryTest {
     }
 
     @Test
-    public void shouldFindBylastName() {
+    public void shouldFindByLastName() {
 
-        List<LibraryUser> foundLibraryUsers = libraryUserRepository.findBylastName(libraryUser.getLastName());
+        List<LibraryUser> foundLibraryUsers = libraryUserRepository.findByLastName(libraryUser.getLastName());
 
         assertNotNull(foundLibraryUsers.get(0).getId());
         assertThat(foundLibraryUsers.get(0).getLastName(), equalTo(libraryUser.getLastName()));
