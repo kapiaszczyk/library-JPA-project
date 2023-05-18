@@ -23,7 +23,7 @@ public class City {
     private List<Address> addresses = new ArrayList<>();
 
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<CityCode> cityCodes = new ArrayList<>();
+    private List<CityCode> codes = new ArrayList<>();
 
 
     public City() {
@@ -41,19 +41,19 @@ public class City {
         return name;
     }
 
-    public City(String name, List<CityCode> cityCodes, List<Address> addresses) {
+    public City(String name, List<CityCode> codes, List<Address> addresses) {
         this.name = name;
-        this.cityCodes = cityCodes;
+        this.codes = codes;
         this.addresses = addresses;
     }
 
 
     public List<CityCode> getCityCode() {
-        return cityCodes;
+        return codes;
     }
 
     public void setCityCode(List<CityCode> cityCodes) {
-        this.cityCodes = cityCodes;
+        this.codes = cityCodes;
     }
 
     public List<Address> getAddresses() {
@@ -78,12 +78,12 @@ public class City {
     }
 
     public void addCityCode(CityCode cityCode) {
-        cityCodes.add(cityCode);
+        codes.add(cityCode);
         cityCode.setCity(this);
     }
 
     public void removeCityCode(CityCode cityCode) {
-        cityCodes.remove(cityCode);
+        codes.remove(cityCode);
         cityCode.setCity(null);
     }
 }
