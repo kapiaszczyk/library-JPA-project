@@ -12,9 +12,9 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     Optional<List<Book>> findByBookTitle(String bookTitle);
     Optional<List<Book>> findByBookTitleContaining(String bookTitle);
     Optional<List<Book>> findByIsbnIsbnNumber(String isbnNumber);
-    Optional<List<Book>> findByCreditsAuthorAuthorName(String authorName);
+    Optional<List<Book>> findByCreditsAuthorFirstName(String firstName);
     Optional<List<Book>> findByCreditsAuthorAuthorSurname(String authorSurname);
-    Optional<List<Book>> findByCreditsAuthorAuthorNameAndCreditsAuthorAuthorSurname(String authorName, String authorSurname);
+    Optional<List<Book>> findByCreditsAuthorFirstNameAndCreditsAuthorAuthorSurname(String firstName, String authorSurname);
     List<Book> findAllByCategoryCategoryNameLike(String categoryName);
 
 }

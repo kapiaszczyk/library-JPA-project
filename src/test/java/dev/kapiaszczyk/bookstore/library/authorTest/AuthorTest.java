@@ -30,7 +30,7 @@ public class AuthorTest {
     @BeforeEach
     public void setUp() {
         author = new Author();
-        author.setAuthorName("Test name");
+        author.setFirstName("Test name");
         author.setAuthorSurname("Test surname");
         authorRepository.save(author);
     }
@@ -45,12 +45,12 @@ public class AuthorTest {
     public void authorCanBeUpdated() {
         Author savedAuthor = authorRepository.findById(author.getId()).get();
 
-        savedAuthor.setAuthorName("Updated name");
+        savedAuthor.setFirstName("Updated name");
         savedAuthor.setAuthorSurname("Updated surname");
         authorRepository.save(savedAuthor);
 
         Author updatedAuthor = authorRepository.findById(savedAuthor.getId()).get();
-        assertThat(updatedAuthor.getAuthorName(), equalTo(savedAuthor.getAuthorName()));
+        assertThat(updatedAuthor.getFirstName(), equalTo(savedAuthor.getFirstName()));
         assertThat(updatedAuthor.getAuthorSurname(), equalTo(savedAuthor.getAuthorSurname()));
     }
 
