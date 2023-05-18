@@ -46,27 +46,27 @@ public class ISBNTest {
 
     @Test
     public void isbnCanBeAdded() {
-        ISBN savedISBN = isbnRepository.findById(isbn.getIsbnId()).get();
+        ISBN savedISBN = isbnRepository.findById(isbn.getId()).get();
 
-        assertNotNull(savedISBN.getIsbnId());
+        assertNotNull(savedISBN.getId());
         assertThat(savedISBN.getIsbnNumber(), equalTo(isbn.getIsbnNumber()));
     }
 
     @Test
     public void isbnCanBeUpdated() {
-        ISBN savedISBN = isbnRepository.findById(isbn.getIsbnId()).get();
+        ISBN savedISBN = isbnRepository.findById(isbn.getId()).get();
 
         savedISBN.setIsbnNumber("987654321L");
         isbnRepository.save(savedISBN);
 
-        ISBN updatedISBN = isbnRepository.findById(savedISBN.getIsbnId()).get();
+        ISBN updatedISBN = isbnRepository.findById(savedISBN.getId()).get();
 
         assertThat(updatedISBN.getIsbnNumber(), equalTo(savedISBN.getIsbnNumber()));
     }
 
     @Test
     public void isbnCanBeDeleted() {
-        ISBN savedISBN = isbnRepository.findById(isbn.getIsbnId()).get();
+        ISBN savedISBN = isbnRepository.findById(isbn.getId()).get();
 
         book.removeIsbn();
         isbnRepository.delete(savedISBN);

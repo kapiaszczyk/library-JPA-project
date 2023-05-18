@@ -9,7 +9,7 @@ public class ISBN {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "isbn_id")
-    private Long isbnId;
+    private Long id;
 
 
     // Association with book
@@ -27,8 +27,8 @@ public class ISBN {
         this.isbnNumber = isbnNumber;
     }
 
-    public Long getIsbnId() {
-        return isbnId;
+    public Long getId() {
+        return id;
     }
 
     public String getIsbnNumber() {
