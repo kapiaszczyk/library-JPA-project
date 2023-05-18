@@ -8,8 +8,8 @@ import java.util.List;
 @Repository
 public interface LoanRepository extends JpaRepository<Loan, Long> {
 
-    List<Loan> findByAccountAccountNumber(String accountNumber);
+    List<Loan> findByAccountNumber(String accountNumber);
 
-    List<Loan> findByAccountAccountNumberAndLoanStatus(String accountNumber, String loanStatus);
+    List<Loan> findByAccountNumberAndLoanStatus(String accountNumber, String loanStatus);
 
 }

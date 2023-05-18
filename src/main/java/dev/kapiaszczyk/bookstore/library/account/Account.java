@@ -17,7 +17,7 @@ public class Account {
     private Long id;
 
     @Column(name = "account_number", unique = true, nullable = false)
-    private String accountNumber;
+    private String number;
 
     @OneToOne
     @MapsId
@@ -39,12 +39,12 @@ public class Account {
         return id;
     }
 
-    public String getAccountNumber() {
-        return accountNumber;
+    public String getNumber() {
+        return number;
     }
 
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public LibraryUser getLibraryUser() {
@@ -75,7 +75,7 @@ public class Account {
     public String toString() {
         return "Account{" +
                 "id=" + id +
-                ", accountNumber='" + accountNumber + '\'' +
+                ", number='" + number + '\'' +
                 ", libraryUserId=" + libraryUser.getLibraryUserId() +
                 ", loans=" + loans +
                 '}';

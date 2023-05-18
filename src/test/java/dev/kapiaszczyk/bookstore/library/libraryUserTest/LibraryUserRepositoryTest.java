@@ -41,7 +41,7 @@ public class LibraryUserRepositoryTest {
         libraryUser.setLibraryUserSurname("Smith");
 
         account = new Account();
-        account.setAccountNumber("1234567890");
+        account.setNumber("1234567890");
 
         libraryUser.setAccount(account);
         account.setLibraryUser(libraryUser);

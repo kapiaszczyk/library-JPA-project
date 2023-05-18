@@ -35,7 +35,7 @@ public class AccountRepositoryTest {
     @BeforeEach
     public void setUp() {
         account = new Account();
-        account.setAccountNumber("123456789");
+        account.setNumber("123456789");
 
         libraryUser = new LibraryUser();
         libraryUser.setLibraryUserFirstName("John");
@@ -56,7 +56,7 @@ public class AccountRepositoryTest {
 
         // Check if account can be found by libraryUserId
         assertNotNull(savedAccount.getId());
-        assertThat(savedAccount.getAccountNumber(), equalTo(account.getAccountNumber()));
+        assertThat(savedAccount.getNumber(), equalTo(account.getNumber()));
         assertThat(savedAccount.getLibraryUser().getLibraryUserId(), equalTo(libraryUser.getLibraryUserId()));
     }
 

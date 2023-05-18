@@ -36,7 +36,7 @@ public class AccountTest {
     @BeforeEach
     public void setUp() {
         account = new Account();
-        account.setAccountNumber("123456789");
+        account.setNumber("123456789");
 
         libraryUser = new LibraryUser();
         libraryUser.setLibraryUserFirstName("John");
@@ -59,7 +59,7 @@ public class AccountTest {
         // Check if account was added
         assertNotNull(savedAccount.getId());
         assertThat(savedAccount.getId(), equalTo(account.getId()));
-        assertThat(savedAccount.getAccountNumber(), equalTo(account.getAccountNumber()));
+        assertThat(savedAccount.getNumber(), equalTo(account.getNumber()));
         assertThat(savedAccount.getLibraryUser().getLibraryUserFirstName(), equalTo("John"));
         assertThat(savedAccount.getLibraryUser().getLibraryUserSurname(), equalTo("Doe"));
 
@@ -71,7 +71,7 @@ public class AccountTest {
         // Update account
         System.out.println(account.getId());
         Account savedAccount = accountRepository.findById(account.getId()).get();
-        savedAccount.setAccountNumber("987654321");
+        savedAccount.setNumber("987654321");
 
         LibraryUser savedLibraryUser = savedAccount.getLibraryUser();
         savedLibraryUser.setLibraryUserFirstName("Jane");
@@ -84,7 +84,7 @@ public class AccountTest {
         // Check if account was updated
         Account updatedAccount = accountRepository.findById(savedAccount.getId()).get();
         assertThat(updatedAccount.getId(), equalTo(savedAccount.getId()));
-        assertThat(updatedAccount.getAccountNumber(), equalTo(savedAccount.getAccountNumber()));
+        assertThat(updatedAccount.getNumber(), equalTo(savedAccount.getNumber()));
         assertThat(updatedAccount.getLibraryUser().getLibraryUserFirstName(), equalTo("Jane"));
         assertThat(updatedAccount.getLibraryUser().getLibraryUserSurname(), equalTo("Smith"));
 
