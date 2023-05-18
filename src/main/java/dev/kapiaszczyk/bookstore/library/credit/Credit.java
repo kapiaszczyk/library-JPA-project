@@ -11,7 +11,7 @@ public class Credit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "credit_id")
-    private Long creditId;
+    private Long id;
 
     // Relation with book
     @ManyToOne(fetch = FetchType.LAZY)
@@ -29,8 +29,8 @@ public class Credit {
         this.author = author;
     }
 
-    public Long getCreditId() {
-        return creditId;
+    public Long getId() {
+        return id;
     }
 
     public Book getBook() {

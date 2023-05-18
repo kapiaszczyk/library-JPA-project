@@ -46,7 +46,7 @@ public class CreditTest {
     public void creditCanBeAdded() {
         Credit savedCredit = creditRepository.save(credit);
 
-        assertNotNull(savedCredit.getCreditId());
+        assertNotNull(savedCredit.getId());
         assertThat(savedCredit.getAuthor().getFirstName(), equalTo("John"));
         assertThat(savedCredit.getAuthor().getLastName(), equalTo("Doe"));
 
@@ -60,7 +60,7 @@ public class CreditTest {
         savedCredit.getAuthor().setLastName("Smith");
         creditRepository.save(savedCredit);
 
-        Credit updatedCredit = creditRepository.findById(savedCredit.getCreditId()).get();
+        Credit updatedCredit = creditRepository.findById(savedCredit.getId()).get();
 
         assertThat(updatedCredit.getAuthor().getFirstName(), equalTo("Jane"));
         assertThat(updatedCredit.getAuthor().getLastName(), equalTo("Smith"));
