@@ -48,4 +48,11 @@ public class AuthorRepositoryTest {
         author.setAuthorSurname("Shakespeare");
         authorRepository.save(author);
     }
+
+    @Test
+    public void authorCanBeFoundByName() {
+        List<Author> authors = authorRepository.findByAuthorName(author.getAuthorName()).get();
+        assertThat(authors.size(), equalTo(1));
+    }
+
 }
