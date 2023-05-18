@@ -32,7 +32,7 @@ public class LibraryUserTest {
     @BeforeEach
     public void setUp() {
         libraryUser = new LibraryUser();
-        libraryUser.setLibraryUserFirstName("John");
+        libraryUser.setFirstName("John");
         libraryUser.setLibraryUserSurname("Doe");
 
         account = new Account();
@@ -48,7 +48,7 @@ public class LibraryUserTest {
         LibraryUser savedLibraryUser = libraryUserRepository.findById(libraryUser.getId()).get();
 
         assertNotNull(savedLibraryUser.getId());
-        assertThat(savedLibraryUser.getLibraryUserFirstName(), equalTo(libraryUser.getLibraryUserFirstName()));
+        assertThat(savedLibraryUser.getFirstName(), equalTo(libraryUser.getFirstName()));
         assertThat(savedLibraryUser.getLibraryUserSurname(), equalTo(libraryUser.getLibraryUserSurname()));
         assertThat(savedLibraryUser.getAccount().getNumber(), equalTo(libraryUser.getAccount().getNumber()));
 
@@ -58,14 +58,14 @@ public class LibraryUserTest {
     public void libraryUserCanBeUpdated() {
         LibraryUser savedLibraryUser = libraryUserRepository.findById(libraryUser.getId()).get();
 
-        savedLibraryUser.setLibraryUserFirstName("Jane");
+        savedLibraryUser.setFirstName("Jane");
         savedLibraryUser.setLibraryUserSurname("Smith");
 
         libraryUserRepository.save(savedLibraryUser);
 
         LibraryUser updatedLibraryUser = libraryUserRepository.findById(savedLibraryUser.getId()).get();
 
-        assertThat(updatedLibraryUser.getLibraryUserFirstName(), equalTo(savedLibraryUser.getLibraryUserFirstName()));
+        assertThat(updatedLibraryUser.getFirstName(), equalTo(savedLibraryUser.getFirstName()));
         assertThat(updatedLibraryUser.getLibraryUserSurname(), equalTo(savedLibraryUser.getLibraryUserSurname()));
     }
 

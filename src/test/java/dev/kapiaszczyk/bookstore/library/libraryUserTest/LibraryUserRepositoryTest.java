@@ -37,7 +37,7 @@ public class LibraryUserRepositoryTest {
     @BeforeEach
     public void setUp() {
         libraryUser = new LibraryUser();
-        libraryUser.setLibraryUserFirstName("John");
+        libraryUser.setFirstName("John");
         libraryUser.setLibraryUserSurname("Smith");
 
         account = new Account();

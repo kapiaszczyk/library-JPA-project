@@ -45,7 +45,7 @@ public class LoanRepositoryTest {
     @BeforeEach
     public void setUp() {
         libraryUser = new LibraryUser();
-        libraryUser.setLibraryUserFirstName("John");
+        libraryUser.setFirstName("John");
         libraryUser.setLibraryUserSurname("Doe");
 
         account = new Account();
