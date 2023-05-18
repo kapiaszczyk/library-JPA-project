@@ -35,32 +35,32 @@ public class CategoryTest {
     @BeforeEach
     public void setUp() {
         category = new Category();
-        category.setCategoryName("Fantasy");
+        category.setName("Fantasy");
         categoryRepository.save(category);
     }
 
     @Test
     public void categoryCanBeAdded() {
-        Category savedCategory = categoryRepository.findById(category.getCategoryId()).get();
+        Category savedCategory = categoryRepository.findById(category.getId()).get();
 
-        assertNotNull(savedCategory.getCategoryId());
-        assertThat(savedCategory.getCategoryName(), equalTo(category.getCategoryName()));
+        assertNotNull(savedCategory.getId());
+        assertThat(savedCategory.getName(), equalTo(category.getName()));
     }
 
     @Test
     public void categoryCanBeUpdated() {
-        Category savedCategory = categoryRepository.findById(category.getCategoryId()).get();
-        savedCategory.setCategoryName("Romance");
+        Category savedCategory = categoryRepository.findById(category.getId()).get();
+        savedCategory.setName("Romance");
         categoryRepository.save(savedCategory);
 
-        Category updatedCategory = categoryRepository.findById(savedCategory.getCategoryId()).get();
+        Category updatedCategory = categoryRepository.findById(savedCategory.getId()).get();
 
-        assertThat(updatedCategory.getCategoryName(), equalTo(savedCategory.getCategoryName()));
+        assertThat(updatedCategory.getName(), equalTo(savedCategory.getName()));
     }
 
     @Test
     public void categoryCanBeDeleted() {
-        Category savedCategory = categoryRepository.findById(category.getCategoryId()).get();
+        Category savedCategory = categoryRepository.findById(category.getId()).get();
 
         categoryRepository.delete(savedCategory);
 
@@ -75,7 +75,7 @@ public class CategoryTest {
 
         bookRepository.save(book);
 
-        Category savedCategory = categoryRepository.findById(category.getCategoryId()).get();
+        Category savedCategory = categoryRepository.findById(category.getId()).get();
 
         categoryRepository.delete(savedCategory);
         assertEquals(0, categoryRepository.count());

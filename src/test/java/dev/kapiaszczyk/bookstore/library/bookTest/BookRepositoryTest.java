@@ -162,15 +162,15 @@ public class BookRepositoryTest {
     }
 
     @Test
-    public void shouldFindAllBooksWithCategoryNameLike() {
+    public void shouldFindAllBooksWithNameLike() {
         Category category = new Category();
-        category.setCategoryName("Fantasy");
+        category.setName("Fantasy");
         book.setCategory(category);
 
         categoryRepository.save(category);
         bookRepository.save(book);
 
-        List<Book> books = bookRepository.findAllByCategoryCategoryNameLike("Fantasy");
+        List<Book> books = bookRepository.findAllByCategoryNameLike("Fantasy");
 
         assertThat(books.size(), equalTo(1));
         assertThat(books.get(0).getTitle(), equalTo(book.getTitle()));

@@ -32,19 +32,19 @@ public class CategoryRepositoryTest {
     @BeforeEach
     public void setUp() {
         category = new Category();
-        category.setCategoryName("Fantasy");
+        category.setName("Fantasy");
         categoryRepository.save(category);
     }
 
     @Test
     public void shouldFindCategoryByName() {
-        Optional<Category> optionalCategory = categoryRepository.findByCategoryName(category.getCategoryName());
+        Optional<Category> optionalCategory = categoryRepository.findByName(category.getName());
 
         assertTrue(optionalCategory.isPresent());
         Category foundCategory = optionalCategory.get();
 
         assertNotNull(foundCategory);
-        assertThat(foundCategory.getCategoryName(), equalTo(category.getCategoryName()));
+        assertThat(foundCategory.getName(), equalTo(category.getName()));
     }
 
 }
