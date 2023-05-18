@@ -36,9 +36,9 @@ public class InventoryTest {
 
     @Test
     public void inventoryCanBeAdded() {
-        Inventory savedInventory = inventoryRepository.findById(inventory.getInventoryId()).get();
+        Inventory savedInventory = inventoryRepository.findById(inventory.getId()).get();
 
-        assertNotNull(savedInventory.getInventoryId());
+        assertNotNull(savedInventory.getId());
     }
 
     @Test
@@ -53,15 +53,15 @@ public class InventoryTest {
 
         inventoryRepository.save(inventory);
 
-        Inventory savedInventory = inventoryRepository.findById(inventory.getInventoryId()).get();
+        Inventory savedInventory = inventoryRepository.findById(inventory.getId()).get();
 
-        assertNotNull(savedInventory.getInventoryId());
+        assertNotNull(savedInventory.getId());
         assertThat(savedInventory.getLibrary().getLibraryName(), equalTo(library.getLibraryName()));
     }
 
     @Test
     public void inventoryCanBeDeleted() {
-        Inventory savedInventory = inventoryRepository.findById(inventory.getInventoryId()).orElse(null);
+        Inventory savedInventory = inventoryRepository.findById(inventory.getId()).orElse(null);
         inventoryRepository.delete(savedInventory);
 
         assertEquals(0, inventoryRepository.count());

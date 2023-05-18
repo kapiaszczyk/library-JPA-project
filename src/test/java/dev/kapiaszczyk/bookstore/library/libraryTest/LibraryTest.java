@@ -47,7 +47,7 @@ public class LibraryTest {
 
         assertNotNull(savedLibrary.getLibraryId());
         assertThat(savedLibrary.getLibraryName(), equalTo(library.getLibraryName()));
-        assertThat(savedLibrary.getInventory().getInventoryId(), equalTo(inventory.getInventoryId()));
+        assertThat(savedLibrary.getInventory().getId(), equalTo(inventory.getId()));
 
     }
 

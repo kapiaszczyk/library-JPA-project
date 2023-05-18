@@ -14,7 +14,7 @@ public class Inventory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "inventory_id")
-    private Long inventoryId;
+    private Long id;
 
     // Association with books
     @OneToMany(mappedBy = "inventory", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -32,8 +32,8 @@ public class Inventory {
         this.library = library;
     }
 
-    public Long getInventoryId() {
-        return inventoryId;
+    public Long getId() {
+        return id;
     }
 
     public List<Book> getBooks() {

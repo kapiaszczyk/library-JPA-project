@@ -48,7 +48,7 @@ public class InventoryRepositoryTest {
     public void shouldFindByLibraryName() {
         Inventory savedInventory = inventoryRepository.findByLibraryLibraryName(library.getLibraryName());
 
-        assertNotNull(savedInventory.getInventoryId());
+        assertNotNull(savedInventory.getId());
         assertThat(savedInventory.getLibrary().getLibraryName(), equalTo(library.getLibraryName()));
     }
 
