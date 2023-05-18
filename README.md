@@ -17,12 +17,16 @@ The original database was designed using Oracle Data Modeler and was supposed to
 #### Database Schema
 Can be found in the repo [here](https://github.com/kapiaszczyk/library-JPA-project/blob/main/readme_files/Relational_1.png).
 
-
-#### Some more interesting queries
+### Some more interesting queries
 * `findByCreditsBookTitle(String title)` - returns authors credited for books with a given title
 * `findByCreditsAuthorLastName(String lastName)` - returns books with authors with a given last name
 * `findByAccountNumberAndLoanStatus(Long accountNumber, String loanStatus)` - returns books loaned by a given account with a given loan status
 * and more CRUD operations such as find books by title, category, author, etc.
+
+### Running the application
+To run the application, you need to have Java and Maven installed. You can run the application using the command `mvn spring-boot:run`. The application will run on port 8080. You can access the H2 console at `localhost:8080/h2-console`. The database is populated with data using the `data.sql` file. The database is created in memory and is destroyed when the application is stopped.
+
+For the application to run properly, set the active profile to `prod` in the `application.properties` file. The `test` profile is used for testing purposes.
 
 <!-- STACK -->
 ### Built With
