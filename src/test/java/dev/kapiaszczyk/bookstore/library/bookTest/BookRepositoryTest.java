@@ -176,5 +176,18 @@ public class BookRepositoryTest {
         assertThat(books.get(0).getTitle(), equalTo(book.getTitle()));
     }
 
+    @Test
+    public void shouldFindAllAndSortByTitle() {
+        Book bookLast = new Book();
+        bookLast.setTitle("Weathering Heights");
+        bookRepository.save(bookLast);
+
+        List<Book> books = bookRepository.findAllByOrderByTitleAsc();
+
+        assertThat(books.size(), equalTo(2));
+        assertThat(books.get(0).getTitle(), equalTo(book.getTitle()));
+        assertThat(books.get(1).getTitle(), equalTo(bookLast.getTitle()));
+    }
+
 
 }
