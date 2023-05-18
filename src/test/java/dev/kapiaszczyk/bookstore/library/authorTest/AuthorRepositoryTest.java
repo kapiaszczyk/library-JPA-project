@@ -61,5 +61,11 @@ public class AuthorRepositoryTest {
         assertThat(authors.size(), equalTo(1));
     }
 
+    @Test
+    public void shouldFindAuthorByAuthorNameAndAuthorSurname() {
+        List<Author> authors = authorRepository.findByAuthorNameAndAuthorSurname(author.getAuthorName(), author.getAuthorSurname()).get();
+        assertThat(authors.size(), equalTo(1));
+    }
+
 
 }
