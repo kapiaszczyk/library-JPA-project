@@ -23,7 +23,7 @@ public class Book {
     private String title;
 
     // Association with category
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
 
     // Association with isbn
@@ -31,7 +31,7 @@ public class Book {
     private ISBN isbn;
 
     // Association with inventory
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "inventory_id")
     private Inventory inventory;
 

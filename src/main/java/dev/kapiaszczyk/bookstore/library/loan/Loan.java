@@ -14,7 +14,7 @@ public class Loan {
     private Long loanId;
 
     // Association with Account
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id")
     private Account account;
 
