@@ -59,6 +59,7 @@ public class LoanRepositoryTest {
         book.setBookTitle("Book Title");
 
         loan = new Loan();
+        loan.setLoanStatus("active");
         loan.setAccount(account);
         account.addLoan(loan);
         loan.setBook(book);
@@ -71,6 +72,15 @@ public class LoanRepositoryTest {
     public void shouldFindLoanByAccountAccountNumber() {
 
         List<Loan> foundLoans = loanRepository.findByAccountAccountNumber(account.getAccountNumber());
+
+        assertNotNull(foundLoans);
+        assertThat(foundLoans.size(), equalTo(1));
+        assertThat(foundLoans.get(0).getBook().getBookTitle(), equalTo(book.getBookTitle()));
+    }
+
+    @Test
+    public void shouldFindLoanByAccountNumberAndLoanStatus() {
+        List <Loan> foundLoans = loanRepository.findByAccountAccountNumberAndLoanStatus(account.getAccountNumber(), loan.getLoanStatus());
 
         assertNotNull(foundLoans);
         assertThat(foundLoans.size(), equalTo(1));
