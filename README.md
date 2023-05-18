@@ -1,5 +1,5 @@
 <!-- Introduction -->
-<h3 >library-JPA-project</h3>
+<h3>library-managment-app</h3>
 
 Simple application for managing a library database.
 
