@@ -115,4 +115,18 @@ public class BookRepositoryTest {
         assertThat(books.get(0).getBookTitle(), equalTo(book.getBookTitle()));
     }
 
+    @Test
+    public void shouldFindBookByAuthorName() {
+        String authorName = "William";
+        Optional<List<Book>> foundBooks = bookRepository.findByCreditsAuthorAuthorName(authorName);
+
+        assertTrue(foundBooks.isPresent());
+
+        List<Book> books = foundBooks.get();
+
+        assertThat(books.size(), equalTo(1));
+        assertThat(books.get(0).getBookTitle(), equalTo(book.getBookTitle()));
+
+    }
+
 }
