@@ -1,5 +1,7 @@
-package dev.kapiaszczyk.bookstore.library.cityCode;
+package dev.kapiaszczyk.bookstore.library.cityCodeTest;
 
+import dev.kapiaszczyk.bookstore.library.cityCode.CityCode;
+import dev.kapiaszczyk.bookstore.library.cityCode.CityCodeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
