@@ -34,19 +34,19 @@ public class CityCodeTest {
 
     @Test
     public void cityCodeCanBeAdded() {
-        CityCode savedCityCode = cityRepository.findById(cityCode.getCityCodeId()).get();
+        CityCode savedCityCode = cityRepository.findById(cityCode.getId()).get();
         assertNotNull(savedCityCode);
     }
 
     @Test
     public void cityCodeCanBeUpdated() {
-        CityCode savedCityCode = cityRepository.findById(cityCode.getCityCodeId()).get();
+        CityCode savedCityCode = cityRepository.findById(cityCode.getId()).get();
         cityCode.setCityCode("11-111");
         cityRepository.save(cityCode);
 
-        CityCode updatedCityCode = cityRepository.findById(cityCode.getCityCodeId()).get();
+        CityCode updatedCityCode = cityRepository.findById(cityCode.getId()).get();
         assertNotNull(updatedCityCode);
-        assertThat(savedCityCode.getCityCodeId(), equalTo(updatedCityCode.getCityCodeId()));
+        assertThat(savedCityCode.getId(), equalTo(updatedCityCode.getId()));
     }
 
     @Test

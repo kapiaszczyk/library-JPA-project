@@ -11,7 +11,7 @@ public class CityCode {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "city_code_id")
-    private Long cityCodeId;
+    private Long id;
 
     @Column
     private String cityCode;
@@ -29,8 +29,8 @@ public class CityCode {
         this.cityCode = cityCode;
     }
 
-    public Long getCityCodeId() {
-        return cityCodeId;
+    public Long getId() {
+        return id;
     }
 
     public City getCity() {
