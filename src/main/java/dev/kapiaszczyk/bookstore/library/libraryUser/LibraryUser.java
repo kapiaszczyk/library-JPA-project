@@ -13,10 +13,10 @@ public class LibraryUser {
     @Column(name = "library_user_id")
     private Long id;
 
-    @Column(name = "library_user_name", unique = false, nullable = false, length = 100)
+    @Column(name = "library_user_name", nullable = false, length = 100)
     private String firstName;
 
-    @Column(name = "library_user_surname", unique = false, nullable = false, length = 100)
+    @Column(name = "library_user_surname", nullable = false, length = 100)
     private String lastName;
 
     @OneToOne(mappedBy = "libraryUser", cascade = CascadeType.ALL, orphanRemoval = true)
