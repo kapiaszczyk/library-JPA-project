@@ -37,8 +37,8 @@ public class CategoryRepositoryTest {
     }
 
     @Test
-    public void shouldFindCategoryByName() {
-        Optional<Category> optionalCategory = categoryRepository.findByName(category.getName());
+    public void shouldFindCategoryByNameIgnoreCase() {
+        Optional<Category> optionalCategory = categoryRepository.findByNameIgnoreCase(category.getName().toLowerCase());
 
         assertTrue(optionalCategory.isPresent());
         Category foundCategory = optionalCategory.get();
