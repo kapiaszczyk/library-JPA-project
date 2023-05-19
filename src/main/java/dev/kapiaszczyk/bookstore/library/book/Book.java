@@ -1,5 +1,6 @@
 package dev.kapiaszczyk.bookstore.library.book;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import dev.kapiaszczyk.bookstore.library.category.Category;
 import dev.kapiaszczyk.bookstore.library.credit.Credit;
 import dev.kapiaszczyk.bookstore.library.inventory.Inventory;
@@ -25,6 +26,7 @@ public class Book {
     // Association with category
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
+    @JsonManagedReference
     private Category category;
 
     // Association with isbn
