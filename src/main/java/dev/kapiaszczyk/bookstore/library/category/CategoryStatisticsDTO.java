@@ -2,20 +2,20 @@ package dev.kapiaszczyk.bookstore.library.category;
 
 public class CategoryStatisticsDTO {
     private Long id;
-    private String categoryName;
+    private String name;
     private Long bookCount;
 
-    public CategoryStatisticsDTO(String categoryName, Long bookCount) {
-        this.categoryName = categoryName;
+    public CategoryStatisticsDTO(String name, Long bookCount) {
+        this.name = name;
         this.bookCount = bookCount;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public String getName() {
+        return name;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Long getBookCount() {
