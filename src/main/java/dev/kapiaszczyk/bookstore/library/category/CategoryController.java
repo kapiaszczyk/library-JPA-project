@@ -12,6 +12,11 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    @GetMapping("/all")
+    public ResponseEntity<Iterable<Category>> getAllCategories() {
+        return new ResponseEntity<>(categoryService.findAll(), HttpStatus.OK);
+    }
+
     @GetMapping("/find_by_name/{categoryName}")
     public ResponseEntity<Category> getCategoryByName(@PathVariable String categoryName) {
         return new ResponseEntity<>(categoryService.findByNameIgnoreCase(categoryName).orElse(null), HttpStatus.OK);
