@@ -21,6 +21,7 @@ public class Loan {
     // Association with Book
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
+    @JoinColumn(name = "book_id", referencedColumnName = "book_id")
     private Book book;
 
     @Column(name = "loan_status")

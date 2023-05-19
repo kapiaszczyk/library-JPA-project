@@ -15,10 +15,12 @@ public class Credit {
 
     // Relation with book
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "book_id")
     private Book book;
 
     // Relation with author
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author_id")
     private Author author;
 
     public Credit() {

@@ -18,7 +18,7 @@ public class Address {
 
     // Association with City
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "city_id")
+    @JoinColumn(name = "city_id", referencedColumnName = "city_id")
     private City city;
 
     @OneToOne
