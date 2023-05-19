@@ -1,5 +1,6 @@
 package dev.kapiaszczyk.bookstore.library.category;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import dev.kapiaszczyk.bookstore.library.book.Book;
 import jakarta.persistence.*;
 
@@ -20,6 +21,7 @@ public class Category {
 
     // Association with book
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
     private List<Book> books = new ArrayList<>();
 
     public Category() {
