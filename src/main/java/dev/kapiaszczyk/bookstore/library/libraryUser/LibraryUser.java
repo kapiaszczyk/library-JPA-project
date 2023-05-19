@@ -13,18 +13,16 @@ public class LibraryUser {
     @Column(name = "library_user_id")
     private Long id;
 
-    @Column(name = "library_user_name", nullable = false, length = 100)
+    @Column(name = "library_user_first_name", nullable = false, length = 100)
     private String firstName;
 
-    @Column(name = "library_user_surname", nullable = false, length = 100)
+    @Column(name = "library_user_last_name", nullable = false, length = 100)
     private String lastName;
 
     @OneToOne(mappedBy = "libraryUser", cascade = CascadeType.ALL, orphanRemoval = true)
-    @PrimaryKeyJoinColumn
     private Account account;
 
     @OneToOne(mappedBy = "libraryUser", cascade = CascadeType.ALL, orphanRemoval = true)
-    @PrimaryKeyJoinColumn
     private Address address;
 
     public LibraryUser() {

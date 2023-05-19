@@ -24,6 +24,7 @@ public class Book {
 
     // Association with category
     @ManyToOne
+    @JoinColumn(name = "category_id")
     private Category category;
 
     // Association with isbn

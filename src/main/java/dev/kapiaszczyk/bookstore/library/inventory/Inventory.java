@@ -22,6 +22,7 @@ public class Inventory {
 
     // Association with library
     @OneToOne
+    @JoinColumn(name = "library_id")
     private Library library;
 
     public Inventory() {

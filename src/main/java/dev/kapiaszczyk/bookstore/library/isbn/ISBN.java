@@ -13,7 +13,8 @@ public class ISBN {
 
 
     // Association with book
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "book_id", referencedColumnName = "book_id")
     @MapsId
     private Book book;
 
