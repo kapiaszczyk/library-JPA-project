@@ -1,5 +1,5 @@
 <!-- Introduction -->
-<h3>library-managment-app</h3>
+<h3>library-management-app</h3>
 
 Simple application for managing a library database.
 
@@ -15,7 +15,13 @@ The original database was designed using Oracle Data Modeler and was supposed to
 
 <!-- DB SCHEMA -->
 #### Database Schema
-Can be found in the repo [here](https://github.com/kapiaszczyk/library-JPA-project/blob/main/readme_files/Relational_1.png).
+Can be found in the repo [here](https://github.com/kapiaszczyk/library-JPA-project/blob/main/readme_files/Relational_1.png). 
+
+#### Example SQL queries
+Example queries to test the database can be found [here](https://github.com/kapiaszczyk/library-management-app/blob/main/readme_files/example_queries.sql).
+
+#### Sample data - `data.sql`
+Sample data that is used to populate the database for tests can be found [here](https://github.com/kapiaszczyk/library-management-app/blob/main/src/main/resources/data.sql).
 
 ### Some more interesting queries
 * `findByCreditsBookTitle(String title)` - returns authors credited for books with a given title
@@ -42,10 +48,21 @@ For the application to run properly, set the active profile to `prod` in the `ap
 
 <!-- To-do -->
 ### To-do
-
 - [ ] Implement the REST API and test it using Postman
-- [ ] Optimize associations between entities
+- [ ] Write test cases in postman
+- [ ] Consider implementing DTOs
+- [x] Optimize associations between entities
 - [ ] Fully document the project
+
+### REST API 
+I am in the process of implementing the endpoints. Some example endpoints that I will implement include:
+- [x] GET list of books with fields title, isbn and authors
+- [ ] GET list of books with a given title and in given library
+- [ ] GET list of books written by given author
+- [ ] GET list of books that are loaned
+- [ ] GET list of books that are not loaned
+
+I also want to add "internal" endpoints, that will serve GET, POST and DELETE requests to do with adding books, accounts etc. that will require some sort of authentication to access.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [Java]: https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white
