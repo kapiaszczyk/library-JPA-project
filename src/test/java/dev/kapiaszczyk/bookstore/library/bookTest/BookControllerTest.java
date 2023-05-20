@@ -2,6 +2,7 @@ package dev.kapiaszczyk.bookstore.library.bookTest;
 
 import dev.kapiaszczyk.bookstore.library.author.Author;
 import dev.kapiaszczyk.bookstore.library.book.*;
+import dev.kapiaszczyk.bookstore.library.credit.Credit;
 import dev.kapiaszczyk.bookstore.library.inventory.Inventory;
 import dev.kapiaszczyk.bookstore.library.library.Library;
 import org.junit.jupiter.api.Test;
@@ -72,8 +73,8 @@ public class BookControllerTest {
             }
 
             @Override
-            public List<String> getAuthors() {
-                return Arrays.asList("John Doe", "Jane Doe");
+            public List<Author> getAuthors() {
+                return Arrays.asList(new Author("John", "Doe"), new Author("Jane", "Doe"));
             }
         }
 
@@ -135,5 +136,53 @@ public class BookControllerTest {
 
         // Verify service method was called
         Mockito.verify(bookService, Mockito.times(1)).getBooksByTitleAndInventoryLibraryName(book.getTitle(), library.getName());
+    }
+
+    @Test
+    public void shouldGetBooksByAuthorNameAndSurname() throws Exception {
+        // Prepare test data
+        List<BookDTO> bookList = new ArrayList<>();
+        Book book = new Book();
+        book.setTitle("Test");
+
+        Author author = new Author();
+        author.setFirstName("John");
+        author.setLastName("Doe");
+
+        Author author2 = new Author();
+        author2.setFirstName("Jane");
+        author2.setLastName("Doe");
+
+        Credit credit = new Credit();
+        credit.setAuthor(author);
+        author.addCredit(credit);
+
+        Credit credit2 = new Credit();
+        credit2.setAuthor(author2);
+        author2.addCredit(credit2);
+
+        book.addCredit(credit);
+        book.addCredit(credit2);
+        credit.setBook(book);
+        credit2.setBook(book);
+
+        BookDTO bookDTO = BookMapper.INSTANCE.mapToDTO(book);
+        bookList.add(bookDTO);
+
+        // Mock service
+        Mockito.when(bookService.findAll()).thenReturn(bookList);
+
+        // [{"id":null,"title":"Test","categoryId":null,"isbnId":null,"inventoryId":null,"credits":[{"id":null,"author":{"id":null,"firstName":"John","lastName":"Doe"}}],"loanId":null}]
+        // Perform GET request
+        mockMvc.perform(MockMvcRequestBuilders.get("/books/all"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].title").value(book.getTitle()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].credits[0].author.firstName").value(author.getFirstName()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].credits[0].author.lastName").value(author.getLastName()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].credits[1].author.firstName").value(author2.getFirstName()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].credits[1].author.lastName").value(author2.getLastName()));
+
+        // Verify service method was called
+        Mockito.verify(bookService, Mockito.times(1)).findAll();
     }
 }

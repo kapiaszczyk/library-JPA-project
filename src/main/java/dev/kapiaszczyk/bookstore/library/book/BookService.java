@@ -24,4 +24,8 @@ public class BookService {
         List<Book> results = bookRepository.findBooksByTitleAndInventoryLibraryName(title, name);
         return BookMapper.INSTANCE.mapToDTOList(results);
     }
+
+    public List<BookDTO> getBooksByAuthorNameAndSurname(String firstName, String lastName) {
+        return bookRepository.findByCreditsAuthorFirstNameAndCreditsAuthorLastName(firstName, lastName);
+    }
 }
