@@ -15,4 +15,8 @@ public class BookService {
         List<Book> results = bookRepository.findAll();
         return BookMapper.INSTANCE.mapToDTOList(results);
     }
+
+    public List<BookInformationProjection> getAllBooksWithTitleIsbnAuthors() {
+        return bookRepository.findAllBooksWithTitleIsbnAuthors();
+    }
 }

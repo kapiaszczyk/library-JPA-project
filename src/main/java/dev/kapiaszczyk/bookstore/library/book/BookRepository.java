@@ -8,7 +8,6 @@ import java.util.List;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
-
     @Override
     @Query("SELECT b FROM Book b " +
             "JOIN FETCH b.isbn " +
@@ -16,6 +15,15 @@ public interface BookRepository extends JpaRepository<Book, Long> {
             "JOIN FETCH b.credits " +
             "JOIN FETCH b.loan")
     List<Book> findAll();
+
+    @Query("SELECT b.title AS title, i.number AS isbn, " +
+            "STRING_AGG(CONCAT(a.firstName, ' ', a.lastName), ', ') AS authors " +
+            "FROM Book b " +
+            "JOIN b.isbn i " +
+            "JOIN b.credits c " +
+            "JOIN c.author a " +
+            "GROUP BY b.title, i.number")
+    List<BookInformationProjection> findAllBooksWithTitleIsbnAuthors();
 
     List<Book> findByTitle(String title);
     List<Book> findByTitleContaining(String title);
