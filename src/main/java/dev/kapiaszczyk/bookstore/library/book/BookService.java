@@ -19,4 +19,9 @@ public class BookService {
     public List<BookInformationProjection> getAllBooksWithTitleIsbnAuthors() {
         return bookRepository.findAllBooksWithTitleIsbnAuthors();
     }
+
+    public List<BookDTO> getBooksByTitleAndInventoryLibraryName(String title, String name) {
+        List<Book> results = bookRepository.findBooksByTitleAndInventoryLibraryName(title, name);
+        return BookMapper.INSTANCE.mapToDTOList(results);
+    }
 }

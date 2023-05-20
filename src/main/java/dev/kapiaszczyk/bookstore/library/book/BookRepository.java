@@ -24,7 +24,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
             "JOIN c.author a " +
             "GROUP BY b.title, i.number")
     List<BookInformationProjection> findAllBooksWithTitleIsbnAuthors();
-
+    List<Book> findBooksByTitleAndInventoryLibraryName(String title, String name);
     List<Book> findByTitle(String title);
     List<Book> findByTitleContaining(String title);
     List<Book> findByTitleContainingIgnoreCase(String title);
