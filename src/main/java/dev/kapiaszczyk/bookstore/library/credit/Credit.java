@@ -1,5 +1,6 @@
 package dev.kapiaszczyk.bookstore.library.credit;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import dev.kapiaszczyk.bookstore.library.author.Author;
 import dev.kapiaszczyk.bookstore.library.book.Book;
 import jakarta.persistence.*;
@@ -16,11 +17,13 @@ public class Credit {
     // Relation with book
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id")
+    @JsonBackReference
     private Book book;
 
     // Relation with author
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id")
+    @JsonBackReference
     private Author author;
 
     public Credit() {
@@ -33,6 +36,10 @@ public class Credit {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Book getBook() {
