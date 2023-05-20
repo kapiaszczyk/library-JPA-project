@@ -23,9 +23,6 @@ public interface BookMapper {
     @Mapping(source = "credits", target = "credits") // Explicitly map the credits field
     BookDTO mapToDTO(Book book);
 
-    @Mapping(source = "credit.id", target = "id")
-    CreditDTO creditToCreditDTO(Credit credit);
-
     @Named("mapToDTOList")
     List<BookDTO> mapToDTOList(List<Book> books);
 
