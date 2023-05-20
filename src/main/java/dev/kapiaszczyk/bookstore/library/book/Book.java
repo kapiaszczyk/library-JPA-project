@@ -163,4 +163,16 @@ public class Book {
         this.loan = null;
     }
 
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title +
+                ", category=" + category +
+                ", isbn=" + isbn +
+                ", inventory=" + inventory +
+                ", credits=" + credits +
+                ", loan=" + loan +
+                '}';
+    }
 }
