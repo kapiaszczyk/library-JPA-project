@@ -20,14 +20,20 @@ Can be found in the repo [here](https://github.com/kapiaszczyk/library-JPA-proje
 #### Example SQL queries
 Example queries to test the database can be found [here](https://github.com/kapiaszczyk/library-management-app/blob/main/readme_files/example_queries.sql).
 
-#### Sample data - `data.sql`
+#### Sample data
 Sample data that is used to populate the database for tests can be found [here](https://github.com/kapiaszczyk/library-management-app/blob/main/src/main/resources/data.sql).
 
-### Some more interesting queries
-* `findByCreditsBookTitle(String title)` - returns authors credited for books with a given title
-* `findByCreditsAuthorLastName(String lastName)` - returns books with authors with a given last name
-* `findByAccountNumberAndLoanStatus(Long accountNumber, String loanStatus)` - returns books loaned by a given account with a given loan status
-* and more CRUD operations such as find books by title, category, author, etc.
+### REST API
+I am in the process of implementing the endpoints. Some of them (marked with "!") are currently unoptimized and generate a lot of queries. I also plan adding "internal" endpoints, that will serve GET, POST and DELETE requests to do with adding books, accounts etc. that will require some sort of authentication to access.
+
+#### Implemented endpoints
+- GET `/books/all` - returns all books in the database
+- GET `/books/title-isbn-authors` - returns all books with fields title, isbn and authors
+- GET `/books/title/{title}/library/{name}` - returns all books with a given title and in given library
+- GET `/books/author-name/{firstName}/author-surname/{lastName}` - returns all books written by given author
+- GET `/books/loan-status/{status}`- returns all books that with a given loan status
+- GET `/categories/all` - returns all categories
+- GET `/categories/find_by_name/fantasy` - returns category with a given name
 
 ### Running the application
 To run the application, you need to have Java and Maven installed. You can run the application using the command `mvn spring-boot:run`. The application will run on port 8080. You can access the H2 console at `localhost:8080/h2-console`. The database is populated with data using the `data.sql` file. The database is created in memory and is destroyed when the application is stopped.
@@ -37,32 +43,22 @@ For the application to run properly, set the active profile to `prod` in the `ap
 <!-- STACK -->
 ### Built With
 
-* [![Java][Java]][Java-url]
-* [![Spring][Spring]][Spring-url]
-* [![Spring Boot][Spring Boot]][Spring Boot-url]
-* [![Spring Data JPA][Spring Data JPA]][Spring Data JPA-url]
-* [![Hibernate][Hibernate]][Hibernate-url]
-* [![JUnit5][JUnit5]][JUnit5-url]
-* [![H2][H2]][H2-url]
-* [![Maven][Maven]][Maven-url]
+[![Java][Java]][Java-url]
+[![Spring][Spring]][Spring-url]
+[![Spring Boot][Spring Boot]][Spring Boot-url]
+[![Spring Data JPA][Spring Data JPA]][Spring Data JPA-url]
+[![Hibernate][Hibernate]][Hibernate-url]
+[![JUnit5][JUnit5]][JUnit5-url]
+[![H2][H2]][H2-url]
+[![Maven][Maven]][Maven-url]
+[![Postman][Postman]][Postman-url]
 
 <!-- To-do -->
 ### To-do
-- [ ] Implement the REST API and test it using Postman
-- [ ] Write test cases in postman
-- [ ] Consider implementing DTOs
+- [ ] Implement the REST API 
+- [ ] Optimize queries
 - [x] Optimize associations between entities
 - [ ] Fully document the project
-
-### REST API 
-I am in the process of implementing the endpoints. Some example endpoints that I will implement include:
-- [x] GET list of books with fields title, isbn and authors
-- [ ] GET list of books with a given title and in given library
-- [ ] GET list of books written by given author
-- [ ] GET list of books that are loaned
-- [ ] GET list of books that are not loaned
-
-I also want to add "internal" endpoints, that will serve GET, POST and DELETE requests to do with adding books, accounts etc. that will require some sort of authentication to access.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [Java]: https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white
@@ -81,3 +77,5 @@ I also want to add "internal" endpoints, that will serve GET, POST and DELETE re
 [Hibernate-url]: https://hibernate.org/
 [JUnit5]: https://img.shields.io/badge/JUnit5-25A162?style=for-the-badge&logo=junit5&logoColor=white
 [JUnit5-url]: https://junit.org/junit5/
+[Postman]: https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white
+[Postman-url]: https://www.postman.com/
