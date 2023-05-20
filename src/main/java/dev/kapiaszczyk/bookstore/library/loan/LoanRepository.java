@@ -10,6 +10,6 @@ public interface LoanRepository extends JpaRepository<Loan, Long> {
 
     List<Loan> findByAccountNumber(String accountNumber);
 
-    List<Loan> findByAccountNumberAndLoanStatus(String accountNumber, String loanStatus);
+    List<Loan> findByAccountNumberAndStatus(String accountNumber, Loan.Status status);
 
 }

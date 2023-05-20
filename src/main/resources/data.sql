@@ -106,8 +106,8 @@ insert into credit (credit_id, book_id, author_id) values(18, 14, 3);
 insert into credit (credit_id, book_id, author_id) values(19, 15, 5);
 insert into credit (credit_id, book_id, author_id) values(20, 15, 4);
 
-insert into loan (loan_status, book_id, account_id) values('1', 1, 1);
-insert into loan (loan_status, book_id, account_id) values('1', 2, 2);
-insert into loan (loan_status, book_id, account_id) values('1', 3, 3);
-insert into loan (loan_status, book_id, account_id) values('1', 4, 4);
-insert into loan (loan_status, book_id, account_id) values('1', 5, 5);
+insert into loan (loan_status, book_id, account_id) values('ACTIVE', 1, 1);
+insert into loan (loan_status, book_id, account_id) values('ACTIVE', 2, 2);
+insert into loan (loan_status, book_id, account_id) values('ACTIVE', 3, 3);
+insert into loan (loan_status, book_id, account_id) values('ACTIVE', 4, 4);
+insert into loan (loan_status, book_id, account_id) values('ACTIVE', 5, 5);

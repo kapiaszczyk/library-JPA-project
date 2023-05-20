@@ -1,5 +1,6 @@
 package dev.kapiaszczyk.bookstore.library.book;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import dev.kapiaszczyk.bookstore.library.category.Category;
 import dev.kapiaszczyk.bookstore.library.credit.Credit;
 import dev.kapiaszczyk.bookstore.library.inventory.Inventory;
@@ -23,8 +24,9 @@ public class Book {
     private String title;
 
     // Association with category
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
+    @JsonManagedReference
     private Category category;
 
     // Association with isbn
@@ -32,7 +34,7 @@ public class Book {
     private ISBN isbn;
 
     // Association with inventory
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "inventory_id")
     private Inventory inventory;
 
@@ -62,6 +64,10 @@ public class Book {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -157,4 +163,16 @@ public class Book {
         this.loan = null;
     }
 
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title +
+                ", category=" + category +
+                ", isbn=" + isbn +
+                ", inventory=" + inventory +
+                ", credits=" + credits +
+                ", loan=" + loan +
+                '}';
+    }
 }

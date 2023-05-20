@@ -14,8 +14,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -39,23 +37,8 @@ public class AddressTest {
 
     @BeforeEach
     public void setUp() {
-
-        city = new City("Warsaw");
-        cityCode = new CityCode("00-000");
-
-        cityCode.setCity(city);
-        city.setCityCode(Collections.singletonList(cityCode));
-
-
         address = new Address();
         address.setStreet("St. Mary's Street 5");
-
-        cityRepository.save(city);
-
-        address = new Address();
-        address.setStreet("St. Mary's Street 5");
-        address.setCity(city);
-
         addressRepository.save(address);
     }
 

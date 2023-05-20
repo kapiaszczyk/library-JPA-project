@@ -138,10 +138,10 @@ public class BookRepositoryTest {
     public void shouldFindBookByAuthorFirstNameAndLastName() {
         String firstName = "William";
         String lastName = "Shakespeare";
-        List<Book> books  = bookRepository.findByCreditsAuthorFirstNameAndCreditsAuthorLastName(firstName, lastName);
+        List<String> books  = bookRepository.findByCreditsAuthorFirstNameAndCreditsAuthorLastName(firstName, lastName);
 
         assertThat(books.size(), equalTo(1));
-        assertThat(books.get(0).getTitle(), equalTo(book.getTitle()));
+        assertThat(books.get(0), equalTo(book.getTitle()));
     }
 
     @Test

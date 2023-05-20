@@ -20,8 +20,8 @@ public class Account {
     private String number;
 
     @OneToOne
-    @JoinColumn(name = "library_user_id", referencedColumnName = "library_user_id")
     @MapsId
+    @JoinColumn(name = "library_user_id", referencedColumnName = "library_user_id")
     private LibraryUser libraryUser;
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)

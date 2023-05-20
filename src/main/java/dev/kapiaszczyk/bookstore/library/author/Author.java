@@ -1,5 +1,6 @@
 package dev.kapiaszczyk.bookstore.library.author;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import dev.kapiaszczyk.bookstore.library.credit.Credit;
 import jakarta.persistence.*;
 
@@ -21,6 +22,7 @@ public class Author {
     private String lastName;
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     List<Credit> credits = new ArrayList<>();
 
     public Author() {
@@ -33,6 +35,10 @@ public class Author {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {

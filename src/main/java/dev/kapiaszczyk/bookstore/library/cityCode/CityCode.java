@@ -13,13 +13,10 @@ public class CityCode {
     @Column(name = "city_code_id")
     private Long id;
 
-    @Column
+    @Column(name = "city_code_code")
     private String cityCode;
 
-
-    @ManyToOne
-    @JoinColumn(name = "city_id")
-    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     private City city;
 
     public CityCode() {

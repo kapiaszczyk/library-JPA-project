@@ -37,6 +37,10 @@ public class Inventory {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public List<Book> getBooks() {
         return books;
     }
@@ -52,4 +56,13 @@ public class Inventory {
     public void setLibrary(Library library) {
         this.library = library;
     }
+
+    public void addBook(Book book) {
+        this.books.add(book);
+    }
+
+    public void removeBook(Book book) {
+        this.books.remove(book);
+    }
+
 }
