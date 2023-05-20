@@ -1,5 +1,6 @@
 package dev.kapiaszczyk.bookstore.library.book;
 
+import dev.kapiaszczyk.bookstore.library.loan.Loan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,11 @@ public class BookService {
 
     public List<BookDTO> getBooksByAuthorNameAndSurname(String firstName, String lastName) {
         List<Book> results = bookRepository.findByCreditsAuthorFirstNameAndCreditsAuthorLastName(firstName, lastName);
+        return BookMapper.INSTANCE.mapToDTOList(results);
+    }
+
+    public List<BookDTO> getAllByLoanStatus(Loan.Status status) {
+        List<Book> results = bookRepository.findALlByLoanStatus(status);
         return BookMapper.INSTANCE.mapToDTOList(results);
     }
 }

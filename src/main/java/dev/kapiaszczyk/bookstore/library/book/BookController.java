@@ -1,6 +1,7 @@
 package dev.kapiaszczyk.bookstore.library.book;
 
 import dev.kapiaszczyk.bookstore.library.inventory.Inventory;
+import dev.kapiaszczyk.bookstore.library.loan.Loan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +34,11 @@ public class BookController {
     @GetMapping("/author-name/{firstName}/author-surname/{lastName}")
     public ResponseEntity<Iterable<BookDTO>> getBooksByAuthorNameAndSurname(@PathVariable String firstName, @PathVariable String lastName) {
         return new ResponseEntity<>(bookService.getBooksByAuthorNameAndSurname(firstName, lastName), HttpStatus.OK);
+    }
+
+    @GetMapping("/loan-status/{status}")
+    public ResponseEntity<Iterable<BookDTO>> getAllByLoanStatus(@PathVariable Loan.Status status) {
+        return new ResponseEntity<>(bookService.getAllByLoanStatus(status), HttpStatus.OK);
     }
 
 

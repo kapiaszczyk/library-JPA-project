@@ -5,6 +5,7 @@ import dev.kapiaszczyk.bookstore.library.book.*;
 import dev.kapiaszczyk.bookstore.library.credit.Credit;
 import dev.kapiaszczyk.bookstore.library.inventory.Inventory;
 import dev.kapiaszczyk.bookstore.library.library.Library;
+import dev.kapiaszczyk.bookstore.library.loan.Loan;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
@@ -181,6 +182,34 @@ public class BookControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].credits[0].author.lastName").value(author.getLastName()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].credits[1].author.firstName").value(author2.getFirstName()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].credits[1].author.lastName").value(author2.getLastName()));
+
+        // Verify service method was called
+        Mockito.verify(bookService, Mockito.times(1)).findAll();
+    }
+
+    @Test
+    public void shouldGetAllBooksByLoanStatus() throws Exception {
+        // Prepare test data
+        List<BookDTO> bookList = new ArrayList<>();
+        Book book = new Book();
+        book.setTitle("Test");
+
+        Loan loan = new Loan();
+        loan.setBook(book);
+        loan.setStatus(Loan.Status.ACTIVE);
+        book.setLoan(loan);
+
+        BookDTO bookDTO = BookMapper.INSTANCE.mapToDTO(book);
+        bookList.add(bookDTO);
+
+        // Mock service
+        Mockito.when(bookService.findAll()).thenReturn(bookList);
+
+        // Perform GET request
+        mockMvc.perform(MockMvcRequestBuilders.get("/books/all"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].title").value(book.getTitle()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].loan.status").value(loan.getStatus().toString()));
 
         // Verify service method was called
         Mockito.verify(bookService, Mockito.times(1)).findAll();

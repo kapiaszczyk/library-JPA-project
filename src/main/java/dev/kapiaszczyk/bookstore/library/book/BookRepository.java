@@ -1,5 +1,6 @@
 package dev.kapiaszczyk.bookstore.library.book;
 
+import dev.kapiaszczyk.bookstore.library.loan.Loan;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -34,5 +35,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     List<Book> findByCreditsAuthorFirstNameAndCreditsAuthorLastName(String firstName, String lastName);
     List<Book> findAllByCategoryNameLike(String name);
     List<Book> findAllByOrderByTitleAsc();
+    List<Book> findALlByLoanStatus(Loan.Status status);
 
 }
