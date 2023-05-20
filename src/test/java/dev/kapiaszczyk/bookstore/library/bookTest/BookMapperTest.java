@@ -10,6 +10,7 @@ import dev.kapiaszczyk.bookstore.library.isbn.ISBN;
 import dev.kapiaszczyk.bookstore.library.loan.Loan;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
+@ActiveProfiles("test")
 public class BookMapperTest {
 
     @Test
