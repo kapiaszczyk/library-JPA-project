@@ -26,6 +26,7 @@ public class BookService {
     }
 
     public List<BookDTO> getBooksByAuthorNameAndSurname(String firstName, String lastName) {
-        return bookRepository.findByCreditsAuthorFirstNameAndCreditsAuthorLastName(firstName, lastName);
+        List<Book> results = bookRepository.findByCreditsAuthorFirstNameAndCreditsAuthorLastName(firstName, lastName);
+        return BookMapper.INSTANCE.mapToDTOList(results);
     }
 }
