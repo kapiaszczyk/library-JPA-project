@@ -37,6 +37,10 @@ public class Inventory {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public List<Book> getBooks() {
         return books;
     }
