@@ -89,8 +89,10 @@ public class BookControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].title").value("Title"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].isbn").value("1234567890123"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].authors[0]").value("John Doe"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].authors[1]").value("Jane Doe"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].authors[0].firstName").value("John"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].authors[0].lastName").value("Doe"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].authors[1].firstName").value("Jane"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].authors[1].lastName").value("Doe"));
     }
 
     @Test
