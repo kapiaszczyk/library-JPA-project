@@ -1,18 +1,18 @@
 package dev.kapiaszczyk.bookstore.library.credit;
 
+import dev.kapiaszczyk.bookstore.library.author.AuthorDTO;
+
 public class CreditDTO {
 
     private Long id;
-    private Long authorId;
-    private Long bookId;
+    private AuthorDTO author;
 
     public CreditDTO() {
     }
 
-    public CreditDTO(Long id, Long authorId, Long bookId) {
+    public CreditDTO(Long id, AuthorDTO author) {
         this.id = id;
-        this.authorId = authorId;
-        this.bookId = bookId;
+        this.author = author;
     }
 
     public Long getId() {
@@ -23,20 +23,11 @@ public class CreditDTO {
         this.id = id;
     }
 
-    public Long getAuthorId() {
-        return authorId;
+    public AuthorDTO getAuthor() {
+        return author;
     }
 
-    public void setAuthorId(Long authorId) {
-        this.authorId = authorId;
+    public void setAuthor(AuthorDTO author) {
+        this.author = author;
     }
-
-    public Long getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(Long bookId) {
-        this.bookId = bookId;
-    }
-
 }
