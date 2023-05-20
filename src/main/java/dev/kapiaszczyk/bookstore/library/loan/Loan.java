@@ -36,6 +36,10 @@ public class Loan {
         return loanId;
     }
 
+    public void setId(Long loanId) {
+        this.loanId = loanId;
+    }
+
     public Account getAccount() {
         return account;
     }
