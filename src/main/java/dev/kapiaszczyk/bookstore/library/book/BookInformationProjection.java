@@ -7,5 +7,5 @@ import java.util.List;
 public interface BookInformationProjection {
     String getTitle();
     String getIsbn();
-    List<Author> getAuthors();
+    List<String> getAuthors();
 }

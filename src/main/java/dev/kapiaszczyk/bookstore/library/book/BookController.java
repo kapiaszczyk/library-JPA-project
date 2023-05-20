@@ -32,7 +32,7 @@ public class BookController {
     }
 
     @GetMapping("/author-name/{firstName}/author-surname/{lastName}")
-    public ResponseEntity<Iterable<BookDTO>> getBooksByAuthorNameAndSurname(@PathVariable String firstName, @PathVariable String lastName) {
+    public ResponseEntity<Iterable<String>> getBooksByAuthorNameAndSurname(@PathVariable String firstName, @PathVariable String lastName) {
         return new ResponseEntity<>(bookService.getBooksByAuthorNameAndSurname(firstName, lastName), HttpStatus.OK);
     }
 

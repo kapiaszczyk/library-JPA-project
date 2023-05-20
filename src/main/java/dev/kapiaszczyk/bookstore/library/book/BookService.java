@@ -26,9 +26,8 @@ public class BookService {
         return BookMapper.INSTANCE.mapToDTOList(results);
     }
 
-    public List<BookDTO> getBooksByAuthorNameAndSurname(String firstName, String lastName) {
-        List<Book> results = bookRepository.findByCreditsAuthorFirstNameAndCreditsAuthorLastName(firstName, lastName);
-        return BookMapper.INSTANCE.mapToDTOList(results);
+    public List<String> getBooksByAuthorNameAndSurname(String firstName, String lastName) {
+        return bookRepository.findByCreditsAuthorFirstNameAndCreditsAuthorLastName(firstName, lastName);
     }
 
     public List<BookDTO> getAllByLoanStatus(Loan.Status status) {

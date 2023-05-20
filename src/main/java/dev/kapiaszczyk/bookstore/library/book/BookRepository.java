@@ -32,7 +32,12 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     List<Book> findByIsbnNumber(String number);
     List<Book> findByCreditsAuthorFirstName(String firstName);
     List<Book> findByCreditsAuthorLastName(String lastName);
-    List<Book> findByCreditsAuthorFirstNameAndCreditsAuthorLastName(String firstName, String lastName);
+
+    @Query("SELECT b.title FROM Book b " +
+            "JOIN b.credits c " +
+            "JOIN c.author a " +
+            "WHERE a.firstName = ?1 AND a.lastName = ?2")
+    List<String> findByCreditsAuthorFirstNameAndCreditsAuthorLastName(String firstName, String lastName);
     List<Book> findAllByCategoryNameLike(String name);
     List<Book> findAllByOrderByTitleAsc();
     List<Book> findALlByLoanStatus(Loan.Status status);
