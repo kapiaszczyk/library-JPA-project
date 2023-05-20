@@ -2,6 +2,7 @@ package dev.kapiaszczyk.bookstore.library.book;
 
 
 import dev.kapiaszczyk.bookstore.library.credit.CreditDTO;
+import dev.kapiaszczyk.bookstore.library.loan.LoanDTO;
 
 import java.util.List;
 
@@ -12,19 +13,19 @@ public class BookDTO {
     private Long isbnId;
     private Long inventoryId;
     private List<CreditDTO> credits;
-    private Long loanId;
+    private LoanDTO loan;
 
     public BookDTO() {
     }
 
-    public BookDTO(Long id, String title, Long categoryId, Long isbnId, Long inventoryId, List<CreditDTO> credits, Long loanId) {
+    public BookDTO(Long id, String title, Long categoryId, Long isbnId, Long inventoryId, List<CreditDTO> credits, LoanDTO loan) {
         this.id = id;
         this.title = title;
         this.categoryId = categoryId;
         this.isbnId = isbnId;
         this.inventoryId = inventoryId;
         this.credits = credits;
-        this.loanId = loanId;
+        this.loan = loan;
     }
 
     public Long getId() {
@@ -75,24 +76,26 @@ public class BookDTO {
         this.credits = credits;
     }
 
-    public Long getLoanId() {
-        return loanId;
+
+    public LoanDTO getLoan() {
+        return loan;
     }
 
-    public void setLoanId(Long loanId) {
-        this.loanId = loanId;
+    public void setLoan(LoanDTO loan) {
+        this.loan = loan;
     }
 
     @Override
     public String toString() {
         return "BookDTO{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", title='" + title + '\'' +
                 ", categoryId=" + categoryId +
                 ", isbnId=" + isbnId +
                 ", inventoryId=" + inventoryId +
                 ", credits=" + credits +
-                ", loanId=" + loanId +
+                ", loan=" + loan +
                 '}';
     }
+
 }
