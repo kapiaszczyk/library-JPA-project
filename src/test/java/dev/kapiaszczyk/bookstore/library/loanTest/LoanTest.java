@@ -58,31 +58,31 @@ public class LoanTest {
 
     @Test
     public void addLoan() {
-        Loan savedLoan = loanRepository.findById(loan.getLoanId()).get();
+        Loan savedLoan = loanRepository.findById(loan.getId()).get();
 
-        assertNotNull(savedLoan.getLoanId());
-        assertThat(savedLoan.getLoanId(), equalTo(loan.getLoanId()));
+        assertNotNull(savedLoan.getId());
+        assertThat(savedLoan.getId(), equalTo(loan.getId()));
         assertThat(savedLoan.getAccount().getNumber(), equalTo(loan.getAccount().getNumber()));
         assertThat(savedLoan.getBook().getTitle(), equalTo(loan.getBook().getTitle()));
     }
 
     @Test
     public void updateLoan() {
-        Loan savedLoan = loanRepository.findById(loan.getLoanId()).get();
+        Loan savedLoan = loanRepository.findById(loan.getId()).get();
 
         savedLoan.getBook().setTitle("New Book Title");
         savedLoan.getAccount().setNumber("987654321");
 
         loanRepository.save(savedLoan);
 
-        Loan updatedLoan = loanRepository.findById(loan.getLoanId()).get();
+        Loan updatedLoan = loanRepository.findById(loan.getId()).get();
         assertThat(updatedLoan.getBook().getTitle(), equalTo(savedLoan.getBook().getTitle()));
         assertThat(updatedLoan.getAccount().getNumber(), equalTo(savedLoan.getAccount().getNumber()));
     }
 
     @Test
     public void removeLoan() {
-        Loan savedLoan = loanRepository.findById(loan.getLoanId()).get();
+        Loan savedLoan = loanRepository.findById(loan.getId()).get();
 
         book.removeLoan();
         loanRepository.delete(savedLoan);

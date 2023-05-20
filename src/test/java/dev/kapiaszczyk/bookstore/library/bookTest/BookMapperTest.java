@@ -63,7 +63,7 @@ public class BookMapperTest {
         assertEquals(book.getCategory().getId(), dto.getCategoryId());
         assertEquals(book.getIsbn().getId(), dto.getIsbnId());
         assertEquals(book.getInventory().getId(), dto.getInventoryId());
-        assertEquals(book.getLoan().getLoanId(), dto.getLoanId());
+        assertEquals(book.getLoan().getId(), dto.getId());
         assertEquals(book.getCredits().size(), dto.getCredits().size());
     }
 }

@@ -8,10 +8,16 @@ import jakarta.persistence.*;
 @Table(name = "loan")
 public class Loan {
 
+    public enum Status {
+        PENDING,
+        ACTIVE,
+        RETURNED
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "loan_id")
-    private Long loanId;
+    private Long id;
 
     // Association with Account
     @ManyToOne(fetch = FetchType.LAZY)
@@ -24,20 +30,22 @@ public class Loan {
     @JoinColumn(name = "book_id", referencedColumnName = "book_id")
     private Book book;
 
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "loan_status")
-    private String loanStatus;
+    private Status status;
 
     // Constructor
     public Loan() {
     }
 
     // Setters and getters
-    public Long getLoanId() {
-        return loanId;
+    public Long getId() {
+        return id;
     }
 
     public void setId(Long loanId) {
-        this.loanId = loanId;
+        this.id = loanId;
     }
 
     public Account getAccount() {
@@ -56,12 +64,11 @@ public class Loan {
         this.book = book;
     }
 
-    public String getLoanStatus() {
-        return loanStatus;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setLoanStatus(String loanStatus) {
-        this.loanStatus = loanStatus;
+    public void setStatus(Status status) {
+        this.status = status;
     }
-
 }
