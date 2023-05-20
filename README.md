@@ -1,5 +1,5 @@
 <!-- Introduction -->
-<h3>library-managment-app</h3>
+<h3>library-management-app</h3>
 
 Simple application for managing a library database.
 
@@ -44,7 +44,9 @@ For the application to run properly, set the active profile to `prod` in the `ap
 ### To-do
 
 - [ ] Implement the REST API and test it using Postman
-- [ ] Optimize associations between entities
+- [ ] Write test cases in postman
+- [ ] Reconsider implementing DTOs
+- [x] Optimize associations between entities
 - [ ] Fully document the project
 
 <!-- MARKDOWN LINKS & IMAGES -->
