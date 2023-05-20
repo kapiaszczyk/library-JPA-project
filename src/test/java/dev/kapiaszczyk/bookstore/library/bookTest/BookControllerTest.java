@@ -53,7 +53,7 @@ public class BookControllerTest {
     }
 
     @Test
-    public void testGetAllBookInformation() throws Exception {
+    public void shouldGetAllBookInformation() throws Exception {
         // Mock BookInformationProjection implementation
         class BookInformationProjectionImpl implements BookInformationProjection {
             private String title;
