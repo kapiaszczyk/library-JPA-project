@@ -14,13 +14,11 @@ public class Credit {
     @Column(name = "credit_id")
     private Long id;
 
-    // Relation with book
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id")
     @JsonBackReference
     private Book book;
 
-    // Relation with author
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id")
     @JsonBackReference

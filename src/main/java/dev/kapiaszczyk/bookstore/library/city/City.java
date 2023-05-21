@@ -25,7 +25,6 @@ public class City {
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CityCode> codes = new ArrayList<>();
 
-
     public City() {
     }
 

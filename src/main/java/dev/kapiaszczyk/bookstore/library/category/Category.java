@@ -19,7 +19,6 @@ public class Category {
     @Column(name = "category_name")
     private String name;
 
-    // Association with book
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
     private List<Book> books = new ArrayList<>();

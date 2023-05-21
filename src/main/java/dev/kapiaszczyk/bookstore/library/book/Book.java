@@ -23,30 +23,24 @@ public class Book {
     @Column(name = "book_title")
     private String title;
 
-    // Association with category
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     @JsonManagedReference
     private Category category;
 
-    // Association with isbn
     @OneToOne(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
     private ISBN isbn;
 
-    // Association with inventory
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "inventory_id")
     private Inventory inventory;
 
-    // Association with credit
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Credit> credits = new ArrayList<>();
 
-    // Association with loan
     @OneToOne(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
     private Loan loan;
 
-    // Constructors
 
     public Book() {
     }
@@ -60,7 +54,6 @@ public class Book {
         this.loan = loan;
     }
 
-    // Getters and setters
 
     public Long getId() {
         return id;

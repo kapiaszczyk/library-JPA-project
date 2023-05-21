@@ -11,8 +11,6 @@ public class ISBN {
     @Column(name = "isbn_id")
     private Long id;
 
-
-    // Association with book
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id", referencedColumnName = "book_id")
     @MapsId

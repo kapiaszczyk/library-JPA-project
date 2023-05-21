@@ -15,12 +15,9 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "inventory_id")
     private Long id;
-
-    // Association with books
     @OneToMany(mappedBy = "inventory", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Book> books = new ArrayList<>();
 
-    // Association with library
     @OneToOne
     @JoinColumn(name = "library_id")
     private Library library;

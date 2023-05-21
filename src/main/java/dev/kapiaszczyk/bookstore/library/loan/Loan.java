@@ -19,12 +19,10 @@ public class Loan {
     @Column(name = "loan_id")
     private Long id;
 
-    // Association with Account
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id")
     private Account account;
 
-    // Association with Book
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     @JoinColumn(name = "book_id", referencedColumnName = "book_id")
@@ -35,11 +33,9 @@ public class Loan {
     @Column(name = "loan_status")
     private Status status;
 
-    // Constructor
     public Loan() {
     }
 
-    // Setters and getters
     public Long getId() {
         return id;
     }
