@@ -6,9 +6,9 @@ Simple application for managing a library database with a REST API.
 <!-- ABOUT -->
 ### About
 
-This project is a continuation of a database project I did for my university course. My goal was to learn how to use Spring Data JPA and Hibernate. It is not finished yet, as I am in the process of implementing the REST API. 
+This project is a continuation of a database project I did for my university course. My goal was to learn how to use Spring Data JPA and Hibernate. It is not finished yet, as I am in the process of implementing the REST API. So far, the database is fully mapped and I have created multiple queries. All the queries are tested using JUnit5. I have used Spring profiles to separate the test and development environments. 
 
-So far, the database is fully mapped and I have created multiple queries. All the queries are tested using JUnit5. I have used Spring profiles to separate the test and development environments. You can find the docker image of the whole application [here](https://hub.docker.com/layers/kapiaszczyk/library-app/v1/images/sha256:3389cce4de7047b2f4bbb3efa93b545d31de2a9f6b855a4d7303a849cc19a852).
+**You can find the docker image of the whole application [here](https://hub.docker.com/layers/kapiaszczyk/library-app/v1/images/sha256:3389cce4de7047b2f4bbb3efa93b545d31de2a9f6b855a4d7303a849cc19a852).**
 
 ### The database
 The original database was designed using Oracle Data Modeler and was supposed to manage multiple libraries, that have a shared account and loan system, but separate book inventories.
@@ -52,6 +52,7 @@ For the application to run properly, set the active profile to `prod` in the `ap
 [![H2][H2]][H2-url]
 [![Maven][Maven]][Maven-url]
 [![Postman][Postman]][Postman-url]
+[![Docker][Docker]][Docker-url]
 
 <!-- To-do -->
 ### To-do
@@ -78,3 +79,5 @@ For the application to run properly, set the active profile to `prod` in the `ap
 [JUnit5-url]: https://junit.org/junit5/
 [Postman]: https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white
 [Postman-url]: https://www.postman.com/
+[Docker]: https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white
+[Docker-url]: https://www.docker.com/
