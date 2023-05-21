@@ -1,6 +1,5 @@
 package dev.kapiaszczyk.bookstore.library.cityCode;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.kapiaszczyk.bookstore.library.city.City;
 import jakarta.persistence.*;
 

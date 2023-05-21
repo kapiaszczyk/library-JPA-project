@@ -1,6 +1,5 @@
 package dev.kapiaszczyk.bookstore.library.account;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.kapiaszczyk.bookstore.library.libraryUser.LibraryUser;
 import dev.kapiaszczyk.bookstore.library.loan.Loan;
 import jakarta.persistence.*;

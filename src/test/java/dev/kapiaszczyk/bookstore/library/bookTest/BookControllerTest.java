@@ -1,7 +1,9 @@
 package dev.kapiaszczyk.bookstore.library.bookTest;
 
 import dev.kapiaszczyk.bookstore.library.author.Author;
-import dev.kapiaszczyk.bookstore.library.book.*;
+import dev.kapiaszczyk.bookstore.library.book.Book;
+import dev.kapiaszczyk.bookstore.library.book.BookController;
+import dev.kapiaszczyk.bookstore.library.book.BookService;
 import dev.kapiaszczyk.bookstore.library.book.dto.BookDTO;
 import dev.kapiaszczyk.bookstore.library.book.dto.BookMapper;
 import dev.kapiaszczyk.bookstore.library.book.projections.BookInformationProjection;

@@ -1,7 +1,5 @@
 package dev.kapiaszczyk.bookstore.library.author.dto;
 
-import java.util.List;
-
 public class AuthorDTO {
     Long id;
     String firstName;
