@@ -11,7 +11,7 @@ This project is a continuation of a database project I did for my university cou
 So far, the database is fully mapped and I have created multiple queries. All the queries are tested using JUnit5. I have used Spring profiles to separate the test and development environments. You can find the docker image of the whole application [here](https://hub.docker.com/layers/kapiaszczyk/library-app/v1/images/sha256:3389cce4de7047b2f4bbb3efa93b545d31de2a9f6b855a4d7303a849cc19a852).
 
 ### The database
-The original database was designed using Oracle Data Modeler and was supposed to manage multiple libraries, that have a shared account and loan system, but separate book inventories. Below you can find the database schema. The database project is quite simple and might not be the best example of a database design, but nonetheless it was a good learning experience.
+The original database was designed using Oracle Data Modeler and was supposed to manage multiple libraries, that have a shared account and loan system, but separate book inventories.
 
 <!-- DB SCHEMA -->
 #### Database Schema
