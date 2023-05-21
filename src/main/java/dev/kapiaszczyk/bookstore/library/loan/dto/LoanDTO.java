@@ -1,6 +1,6 @@
-package dev.kapiaszczyk.bookstore.library.loan;
+package dev.kapiaszczyk.bookstore.library.loan.dto;
 
-import dev.kapiaszczyk.bookstore.library.book.BookDTO;
+import dev.kapiaszczyk.bookstore.library.loan.Loan;
 
 public class LoanDTO {
     Long id;

@@ -1,6 +1,6 @@
-package dev.kapiaszczyk.bookstore.library.credit;
+package dev.kapiaszczyk.bookstore.library.credit.dto;
 
-import dev.kapiaszczyk.bookstore.library.author.AuthorDTO;
+import dev.kapiaszczyk.bookstore.library.author.dto.AuthorDTO;
 
 public class CreditDTO {
 

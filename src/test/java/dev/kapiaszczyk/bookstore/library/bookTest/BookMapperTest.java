@@ -1,8 +1,8 @@
 package dev.kapiaszczyk.bookstore.library.bookTest;
 
 import dev.kapiaszczyk.bookstore.library.book.Book;
-import dev.kapiaszczyk.bookstore.library.book.BookDTO;
-import dev.kapiaszczyk.bookstore.library.book.BookMapper;
+import dev.kapiaszczyk.bookstore.library.book.dto.BookDTO;
+import dev.kapiaszczyk.bookstore.library.book.dto.BookMapper;
 import dev.kapiaszczyk.bookstore.library.category.Category;
 import dev.kapiaszczyk.bookstore.library.credit.Credit;
 import dev.kapiaszczyk.bookstore.library.inventory.Inventory;

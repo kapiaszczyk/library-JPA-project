@@ -1,4 +1,4 @@
-package dev.kapiaszczyk.bookstore.library.category;
+package dev.kapiaszczyk.bookstore.library.category.dto;
 
 public class CategoryStatisticsDTO {
     private Long id;

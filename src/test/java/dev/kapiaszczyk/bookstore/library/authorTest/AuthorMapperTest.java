@@ -1,8 +1,8 @@
 package dev.kapiaszczyk.bookstore.library.authorTest;
 
 import dev.kapiaszczyk.bookstore.library.author.Author;
-import dev.kapiaszczyk.bookstore.library.author.AuthorDTO;
-import dev.kapiaszczyk.bookstore.library.author.AuthorMapper;
+import dev.kapiaszczyk.bookstore.library.author.dto.AuthorDTO;
+import dev.kapiaszczyk.bookstore.library.author.dto.AuthorMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;

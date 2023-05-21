@@ -1,9 +1,10 @@
-package dev.kapiaszczyk.bookstore.library.book;
+package dev.kapiaszczyk.bookstore.library.book.dto;
 
+import dev.kapiaszczyk.bookstore.library.book.Book;
 import dev.kapiaszczyk.bookstore.library.credit.Credit;
-import dev.kapiaszczyk.bookstore.library.credit.CreditDTO;
+import dev.kapiaszczyk.bookstore.library.credit.dto.CreditDTO;
 import dev.kapiaszczyk.bookstore.library.loan.Loan;
-import dev.kapiaszczyk.bookstore.library.loan.LoanDTO;
+import dev.kapiaszczyk.bookstore.library.loan.dto.LoanDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;

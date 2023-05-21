@@ -1,5 +1,6 @@
 package dev.kapiaszczyk.bookstore.library.book;
 
+import dev.kapiaszczyk.bookstore.library.book.projections.BookInformationProjection;
 import dev.kapiaszczyk.bookstore.library.loan.Loan;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

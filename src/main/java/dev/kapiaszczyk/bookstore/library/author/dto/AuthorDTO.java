@@ -1,4 +1,4 @@
-package dev.kapiaszczyk.bookstore.library.author;
+package dev.kapiaszczyk.bookstore.library.author.dto;
 
 import java.util.List;
 

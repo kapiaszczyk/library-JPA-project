@@ -3,7 +3,7 @@ package dev.kapiaszczyk.bookstore.library.categoryTest;
 import dev.kapiaszczyk.bookstore.library.category.Category;
 import dev.kapiaszczyk.bookstore.library.category.CategoryController;
 import dev.kapiaszczyk.bookstore.library.category.CategoryService;
-import dev.kapiaszczyk.bookstore.library.category.CategoryStatisticsDTO;
+import dev.kapiaszczyk.bookstore.library.category.dto.CategoryStatisticsDTO;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;

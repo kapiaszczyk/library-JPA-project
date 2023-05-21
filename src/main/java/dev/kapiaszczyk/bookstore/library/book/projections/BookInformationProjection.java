@@ -1,4 +1,4 @@
-package dev.kapiaszczyk.bookstore.library.book;
+package dev.kapiaszczyk.bookstore.library.book.projections;
 
 import dev.kapiaszczyk.bookstore.library.author.Author;
 

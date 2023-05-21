@@ -1,5 +1,8 @@
 package dev.kapiaszczyk.bookstore.library.book;
 
+import dev.kapiaszczyk.bookstore.library.book.dto.BookDTO;
+import dev.kapiaszczyk.bookstore.library.book.dto.BookMapper;
+import dev.kapiaszczyk.bookstore.library.book.projections.BookInformationProjection;
 import dev.kapiaszczyk.bookstore.library.loan.Loan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

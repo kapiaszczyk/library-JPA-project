@@ -1,5 +1,6 @@
-package dev.kapiaszczyk.bookstore.library.author;
+package dev.kapiaszczyk.bookstore.library.author.dto;
 
+import dev.kapiaszczyk.bookstore.library.author.Author;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;

@@ -1,6 +1,6 @@
-package dev.kapiaszczyk.bookstore.library.loan;
+package dev.kapiaszczyk.bookstore.library.loan.dto;
 
-import dev.kapiaszczyk.bookstore.library.book.BookMapper;
+import dev.kapiaszczyk.bookstore.library.loan.Loan;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;

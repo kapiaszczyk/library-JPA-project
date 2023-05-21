@@ -1,10 +1,9 @@
-package dev.kapiaszczyk.bookstore.library.credit;
+package dev.kapiaszczyk.bookstore.library.credit.dto;
 
 import dev.kapiaszczyk.bookstore.library.author.Author;
-import dev.kapiaszczyk.bookstore.library.author.AuthorDTO;
-import dev.kapiaszczyk.bookstore.library.author.AuthorMapper;
-import dev.kapiaszczyk.bookstore.library.book.Book;
-import dev.kapiaszczyk.bookstore.library.book.BookDTO;
+import dev.kapiaszczyk.bookstore.library.author.dto.AuthorDTO;
+import dev.kapiaszczyk.bookstore.library.author.dto.AuthorMapper;
+import dev.kapiaszczyk.bookstore.library.credit.Credit;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;

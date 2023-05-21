@@ -2,6 +2,9 @@ package dev.kapiaszczyk.bookstore.library.bookTest;
 
 import dev.kapiaszczyk.bookstore.library.author.Author;
 import dev.kapiaszczyk.bookstore.library.book.*;
+import dev.kapiaszczyk.bookstore.library.book.dto.BookDTO;
+import dev.kapiaszczyk.bookstore.library.book.dto.BookMapper;
+import dev.kapiaszczyk.bookstore.library.book.projections.BookInformationProjection;
 import dev.kapiaszczyk.bookstore.library.credit.Credit;
 import dev.kapiaszczyk.bookstore.library.inventory.Inventory;
 import dev.kapiaszczyk.bookstore.library.library.Library;
