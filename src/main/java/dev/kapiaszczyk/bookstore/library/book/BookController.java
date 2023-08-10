@@ -34,7 +34,7 @@ public class BookController {
         return new ResponseEntity<>(bookService.getBooksByAuthorNameAndSurname(firstName, lastName), HttpStatus.OK);
     }
 
-    @GetMapping("/loan-status/")
+    @GetMapping("/loan-status")
     public ResponseEntity<Iterable<BookDTO>> getAllByLoanStatus(@RequestParam("status") Loan.Status status) {
         return new ResponseEntity<>(bookService.getAllByLoanStatus(status), HttpStatus.OK);
     }
