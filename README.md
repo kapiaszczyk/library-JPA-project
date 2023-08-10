@@ -56,7 +56,6 @@ For the application to run properly, set the active profile to `prod` in the `ap
 
 <!-- To-do -->
 ### To-do
-- [ ] Implement the REST API 
 - [ ] Optimize queries
 - [ ] Fully document the project
 
