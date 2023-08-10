@@ -6,10 +6,7 @@ import dev.kapiaszczyk.bookstore.library.loan.Loan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/books")
@@ -37,10 +34,9 @@ public class BookController {
         return new ResponseEntity<>(bookService.getBooksByAuthorNameAndSurname(firstName, lastName), HttpStatus.OK);
     }
 
-    @GetMapping("/loan-status/{status}")
-    public ResponseEntity<Iterable<BookDTO>> getAllByLoanStatus(@PathVariable Loan.Status status) {
+    @GetMapping("/loan-status/")
+    public ResponseEntity<Iterable<BookDTO>> getAllByLoanStatus(@RequestParam("status") Loan.Status status) {
         return new ResponseEntity<>(bookService.getAllByLoanStatus(status), HttpStatus.OK);
     }
-
 
 }
