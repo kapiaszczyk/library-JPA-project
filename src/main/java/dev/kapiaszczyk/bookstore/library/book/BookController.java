@@ -14,6 +14,31 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+    // Create
+    @PostMapping("/add")
+    public ResponseEntity<Book> addBook(@RequestBody Book book) {
+        return new ResponseEntity(bookService.addBook(book), HttpStatus.OK);
+    }
+
+    // Get by id
+    @GetMapping("/by-id")
+    public ResponseEntity<BookDTO> getBookById(@RequestParam("id") Long id) {
+        return new ResponseEntity(bookService.findById(id), HttpStatus.OK);
+    }
+
+    // Update
+    @PutMapping("/update")
+    public ResponseEntity<BookDTO> updateBook(@RequestParam("id") Long id, @RequestBody Book book) {
+        return new ResponseEntity(bookService.updateBook(id, book), HttpStatus.OK);
+    }
+
+    // Delete
+    @DeleteMapping("/delete")
+    public ResponseEntity<BookDTO> deleteBook(@RequestParam("id") Long id) {
+        return new ResponseEntity(bookService.deleteBook(id), HttpStatus.OK);
+    }
+
+    // Get all
     @GetMapping("/all")
     public ResponseEntity<Iterable<BookDTO>> getAllBooks() {
         return new ResponseEntity<>(bookService.findAll(), HttpStatus.OK);
