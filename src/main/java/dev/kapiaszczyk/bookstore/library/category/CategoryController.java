@@ -13,6 +13,31 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    // Create category
+    @PostMapping("/create")
+    public ResponseEntity<Category> createCategory(@RequestBody Category category) {
+        return new ResponseEntity(categoryService.save(category), HttpStatus.CREATED);
+    }
+
+    // Get by id
+    @GetMapping("/by_id")
+    public ResponseEntity<Category> getCategoryById(@RequestParam("id") Long id) {
+        return new ResponseEntity<>(categoryService.findById(id).orElse(null), HttpStatus.OK);
+    }
+
+    // Update category
+    @PutMapping("/update")
+    public ResponseEntity<Category> updateCategory(@RequestBody Category category) {
+        return new ResponseEntity(categoryService.save(category), HttpStatus.OK);
+    }
+
+    // Delete category
+    @DeleteMapping("/delete")
+    public ResponseEntity deleteCategory(@RequestParam("id") Long id) {
+        categoryService.deleteById(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
     @GetMapping("/all")
     public ResponseEntity<Iterable<Category>> getAllCategories() {
         return new ResponseEntity<>(categoryService.findAll(), HttpStatus.OK);
