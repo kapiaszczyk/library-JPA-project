@@ -5,6 +5,7 @@ import dev.kapiaszczyk.bookstore.library.book.dto.BookMapper;
 import dev.kapiaszczyk.bookstore.library.book.projections.BookInformationProjection;
 import dev.kapiaszczyk.bookstore.library.loan.Loan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,5 +37,22 @@ public class BookService {
     public List<BookDTO> getAllByLoanStatus(Loan.Status status) {
         List<Book> results = bookRepository.findALlByLoanStatus(status);
         return BookMapper.INSTANCE.mapToDTOList(results);
+    }
+
+    public Object addBook(Book book) {
+        return bookRepository.save(book);
+    }
+
+    public Object deleteBook(Long id) {
+        bookRepository.deleteById(id);
+        return HttpStatus.OK;
+    }
+
+    public Object findById(Long id) {
+        return bookRepository.findById(id);
+    }
+
+    public Object updateBook(Long id, Book book) {
+        return bookRepository.save(book);
     }
 }
