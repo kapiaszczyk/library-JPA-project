@@ -26,9 +26,9 @@ public class LoanService {
 //        return loanRepository.save(loan);
 //    }
 
-    // TODO: View all loans with account id
-    public List<Loan> viewAllLoansWithAccountId(Long id) {
-        return loanRepository.findByAccountId(id);
+    // TODO: View all loans with account number
+    public List<Loan> viewAllLoansWithAccountNumber(String accountNumber) {
+        return loanRepository.findByAccountNumber(accountNumber);
     }
 
     // TODO: View all loans with status

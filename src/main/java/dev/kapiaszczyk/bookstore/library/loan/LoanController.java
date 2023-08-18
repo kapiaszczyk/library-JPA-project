@@ -27,10 +27,10 @@ public class LoanController {
 //        return loanService.updateLoan(loan);
 //    }
 
-    // TODO: View all loans with account id
+    // TODO: View all loans with account number
     @GetMapping("/loans/account")
-    public Iterable<Loan> viewAllLoansWithAccountId(@RequestParam("id") Long id) {
-        return loanService.viewAllLoansWithAccountId(id);
+    public Iterable<Loan> viewAllLoansWithAccountNumber(@RequestParam("accountNumber") String accountNumber) {
+        return loanService.viewAllLoansWithAccountNumber(accountNumber);
     }
 
     // TODO: View all loans with status

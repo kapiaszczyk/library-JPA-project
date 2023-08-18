@@ -26,6 +26,6 @@ public interface LoanRepository extends JpaRepository<Loan, Long> {
     // TODO: Get loans by account number and status
     List<Loan> findByAccountNumberAndStatus(String accountNumber, Loan.Status status);
 
-    // TODO: Get loans by account id
-    List<Loan> findByAccountId(Long id);
+    // TODO: Get loans by account number
+    List<Loan> findByAccountNumber(String accountNumber);
 }
