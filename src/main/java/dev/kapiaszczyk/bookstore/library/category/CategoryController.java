@@ -22,7 +22,7 @@ public class CategoryController {
     }
 
     @GetMapping("/find_by_name/{categoryName}")
-    public ResponseEntity<Category> getCategoryByName(@PathVariable String categoryName) {
+    public ResponseEntity<Category> getCategoryByName(@RequestParam("category_name") String categoryName) {
         return new ResponseEntity<>(categoryService.findByNameIgnoreCase(categoryName).orElse(null), HttpStatus.OK);
     }
 

@@ -24,8 +24,8 @@ public class BookController {
         return new ResponseEntity<>(bookService.getAllBooksWithTitleIsbnAuthors(), HttpStatus.OK);
     }
 
-    @GetMapping("/title/{title}/library/{name}")
-    public ResponseEntity<Iterable<BookDTO>> getBooksByTitleAndInventoryLibraryName(@PathVariable String title, @PathVariable String name) {
+    @GetMapping("/by-title")
+    public ResponseEntity<Iterable<BookDTO>> getBooksByTitleAndInventoryLibraryName(@RequestParam("title") String title, @RequestParam("library_name") String name) {
         return new ResponseEntity<>(bookService.getBooksByTitleAndInventoryLibraryName(title, name), HttpStatus.OK);
     }
 
