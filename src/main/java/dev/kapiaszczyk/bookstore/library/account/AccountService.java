@@ -28,4 +28,12 @@ public class AccountService {
     public Object findAll() {
         return accountRepository.findAll();
     }
+
+    public Object getAccountByLibraryUserId(Long id) {
+        return accountRepository.findByLibraryUserId(id);
+    }
+
+    public Object getAccountByNumber(String number) {
+        return accountRepository.findByNumber(number);
+    }
 }
