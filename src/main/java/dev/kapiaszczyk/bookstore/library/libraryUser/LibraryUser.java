@@ -1,5 +1,6 @@
 package dev.kapiaszczyk.bookstore.library.libraryUser;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import dev.kapiaszczyk.bookstore.library.account.Account;
 import dev.kapiaszczyk.bookstore.library.address.Address;
 import jakarta.persistence.*;
@@ -19,6 +20,7 @@ public class LibraryUser {
     @Column(name = "library_user_last_name", nullable = false, length = 100)
     private String lastName;
 
+    @JsonManagedReference
     @OneToOne(mappedBy = "libraryUser", cascade = CascadeType.ALL, orphanRemoval = true)
     private Account account;
 
