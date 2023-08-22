@@ -18,17 +18,17 @@ insert into category values (3, 'Sci-fi');
 insert into category values (4, 'Young Adult');
 insert into category values (5, 'Horror');
 
-insert into library_user values(1, 'John', 'Doe');
-insert into library_user values(2, 'Suzan', 'Lee');
-insert into library_user values(3, 'Patrick', 'Steward');
-insert into library_user values(4, 'Mary', 'Black');
-insert into library_user values(5, 'Cathleen', 'White');
+insert into library_user (library_user_first_name, library_user_last_name) values ('John', 'Doe');
+insert into library_user (library_user_first_name, library_user_last_name) values ('Suzan', 'Lee');
+insert into library_user (library_user_first_name, library_user_last_name) values ('Patrick', 'Steward');
+insert into library_user (library_user_first_name, library_user_last_name) values ('Mary', 'Black');
+insert into library_user (library_user_first_name, library_user_last_name) values ('Cathleen', 'White');
 
-insert into account values(1, 1);
-insert into account values(2, 2);
-insert into account values(3, 3);
-insert into account values(4, 4);
-insert into account values(5, 5);
+insert into account (account_number, library_user_id) values (123456789, 1);
+insert into account (account_number, library_user_id) values (223456789, 2);
+insert into account (account_number, library_user_id) values (323456789, 3);
+insert into account (account_number, library_user_id) values (423456789, 4);
+insert into account (account_number, library_user_id) values (523456789, 5);
 
 insert into address (street, library_user_id, city_id) values ('Washington Street 5', 1, 1);
 insert into address (street, library_user_id, city_id) values ('Jefferson Street 8', 2, 2);
