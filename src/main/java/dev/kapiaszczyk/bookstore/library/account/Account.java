@@ -1,5 +1,7 @@
 package dev.kapiaszczyk.bookstore.library.account;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.kapiaszczyk.bookstore.library.libraryUser.LibraryUser;
 import dev.kapiaszczyk.bookstore.library.loan.Loan;
 import jakarta.persistence.*;
@@ -18,11 +20,13 @@ public class Account {
     @Column(name = "account_number", unique = true, nullable = false)
     private String number;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true   )
     @MapsId
+    @JsonBackReference
     @JoinColumn(name = "library_user_id", referencedColumnName = "library_user_id")
     private LibraryUser libraryUser;
 
+    @JsonIgnore // TODO: This is a workaround, instead should use JsonBackReference or JsonManagedReference
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Loan> loans = new ArrayList<>();
 
